@@ -57,8 +57,8 @@
                                             @endphp
                                         @endwhile
                                     </p>
-                                    <p>Additional details:</p>   
-                                    <p><i class="fa fa-wifi text-primary mr-2 "></i>{{$offer->internet = '1' ? 'Yes' : 'No'}}<i class="fa fa-tv text-primary mr-2 ml-2"></i>{{$offer->tv = '1' ? 'Yes' : 'No'}}<i class="fa fa-snowflake text-primary mr-2 ml-2"></i>{{$offer->ac = '1' ? 'Yes' : 'No'}}<i class="fa fa-ice-cream text-primary mr-2 ml-2"></i>{{$offer->fridge = '1' ? 'Yes' : 'No'}}</p>
+                                    <p>Additional details:</p>  
+                                    <p><i class="fa fa-wifi text-primary mr-2 "></i>{{$item->internet == '1' ? 'Yes' : 'No'}}<i class="fa fa-tv text-primary mr-2 ml-2"></i>{{$item->tv == 1 ? 'Yes' : 'No'}}<i class="fa fa-snowflake text-primary mr-2 ml-2"></i>{{$item->ac == 1 ? 'Yes' : 'No'}}<i class="fa fa-ice-cream text-primary mr-2 ml-2"></i>{{$item->fridge == 1 ? 'Yes' : 'No'}}</p>
                                 @endforeach
                             @endunless
                             
@@ -71,10 +71,10 @@
                     <!-- Blog Detail End -->
                 </div>
     
-                <div class="col-lg-4 mt-5 mt-lg-0">
+                {{-- <div class="col-lg-4 mt-5 mt-lg-0">
                     <!-- Author Bio  da se doda kalendar koji pokazuje trajanje ponude -->
                     <div class="d-flex flex-column text-center bg-white mb-5 py-5 px-4">
-                        <img src="img/user.jpg" class="img-fluid mx-auto mb-3" style="width: 100px;">
+                        <img src="{{ asset('img/user.jpg') }}" class="img-fluid mx-auto mb-3" style="width: 100px;">
                         <h3 class="text-primary mb-3">John Doe</h3>
                         <p>Conset elitr erat vero dolor ipsum et diam, eos dolor lorem, ipsum sit no ut est  ipsum erat kasd amet elitr</p>
                         <div class="d-flex justify-content-center">
@@ -94,9 +94,8 @@
                                 <i class="fab fa-youtube"></i>
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
 
-    
                     <!-- Recent Post -->
                     <div class="mb-5">
                         <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Recent Post</h4>
@@ -122,4 +121,73 @@
         </div>
     </div>
     <!-- Blog End -->
+
+    <!-- Booking Start -->
+    <!-- Napraviti da bude responsive -->
+    <form action="/booking/{{ $offer->id }}">
+        <div class="container-fluid booking mt-5 pb-5">
+            <div class="text-center">
+                <h3>Booking This Offer?</h3>
+            </div>
+            <div class="container pb-5">
+                <div class="bg-light shadow" style="padding: 30px;">
+                    <div class="row align-items-center" style="min-height: 60px;">
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <input type="text" name="first_name" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <input type="text" name="last_name" placeholder="Last name">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <!-- Popraviti: postoji input za broj telefona -->
+                                        <input type="text" name="phone_no" placeholder="Phone Number">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <input type="email" name="email" placeholder="email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="row mt-2">
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <input type="text" name="payment_type" placeholder="Payment Type">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <input type="number" name="num_adults" placeholder="Number of Adults">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <input type="number" name="num_child" placeholder="Number of Kids">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <textarea name="note" id="note" placeholder="Notes..." style="width:203px;height:150px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -45px;">Book this now!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- Booking End -->
 @endsection

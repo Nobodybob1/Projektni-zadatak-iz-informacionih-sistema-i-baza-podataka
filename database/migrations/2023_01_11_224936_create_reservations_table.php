@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->integer('offer_id')->unsigned()->nullable()->index();;
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone_no');

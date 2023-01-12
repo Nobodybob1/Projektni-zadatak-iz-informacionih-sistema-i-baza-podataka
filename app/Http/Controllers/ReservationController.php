@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ReservationController extends Controller
 {
@@ -33,9 +34,25 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $formFields = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'phone_no' => 'required',
+            'email' => ['required', 'email', Rule::unique('reservations', 'email')],
+            'payment_type' => 'required',
+            'num_adults' => 'required',
+            'num_child' => 'required',
+            'note' => 'required'
+
+        ]);
+
+        $formFields['offer_id'] = $id;
+        //Srediti da izbaci neku poruku
+        Reservation::create($formFields);
+        return back();
     }
 
     /**

@@ -19,5 +19,6 @@ class Reservation extends Model
         'num_adults',
         'num_child',
         'note',
+        'offer_id',
     ];
 }
