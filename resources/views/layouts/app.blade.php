@@ -6,6 +6,9 @@
     <title>Test projekat Agencija turisticka</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <!-- Favicon -->
     <link href="{{  asset('favicon.ico')}}" rel="icon">
 
@@ -75,19 +78,8 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="/" class="nav-item nav-link active">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                        <a href="package.html" class="nav-item nav-link">Tour Packages</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu border-0 rounded-0 m-0">
-                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                <a href="single.html" class="dropdown-item">Blog Detail</a>
-                                <a href="destination.html" class="dropdown-item">Destination</a>
-                                <a href="guide.html" class="dropdown-item">Travel Guides</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="/packages" class="nav-item nav-link">Tour Packages</a>
+                        <a href="/login" class="nav-item nav-link">Login</a>
                     </div>
                 </div>
             </nav>
