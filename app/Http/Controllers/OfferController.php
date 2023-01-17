@@ -26,7 +26,7 @@ class OfferController extends Controller
      */
     public function create()
     {
-        //
+        return view('create_offer');
     }
 
     /**
@@ -37,7 +37,24 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formFields = $request->validate([
+            'name' => 'required',
+            'transport_price' => 'required',
+            'transport_type' => 'required',
+            'price_adult' => 'required',
+            'price_child' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'location_city' => 'required',
+            'location_state' => 'required',
+            'location_continent' => 'required',
+            'program' => 'required',
+            'note' => 'required',
+        ]);
+
+        $offer = Offer::create($formFields);
+
+        return redirect('/admin/index');
     }
 
     /**
@@ -83,6 +100,12 @@ class OfferController extends Controller
     public function destroy(Offer $Offer)
     {
         //
+    }
+
+    public function admin_offers(Offer $offers) {
+        $offers = Offer::latest()->get();
+        
+        return view('admin_offers', compact('offers'));
     }
 
     

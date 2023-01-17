@@ -40,3 +40,8 @@ Route::get('single/{id}', function ($id) {
  Route::post('/admin/reserve/{id}', [ReservationController::class, 'update']);
 
  Route::get('/admin/reservations', [ReservationController::class, 'all_reservations']);
+
+ Route::get('/admin/offers', [OfferController::class, 'admin_offers']);
+
+ Route::get('/create/offer', [OfferController::class, 'create']);
+ Route::post('/creating/offer', [OfferController::class, 'store']);

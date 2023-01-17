@@ -78,7 +78,7 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="/admin/index" class="nav-item nav-link active">Home</a>
                         <a href="/admin/reservations" class="nav-item nav-link">Reservations</a>
-                        <a href="/packages" class="nav-item nav-link">Tour Packages</a>
+                        <a href="/admin/offers" class="nav-item nav-link">Offers</a>
                         <a href="/login" class="nav-item nav-link">Login</a>
                     </div>
                 </div>
