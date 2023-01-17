@@ -34,3 +34,7 @@ Route::get('single/{id}', function ($id) {
  });
 
  Route::get('/booking/{id}', [ReservationController::class, 'store']);
+
+ Route::get('/admin/index', [ReservationController::class, 'index']);
+
+ Route::post('/admin/reserve/{id}', [ReservationController::class, 'update']);

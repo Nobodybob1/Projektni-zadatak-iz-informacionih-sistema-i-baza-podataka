@@ -15,7 +15,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        $reservations = Reservation::where('is_approved', '0')->get();
+        return view('admin_index', compact('reservations'));
     }
 
     /**
@@ -86,7 +87,11 @@ class ReservationController extends Controller
      */
     public function update(Request $request, Reservation $reservation)
     {
-        //
+        Reservation::whereId($request['id'])->update([
+            'is_approved' => '1'
+        ]);
+
+        return back();
     }
 
     /**

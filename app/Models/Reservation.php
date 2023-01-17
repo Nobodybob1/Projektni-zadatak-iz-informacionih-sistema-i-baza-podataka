@@ -20,5 +20,10 @@ class Reservation extends Model
         'num_child',
         'note',
         'offer_id',
+        'is_approved',
     ];
+
+    public function offer() {
+        return $this->belongsTo('App\Models\Offer', 'offer_id');
+    }
 }

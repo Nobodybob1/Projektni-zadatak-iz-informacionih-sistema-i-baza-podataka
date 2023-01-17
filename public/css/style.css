@@ -9769,3 +9769,10 @@ h6,
   padding: 0;
   list-style-type: none;
 }
+
+.note {
+  width: auto;
+  height: auto;
+  border-style: solid;
+  overflow-wrap: break-word;
+}
