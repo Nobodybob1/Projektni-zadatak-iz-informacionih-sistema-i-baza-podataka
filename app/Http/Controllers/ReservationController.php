@@ -104,4 +104,9 @@ class ReservationController extends Controller
     {
         //
     }
+
+    public function all_reservations(Reservation $reservations) {
+        $reservations = Reservation::all();
+        return view('admin_reservations', compact('reservations'));
+    }
 }

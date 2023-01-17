@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <h1 class="text-center">Admin</h1>
@@ -69,10 +69,10 @@
                         <h6 class="mt-3">Informations about offer:</h6>
 
                         <p>Accommodation name: {{ $reservation->offer->name }}</p>
-                        <p>Transport price: {{ $reservation->offer->transport_price }}</p>
+                        <p>Transport price: {{ $reservation->offer->transport_price ." e" }}</p>
                         <p>Transport type: {{ $reservation->offer->transport_type }}</p>
-                        <p>Price for adults: {{ $reservation->offer->price_adult }}</p>
-                        <p>Price for kids: {{ $reservation->offer->price_child }}</p>
+                        <p>Price for adults: {{ $reservation->offer->price_adult ." e"}}</p>
+                        <p>Price for kids: {{ $reservation->offer->price_child  ." e"}}</p>
                         <p>Start Date: {{ $reservation->offer->start_date }}</p>
                         <p>End Date: {{ $reservation->offer->end_date }}</p>
                         <p>City: {{ $reservation->offer->location_city }}</p>
