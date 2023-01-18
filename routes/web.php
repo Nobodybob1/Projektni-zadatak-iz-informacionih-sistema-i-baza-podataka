@@ -36,21 +36,21 @@ Route::get('single/{id}', function ($id) {
 
  Route::get('/booking/{id}', [ReservationController::class, 'store']);
 
- Route::get('/admin/index', [ReservationController::class, 'index']);
+ Route::get('/admin/index', [ReservationController::class, 'index'])->middleware('auth');
 
- Route::post('/admin/reserve/{id}', [ReservationController::class, 'update']);
+ Route::post('/admin/reserve/{id}', [ReservationController::class, 'update'])->middleware('auth');
 
- Route::get('/admin/reservations', [ReservationController::class, 'all_reservations']);
+ Route::get('/admin/reservations', [ReservationController::class, 'all_reservations'])->middleware('auth');
 
- Route::get('/admin/offers', [OfferController::class, 'admin_offers']);
+ Route::get('/admin/offers', [OfferController::class, 'admin_offers'])->middleware('auth');
 
- Route::get('/create/offer', [OfferController::class, 'create']);
- Route::post('/creating/offer', [OfferController::class, 'store']);
+ Route::get('/create/offer', [OfferController::class, 'create'])->middleware('auth');
+ Route::post('/creating/offer', [OfferController::class, 'store'])->middleware('auth');
 
- Route::post('/admin/update/{id}', [OfferController::class, 'edit']);
- Route::post('/admin/updating/{id}', [OfferController::class, 'update']);
+ Route::post('/admin/update/{id}', [OfferController::class, 'edit'])->middleware('auth');
+ Route::post('/admin/updating/{id}', [OfferController::class, 'update'])->middleware('auth');
  
- Route::post('/admin/delete/offer', [OfferController::class, 'destroy']);
+ Route::post('/admin/delete/offer', [OfferController::class, 'destroy'])->middleware('auth');
 
 
 

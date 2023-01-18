@@ -4,7 +4,7 @@
     
     <div class="card border-0 mx-auto" style="width: 50%" >
         <div class="card-header bg-primary text-center p-4">
-            <h1 class="text-white m-0">Register new user</h1>
+            <h1 class="text-white m-0">Register new staff</h1>
         </div>
         <div class="card-body rounded-bottom bg-white p-5">
             <form method="POST" action="/register_user">

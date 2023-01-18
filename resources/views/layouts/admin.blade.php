@@ -86,6 +86,9 @@
                         @else
                             <a href="/login" class="nav-item nav-link">Login</a>
                         @endif
+                        @if (auth()->user()->is_admin)
+                            <a href="/register" class="nav-item nav-link">Add Staff</a>
+                        @endif
                     </div>
                 </div>
             </nav>

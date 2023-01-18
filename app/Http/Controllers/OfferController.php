@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use App\Models\Reservation;
 
 class OfferController extends Controller
 {
@@ -118,6 +119,8 @@ class OfferController extends Controller
     public function destroy(Request $request)
     {
         Offer::find($request->delete)->delete();
+        $reservation = Reservation::where('offer_id', $request->delete)->get();
+        $reservation[0]->delete();
         return back();
     }
 

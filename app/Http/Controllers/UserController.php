@@ -109,14 +109,15 @@ class UserController extends Controller
         ]);
         
         if (auth()->attempt($formFields)) {
-            dd('uso');
+            // dd('uso');
             $request->session()->regenerate();
 
-            if (auth()->user()->is_admin) {
-                return redirect("/admin/index");
-            } else {
-                return redirect("/uspesno");
-            }
+            return redirect('/admin/index');
+            // if (auth()->user()->is_admin) {
+            //     return redirect("/admin/index");
+            // } else {
+            //     return redirect("/uspesno");
+            // }
         }
         
         return back();
