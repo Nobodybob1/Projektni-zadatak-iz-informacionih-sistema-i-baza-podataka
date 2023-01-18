@@ -63,7 +63,7 @@ class OfferController extends Controller
      * @param  \App\Models\Offer  $Offer
      * @return \Illuminate\Http\Response
      */
-    public function show(Offer $Offer)
+    public function show(Offer $offer)
     {
         //
     }
@@ -74,9 +74,12 @@ class OfferController extends Controller
      * @param  \App\Models\Offer  $Offer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Offer $Offer)
+    public function edit(Offer $offer, $id)
     {
-        //
+        $offer = Offer::whereId($id)->get();
+        $offer = $offer[0];
+
+        return view('admin_update_offer', compact('offer'));
     }
 
     /**
@@ -86,9 +89,24 @@ class OfferController extends Controller
      * @param  \App\Models\Offer  $Offer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Offer $Offer)
+    public function update(Request $request, Offer $offer, $id)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'transport_price' => 'required',
+            'transport_type' => 'required',
+            'price_adult' => 'required',
+            'price_child' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'location_city' => 'required',
+            'location_state' => 'required',
+            'location_continent' => 'required',
+        ]);
+
+        $offer = Offer::whereId($id)->get();
+        $offer[0]->update($data);
+        return redirect('/admin/index');
     }
 
     /**

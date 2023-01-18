@@ -45,3 +45,6 @@ Route::get('single/{id}', function ($id) {
 
  Route::get('/create/offer', [OfferController::class, 'create']);
  Route::post('/creating/offer', [OfferController::class, 'store']);
+
+ Route::post('/admin/update/{id}', [OfferController::class, 'edit']);
+ Route::post('/admin/updating/{id}', [OfferController::class, 'update']);

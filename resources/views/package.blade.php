@@ -98,6 +98,9 @@
                     </div>
                 @endforeach
                 @endunless
+            </div>
+        </div>
+    </div>
     <!-- Packages End -->
 
     <!-- Destination Start -->
