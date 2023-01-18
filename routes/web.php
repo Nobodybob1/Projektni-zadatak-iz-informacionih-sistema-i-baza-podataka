@@ -4,6 +4,7 @@ use App\Http\Controllers\OfferController;
 use App\Models\Accommodation;
 use App\Models\Offer;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,3 +49,22 @@ Route::get('single/{id}', function ($id) {
 
  Route::post('/admin/update/{id}', [OfferController::class, 'edit']);
  Route::post('/admin/updating/{id}', [OfferController::class, 'update']);
+ 
+ Route::post('/admin/delete/offer', [OfferController::class, 'destroy']);
+
+
+
+ Route::get('/login', function(){
+
+    return view('login_page');
+ });
+
+ Route::post('/login_user', [UserController::class, 'login']);
+
+ Route::get('/register', function(){
+    return view('register');
+ });
+
+ Route::post('/register_user', [UserController::class, 'store']);
+
+ Route::get('/logout', [UserController::class, 'logout']);

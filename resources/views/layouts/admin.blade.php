@@ -79,7 +79,13 @@
                         <a href="/admin/index" class="nav-item nav-link active">Home</a>
                         <a href="/admin/reservations" class="nav-item nav-link">Reservations</a>
                         <a href="/admin/offers" class="nav-item nav-link">Offers</a>
-                        <a href="/login" class="nav-item nav-link">Login</a>
+                        @if (auth()->user())
+                            <a href="/" class="nav-item nav-link">Welcome, {{auth()->user()->name}} </a>
+                            <a href="/logout" class="nav-item nav-link"><i class="fa fa-door-closed"></i></a>
+                            
+                        @else
+                            <a href="/login" class="nav-item nav-link">Login</a>
+                        @endif
                     </div>
                 </div>
             </nav>

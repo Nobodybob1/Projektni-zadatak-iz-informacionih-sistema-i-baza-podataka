@@ -79,7 +79,11 @@
                         <a href="/" class="nav-item nav-link active">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="/packages" class="nav-item nav-link">Tour Packages</a>
-                        <a href="/login" class="nav-item nav-link">Login</a>
+                        @if (auth()->user())
+                            <a href="/" class="nav-item nav-link">Welcome, {{auth()->user()->name}} </a>
+                        @else
+                            <a href="/login" class="nav-item nav-link">Login</a>
+                        @endif
                     </div>
                 </div>
             </nav>

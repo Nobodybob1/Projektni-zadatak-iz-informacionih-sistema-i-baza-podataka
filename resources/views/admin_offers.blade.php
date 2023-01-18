@@ -12,10 +12,16 @@
                     @unless ($offers->isEmpty())
                         @foreach ($offers as $offer)
                         <div class="col-lg-4 col-md-6 mb-4">
+                            <form action="/admin/delete/offer" method="POST" id="myform">
+                                @csrf
+                                
+                                <button name="delete" value="{{$offer->id}}" type="submit" class="btn btn-danger">X</button>
+                            </form>
                             <div class="package-item bg-white mb-2">
                                 <div class="position-relative d-inline">
                                     <img class="img-fluid" src="{{ asset('img/package-1.jpg') }}" alt="">
-                                    <button class="btn btn-danger position-absolute">X</button>
+                                    
+                                    
                                 </div>
                                 <form action="/admin/update/{{$offer->id}}" method="post">
                                     @csrf

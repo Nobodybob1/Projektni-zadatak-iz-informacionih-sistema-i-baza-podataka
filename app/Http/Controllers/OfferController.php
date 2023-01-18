@@ -115,9 +115,10 @@ class OfferController extends Controller
      * @param  \App\Models\Offer  $Offer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Offer $Offer)
+    public function destroy(Request $request)
     {
-        //
+        Offer::find($request->delete)->delete();
+        return back();
     }
 
     public function admin_offers(Offer $offers) {
