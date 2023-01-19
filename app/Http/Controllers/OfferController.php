@@ -55,7 +55,7 @@ class OfferController extends Controller
 
         $offer = Offer::create($formFields);
 
-        return redirect('/admin/index');
+        return redirect('/admin/offers'); // bilo admin/index ali rekoh logicnije da te vrati na offere
     }
 
     /**
@@ -107,7 +107,8 @@ class OfferController extends Controller
 
         $offer = Offer::whereId($id)->get();
         $offer[0]->update($data);
-        return redirect('/admin/index');
+        //return redirect('/admin/index');
+        return back();
     }
 
     /**
@@ -119,8 +120,10 @@ class OfferController extends Controller
     public function destroy(Request $request)
     {
         Offer::find($request->delete)->delete();
-        $reservation = Reservation::where('offer_id', $request->delete)->get();
-        $reservation[0]->delete();
+        if(Reservation::where('offer_id', $request->delete)->take(1)->first()){
+            Reservation::where('offer_id', $request->delete)->delete();//get();
+        }
+        
         return back();
     }
 
