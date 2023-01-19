@@ -4,3 +4,7 @@ Namestiti da dugme za brisanje ponuda bude gore desno
 Srediti u potpunosti front za kreiranje ponuda
 Srediti u potpunosti fron za apdejt, tu srediti i textarea
 Napraviti search funkcionalnost i proveriti sve ostale detaljno!
+
+paginate svuda gde imamo sve offere da se izlistavaju(desko)
+da li prvo prikazuje rezervacije na ckeanju pa onda ove prihvacene ili jok?
+dodati old value na booking

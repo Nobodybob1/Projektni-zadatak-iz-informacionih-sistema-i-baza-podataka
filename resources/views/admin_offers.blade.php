@@ -42,8 +42,27 @@
                                 </form>
                             </div>
                         </div>
-                @endforeach
-                @endunless
+                    @endforeach
+                    
+                    @endunless
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <form id="paginForm" action="/admin/offers" method="GET">
+
+                            <select id="perPage" name="perPage" class="custom-select" onchange="document.getElementById('paginForm').submit()">
+                                <option value="1" default>1</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                            </select>
+                            
+                    </form>
+            </div>
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                    {{$offers->links()}}
+                </div>
+                
             </div>
         </div>
     </div>

@@ -123,36 +123,36 @@
     <!-- Blog End -->
 
     <!-- Booking Start -->
-    <!-- Napraviti da bude responsive -->
+    <!-- Napraviti da bude responsive trebalo bi da sad jeste samo dugme malo nekad ludi -->
     <form action="/booking/{{ $offer->id }}">
-        <div class="container-fluid booking mt-5 pb-5">
-            <div class="text-center">
-                <h3>Booking This Offer?</h3>
+        <div class="container-fluid booking mt-5 pb-5" style="width: 90%" >
+            <div class="card-header bg-primary text-center mx-auto">
+                <h1 class="text-white m-0">Booking This Offer?</h1>
             </div>
-            <div class="container pb-5">
+            <div class="card-body rounded-bottom bg-white p-5">
                 <div class="bg-light shadow" style="padding: 30px;">
                     <div class="row align-items-center" style="min-height: 60px;">
                         <div class="col-md-10">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="text" name="first_name" placeholder="First Name">
+                                        <input type="text" name="first_name" class="form-control p-3"  placeholder="First Name">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="text" name="last_name" placeholder="Last name">
+                                        <input type="text" name="last_name" class="form-control p-3" placeholder="Last name">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <!-- Popraviti: postoji input za broj telefona -->
-                                        <input type="text" name="phone_no" placeholder="Phone Number">
+                                        <!-- Popraviti: postoji input za broj telefona izgleda da hvata sam po imenu  -->
+                                        <input type="text" name="phone_no" class="form-control p-3" placeholder="Phone Number">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="email" name="email" placeholder="email">
+                                        <input type="email" name="email" class="form-control p-3" placeholder="email">
                                     </div>
                                 </div>
                             </div>
@@ -161,28 +161,28 @@
                             <div class="row mt-2">
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="text" name="payment_type" placeholder="Payment Type">
+                                        <input type="text" name="payment_type" class="form-control p-3" placeholder="Payment Type">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="number" name="num_adults" placeholder="Number of Adults">
+                                        <input type="number" name="num_adults" class="form-control p-3" placeholder="Number of Adults">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="number" name="num_child" placeholder="Number of Kids">
+                                        <input type="number" name="num_child" class="form-control p-3" placeholder="Number of Kids">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="mb-3 mb-md-0">
-                                        <textarea name="note" id="note" placeholder="Notes..." style="width:203px;height:150px;"></textarea>
+                                    <div class="mb-3 mb-md-0" >
+                                        <textarea name="note" id="note" placeholder="Notes..." class="form-control p-3" style="height: 150px" ></textarea>{{--style="width:203px;height:150px;"--}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -45px;">Book this now!</button>
+                            <button class="btn btn-primary btn-block py-2" type="submit">Book this now!</button>
                         </div>
                     </div>
                 </div>
