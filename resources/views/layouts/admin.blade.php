@@ -79,15 +79,16 @@
                         <a href="/admin/index" class="nav-item nav-link active">Home</a>
                         <a href="/admin/reservations" class="nav-item nav-link">Reservations</a>
                         <a href="/admin/offers" class="nav-item nav-link">Offers</a>
+                        @if (auth()->user()->is_admin)
+                            <a href="/register" class="nav-item nav-link">Add Staff</a>
+                            <a href="/create/accommodation" class="nav-item nav-link">Add Accommodation</a>
+                        @endif
                         @if (auth()->user())
                             <a href="/admin/index" class="nav-item nav-link">Welcome, {{auth()->user()->name}} </a>
                             <a href="/logout" class="nav-item nav-link"><i class="fa fa-door-closed"></i></a>
                             
                         @else
                             <a href="/login" class="nav-item nav-link">Login</a>
-                        @endif
-                        @if (auth()->user()->is_admin)
-                            <a href="/register" class="nav-item nav-link">Add Staff</a>
                         @endif
                     </div>
                 </div>

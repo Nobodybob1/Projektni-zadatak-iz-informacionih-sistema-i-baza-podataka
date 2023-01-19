@@ -24,7 +24,7 @@ class AccommodationController extends Controller
      */
     public function create()
     {
-        //
+        return view('create_accommodation');
     }
 
     /**
@@ -35,7 +35,19 @@ class AccommodationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'room_bed' => 'required',
+            'rating' => 'required',
+            'internet' => 'required',
+            'tv' => 'required',
+            'ac' => 'required',
+            'fridge' => 'required'
+        ]);
+
+        Accommodation::create($data);
+
+        return redirect('/admin/index');
     }
 
     /**

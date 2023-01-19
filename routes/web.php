@@ -5,6 +5,7 @@ use App\Models\Accommodation;
 use App\Models\Offer;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AccommodationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,3 +69,6 @@ Route::get('single/{id}', function ($id) {
  Route::post('/register_user', [UserController::class, 'store']);
 
  Route::get('/logout', [UserController::class, 'logout']);
+
+ Route::get('/create/accommodation', [AccommodationController::class, 'create']);
+ Route::post('/creating/accommodation', [AccommodationController::class, 'store']);
