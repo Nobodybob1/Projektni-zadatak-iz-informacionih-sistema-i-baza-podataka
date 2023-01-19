@@ -15,9 +15,18 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offers = Offer::latest()->get();
+        // $offers = Offer::latest()->get();
         
-        return view('package', ['offers' => $offers]);
+        // return view('package', ['offers' => $offers]);
+
+
+        if(request('perPage')){
+            return view('package', ['offers' => Offer::latest()->paginate(request('perPage'))]);
+        }
+        else{
+            return view('package', ['offers' => Offer::latest()->paginate(25)]);
+        }
+
     }
 
     /**
@@ -128,9 +137,17 @@ class OfferController extends Controller
     }
 
     public function admin_offers(Offer $offers) {
-        $offers = Offer::latest()->get();
+        // $offers = Offer::latest()->get();
         
-        return view('admin_offers', compact('offers'));
+        // return view('admin_offers', compact('offers'));
+
+        if(request('perPage')){
+            return view('admin_offers', ['offers' => Offer::latest()->paginate(request('perPage'))]);
+        }
+        else{
+            //dd( Offer::latest()->paginate(25));
+            return view('admin_offers', ['offers' => Offer::latest()->paginate(1)]);
+        }
     }
 
     

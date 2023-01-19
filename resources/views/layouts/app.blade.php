@@ -80,7 +80,8 @@
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="/packages" class="nav-item nav-link">Tour Packages</a>
                         @if (auth()->user())
-                            <a href="/" class="nav-item nav-link">Welcome, {{auth()->user()->name}} </a>
+                            <a href="/admin/index" class="nav-item nav-link">Welcome, {{auth()->user()->name}} </a>
+                            <a href="/logout" class="nav-item nav-link"><i class="fa fa-door-closed"></i></a>
                         @else
                             <a href="/login" class="nav-item nav-link">Login</a>
                         @endif

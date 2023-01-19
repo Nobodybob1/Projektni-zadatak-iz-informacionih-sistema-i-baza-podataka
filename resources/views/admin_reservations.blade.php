@@ -67,8 +67,8 @@
                     <p>Transport type: {{ $reservation->offer->transport_type}}</p>
                     <p>Price for adults: {{ $reservation->offer->price_adult ." e"}}</p>
                     <p>Price for kids: {{ $reservation->offer->price_child ." e"}}</p>
-                    <p>Start Date: {{ $reservation->offer->start_date }}</p>
-                    <p>End Date: {{ $reservation->offer->end_date }}</p>
+                    <p>Start Date: {{ $reservation->offer->date_str_to_nice($reservation->offer->start_date) }}</p>
+                    <p>End Date: {{ $reservation->offer->date_str_to_nice($reservation->offer->end_date) }}</p>
                     <p>City: {{ $reservation->offer->location_city }}</p>
                     <p>State: {{ $reservation->offer->location_state }}</p>
                     <p>Continent: {{ $reservation->offer->location_continent }}</p>
