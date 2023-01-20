@@ -81,7 +81,7 @@
                         <a href="/admin/offers" class="nav-item nav-link">Offers</a>
                         @if (auth()->user()->is_admin)
                             <a href="/register" class="nav-item nav-link">Add Staff</a>
-                            <a href="/create/accommodation" class="nav-item nav-link">Add Accommodation</a>
+                            <a href="/admin/accommodation" class="nav-item nav-link">Accommodations</a>
                         @endif
                         @if (auth()->user())
                             <a href="/admin/index" class="nav-item nav-link">Welcome, {{auth()->user()->name}} </a>

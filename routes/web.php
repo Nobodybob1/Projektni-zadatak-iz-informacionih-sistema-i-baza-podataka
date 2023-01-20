@@ -70,5 +70,7 @@ Route::get('single/{id}', function ($id) {
 
  Route::get('/logout', [UserController::class, 'logout']);
 
+ Route::get('/admin/accommodation', [AccommodationController::class, 'admin_accommodations']);
+
  Route::get('/create/accommodation', [AccommodationController::class, 'create']);
  Route::post('/creating/accommodation', [AccommodationController::class, 'store']);

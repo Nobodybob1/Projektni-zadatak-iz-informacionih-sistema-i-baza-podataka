@@ -94,4 +94,10 @@ class AccommodationController extends Controller
     {
         //
     }
+
+    public function admin_accommodations() {
+        $accommodations = Accommodation::all();
+        
+        return view('admin_accommodation', compact('accommodations'));
+    }
 }
