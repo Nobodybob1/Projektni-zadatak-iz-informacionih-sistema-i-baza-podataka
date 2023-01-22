@@ -41,8 +41,8 @@
                             <h3 class="mb-3 text-center">Details</h3>
                             
                             @unless ($accommodation->isEmpty())
-                                <h4>Description of accommodation</h4>
                                 @foreach ($accommodation as $item)
+                                    <h4>Description of accommodation:</h4>
                                     <p>{{'Accommodation name: '. $item->name}}</p>
                                     <p>{{'Number of beds in room: '. $item->room_bed}}</p>
                                     @php
@@ -59,13 +59,13 @@
                                     </p>
                                     <p>Additional details:</p>  
                                     <p><i class="fa fa-wifi text-primary mr-2 "></i>{{$item->internet == '1' ? 'Yes' : 'No'}}<i class="fa fa-tv text-primary mr-2 ml-2"></i>{{$item->tv == 1 ? 'Yes' : 'No'}}<i class="fa fa-snowflake text-primary mr-2 ml-2"></i>{{$item->ac == 1 ? 'Yes' : 'No'}}<i class="fa fa-ice-cream text-primary mr-2 ml-2"></i>{{$item->fridge == 1 ? 'Yes' : 'No'}}</p>
+                                    <h4 class="mb-3">Detailed program of travel:</h4>
+                                    <p>{{$offer->program}}</p>
+                                    <h4 class="mb-3">Note about this offer:</h4>
+                                    <p>{{$offer->note}}</p>
+                                    <hr>
                                 @endforeach
                             @endunless
-                            
-                            <h4 class="mb-3">Detailed program of travel:</h4>
-                            <p>{{$offer->program}}</p>
-                            <h4 class="mb-3">Note about this offer:</h4>
-                            <p>{{$offer->note}}</p>
                         </div>
                     </div>
                     <!-- Blog Detail End -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use App\Models\Reservation;
+use App\Models\Accommodation;
 
 class OfferController extends Controller
 {
@@ -63,8 +64,9 @@ class OfferController extends Controller
         ]);
 
         $offer = Offer::create($formFields);
+        $accommodations = Accommodation::all();
 
-        return redirect('/admin/offers'); // bilo admin/index ali rekoh logicnije da te vrati na offere
+        return view('add_accommodation_to_offer', compact('offer', 'accommodations')); // bilo admin/index ali rekoh logicnije da te vrati na offere
     }
 
     /**
@@ -148,6 +150,23 @@ class OfferController extends Controller
             //dd( Offer::latest()->paginate(25));
             return view('admin_offers', ['offers' => Offer::latest()->paginate(1)]);
         }
+    }
+
+    public function offer_and_accommodation(Request $request, Offer $offer) {
+        // dd($request->input());
+        //dd(Offer::findOrFail($request['id']));
+        $offer = Offer::whereId($request['id'])->get();
+        $offer = $offer[0];
+
+        $inputs = $request->collect();
+        $inputs->shift();
+        $inputs->shift();
+
+        foreach($inputs as $input) {
+            $offer->accommodations()->attach($input);
+        }
+
+        return redirect('/admin/index');
     }
 
     

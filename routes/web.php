@@ -74,3 +74,5 @@ Route::get('single/{id}', function ($id) {
 
  Route::get('/create/accommodation', [AccommodationController::class, 'create']);
  Route::post('/creating/accommodation', [AccommodationController::class, 'store']);
+
+ Route::post('/offerAndAccommodation', [OfferController::class, 'offer_and_accommodation']);
