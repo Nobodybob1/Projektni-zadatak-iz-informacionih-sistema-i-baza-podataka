@@ -153,7 +153,7 @@ class OfferController extends Controller
     }
 
     public function offer_and_accommodation(Request $request, Offer $offer) {
-        // dd($request->input());
+         //dd($request);
         //dd(Offer::findOrFail($request['id']));
         $offer = Offer::whereId($request['id'])->get();
         $offer = $offer[0];
@@ -169,6 +169,8 @@ class OfferController extends Controller
         return redirect('/admin/index');
     }
 
-    
+    public function proba(){
+        dd(Offer::find('27')->accommodations()->get());
+    }
 
 }

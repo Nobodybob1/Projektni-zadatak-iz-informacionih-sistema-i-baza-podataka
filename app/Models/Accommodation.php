@@ -22,7 +22,11 @@ class Accommodation extends Model
 
     ];
 
-    // public function offers(){
-    //     return $this->belongsToMany('App\Models\Offer');
-    // }
+    public function offers(){
+        return $this->belongsToMany('App\Models\Offer');
+    }
+
+    public function accommodationpictures(){
+        return $this->hasMany('App\Models\AccommodationPicture');
+    }
 }

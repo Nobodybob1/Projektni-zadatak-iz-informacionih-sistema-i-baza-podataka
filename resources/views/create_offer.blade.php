@@ -24,13 +24,13 @@
                                     <div class="col-md-3">
                                         <div class="mb-3 mb-md-0">
                                             <label for="start_date" class="d-block"><b>Start Date</b></label>
-                                            <input type="date" name="start_date" value="{{old('start_date')}}" class="form-control p-3" placeholder="Start date">
+                                            <input type="date" name="start_date" min="{{date('Y-m-d')}}" value="{{old('start_date')}}" class="form-control p-3" placeholder="Start date">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mb-3 mb-md-0">
                                             <label for="end_date" class="d-block"><b>End Date</b></label>
-                                            <input type="date" name="end_date" value="{{old('end_date')}}" class="form-control p-3" placeholder="End date">
+                                            <input type="date" name="end_date" min="{{date('Y-m-d')}}" value="{{old('end_date')}}" class="form-control p-3" placeholder="End date">
                                         </div>
                                     </div>
                                 </div>

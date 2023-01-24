@@ -55,6 +55,8 @@ class Offer extends Model
         return $this->belongsToMany('App\Models\Accommodation');
     }
 
+
+
     public function reservations() {
         return $this->hasMany('App\Models\Reservation', 'offer_id');
     }

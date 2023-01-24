@@ -6,6 +6,8 @@ use App\Models\Offer;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccommodationController;
+use App\Http\Controllers\AccommodationPictureController;
+use App\Models\AccommodationPicture;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,3 +78,10 @@ Route::get('single/{id}', function ($id) {
  Route::post('/creating/accommodation', [AccommodationController::class, 'store']);
 
  Route::post('/offerAndAccommodation', [OfferController::class, 'offer_and_accommodation']);
+
+Route::post('/accommodation/delete', [AccommodationController::class, 'destroy']);
+
+Route::get('/single_accommodation/{id}', [AccommodationController::class, 'show']);
+
+Route::post('/add_img_accommodation', [AccommodationPictureController::class, 'store']);
+

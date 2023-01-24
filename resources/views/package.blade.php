@@ -99,7 +99,7 @@
                 @endforeach
                 
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                        <form id="paginForm" action="/admin/offers" method="GET">
+                        <form id="paginForm" action="/packages" method="GET">
     
                                 <select id="perPage" name="perPage" class="custom-select" onchange="document.getElementById('paginForm').submit()">
                                     <option value="1" default>1</option>

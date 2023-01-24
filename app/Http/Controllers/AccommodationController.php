@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accommodation;
+use App\Models\Offer;
 use Illuminate\Http\Request;
 
 class AccommodationController extends Controller
@@ -56,9 +57,11 @@ class AccommodationController extends Controller
      * @param  \App\Models\Accommodation  $accommodation
      * @return \Illuminate\Http\Response
      */
-    public function show(Accommodation $accommodation)
-    {
-        //
+    public function show($id)
+    {   
+        $accommodation = Accommodation::findOrFail($id);
+        $pictures = $accommodation->accommodationpictures()->get();
+        return view('single_accommodation', ['item' => $accommodation, 'pictures' => $pictures]);
     }
 
     /**
@@ -90,9 +93,12 @@ class AccommodationController extends Controller
      * @param  \App\Models\Accommodation  $accommodation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Accommodation $accommodation)
-    {
-        //
+    public function destroy(Request $request)
+    {   
+        $accommodation = Accommodation::find($request->id);
+        $accommodation->offers()->detach($request->id);
+        // $accommodation->delete();
+        return back();
     }
 
     public function admin_accommodations() {
