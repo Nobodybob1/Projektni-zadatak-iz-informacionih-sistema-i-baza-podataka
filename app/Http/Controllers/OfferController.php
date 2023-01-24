@@ -114,12 +114,14 @@ class OfferController extends Controller
             'location_city' => 'required',
             'location_state' => 'required',
             'location_continent' => 'required',
+            'program' => 'required',
+            'note' => 'required'
         ]);
 
         $offer = Offer::whereId($id)->get();
         $offer[0]->update($data);
-        //return redirect('/admin/index');
-        return back();
+        return redirect('/admin/offers');
+        //return back();
     }
 
     /**
@@ -172,5 +174,45 @@ class OfferController extends Controller
     public function proba(){
         dd(Offer::find('27')->accommodations()->get());
     }
+
+    
+    public function search(Request $request){
+        //dd($request);
+            $offers = Offer::where(function ($query) use ($request) {
+                if($request->name){
+                    $query->where('name', 'like', '%' . $request->name . '%');
+                }
+                
+            })->where(function ($query) use ($request) {
+                if($request->name_city){
+                    $query->where('location_city', 'like', '%' . $request->name_city . '%');
+                }
+                
+            })->where(function ($query) use ($request) {
+                if($request->location_state){
+                    $query->where('location_state', 'like', '%' . $request->location_state . '%');
+                }
+            })->where(function ($query) use ($request) {
+                if($request->location_continent){
+                    $query->where('location_continent', 'like', '%' . $request->location_continent . '%');
+                }
+            })->where(function ($query) use ($request) {
+                if($request->transport_type){
+                    $query->where('transport_type', 'like', '%' . $request->transport_type . '%');
+                }
+            })->where(function ($query) use ($request) {
+                if($request->start_date != null && $request->end_date == null){
+                    $query->where('start_date', '>=', $request->start_date);
+                }elseif($request->start_date == null && $request->end_date != null){
+                    $query->where('end_date', '<=', $request->end_date);
+                }elseif($request->start_date != null && $request->end_date != null){
+                    $query->where('start_date', '>=', $request->start_date)->where('end_date', '<=', $request->end_date);
+                }
+                
+            })->paginate(10); //treba da radi sa onim izborom po strani 
+            
+            return view('package', ['offers'=> $offers]);
+        }
+    
 
 }

@@ -10,12 +10,16 @@
                     <img src="{{asset('images/'.$picture->img_path)}}" alt="No picture added!" class="img-thumbnail">
                 @endforeach --}}
                 <!-- Carousel Start -->
+                @unless ($pictures->isEmpty())
     <div class="container-fluid p-0">
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active text-center">
                     <img class="img-thumbnail mx-auto" src="{{asset('images/'.$pictures[0]->img_path)}}" alt="Image" >
                 </div>
+                
+                    
+                
                 @foreach ($pictures as $picture)
                     @if ($loop->first) @continue @endif
                     <div class="carousel-item text-center">
@@ -28,6 +32,7 @@
                     
                 </div> --}}
             </div>
+            @endunless
             <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
                 <div class="btn btn-dark" style="width: 45px; height: 45px;">
                     <span class="carousel-control-prev-icon mb-n2"></span>

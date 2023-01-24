@@ -96,8 +96,8 @@ class AccommodationController extends Controller
     public function destroy(Request $request)
     {   
         $accommodation = Accommodation::find($request->id);
-        $accommodation->offers()->detach($request->id);
-        // $accommodation->delete();
+        
+        $accommodation->delete();
         return back();
     }
 

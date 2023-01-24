@@ -6,8 +6,16 @@
         <a href="/create/offer" class="btn btn-primary col-md-3 text-white pt-3"> Add Offer</a>
     </div>
     <hr>
-        <div class="container-fluid py-5">
-            <div class="container pt-5 pb-3">
+    <div class="container-fluid pt-5">
+        <div class="container pt-5 pb-3">
+            <div class="row text-center mx-auto">
+        
+                @include('partials._search')
+            </div>
+        </div>
+    </div>
+        <div class="container-fluid ">
+            <div class="container pt-5 ">
                 <div class="row">
                     @unless ($offers->isEmpty())
                         @foreach ($offers as $offer)
@@ -58,7 +66,7 @@
                             </select>
                             
                     </form>
-            </div>
+                </div>
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     {{$offers->links()}}
                 </div>
