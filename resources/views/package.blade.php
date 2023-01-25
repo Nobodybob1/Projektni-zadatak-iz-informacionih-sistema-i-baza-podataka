@@ -16,9 +16,9 @@
     </div>
     <!-- Header End -->
 
-    <!-- Booking Start -->
+    
     @include('partials._search')
-    <!-- Booking End -->
+    
 
     <!-- Packages Start -->
     <div class="container-fluid py-5">

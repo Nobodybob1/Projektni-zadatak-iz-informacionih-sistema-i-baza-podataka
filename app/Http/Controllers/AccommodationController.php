@@ -98,7 +98,7 @@ class AccommodationController extends Controller
         $accommodation = Accommodation::find($request->id);
         
         $accommodation->delete();
-        return back();
+        return back()->with('message', 'Accommodation deleted successfully!');
     }
 
     public function admin_accommodations() {

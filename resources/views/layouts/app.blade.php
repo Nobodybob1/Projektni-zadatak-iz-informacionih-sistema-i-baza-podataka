@@ -180,6 +180,7 @@
     <script src="{{ asset('lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ asset('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 
     <!-- Contact Javascript File -->
     <script src="{{ asset('mail/jqBootstrapValidation.min.js') }}"></script>

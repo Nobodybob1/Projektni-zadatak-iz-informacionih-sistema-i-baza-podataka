@@ -102,7 +102,7 @@
     </div>
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px; margin-bot:0px">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <a href="" class="navbar-brand">
@@ -170,6 +170,7 @@
             </div>
         </div>
     </div>
+    <x-flash-message/>
     <!-- Footer End -->
 
 
@@ -185,6 +186,7 @@
     <script src="{{ asset('lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ asset('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 
     <!-- Contact Javascript File -->
     <script src="{{ asset('mail/jqBootstrapValidation.min.js') }}"></script>
