@@ -94,13 +94,13 @@
                                     <div class="col-md-6">
                                         <div class="mb-3 mb-md-0">
                                             <label for="program" class="d-block"><b>Program</b></label>
-                                            <textarea type="text" name="program" value="{{old('program')}}" class="form-control p-3" placeholder="Program for each day"></textarea>
+                                            <textarea type="text" name="program" class="form-control p-3" placeholder="Program for each day">{{old('program')}}"</textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3 mb-md-0">
                                             <label for="note" class="d-block"><b>Note</b></label>
-                                            <textarea type="text" name="note" value="{{old('note')}}" class="form-control p-3" placeholder="Note about this trip"></textarea>
+                                            <textarea type="text" name="note"  class="form-control p-3" placeholder="Note about this trip">{{old('note')}}</textarea>
                                         </div>
                                     </div>
                                 </div>

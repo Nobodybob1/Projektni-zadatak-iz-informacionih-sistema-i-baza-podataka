@@ -56,7 +56,8 @@
                         <form id="paginForm" action="/packages" method="GET">
     
                                 <select id="perPage" name="perPage" class="custom-select" onchange="document.getElementById('paginForm').submit()">
-                                    <option value="1" default>1</option>
+                                    <option value={{Null}}>Per Page</option>
+                                    <option value="1" >1</option>
                                     <option value="5">5</option>
                                     <option value="10">10</option>
                                     <option value="15">15</option>
@@ -65,7 +66,8 @@
                         </form>
                     </div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                        {{$offers->links()}}
+                        {{$offers->appends(['search' => session('search')])->links()}}
+                        
                     </div>
                 </div>
                 
@@ -143,4 +145,7 @@
         </div>
     </div>
     <!-- Destination Start -->
+
+    
+    
 @endsection

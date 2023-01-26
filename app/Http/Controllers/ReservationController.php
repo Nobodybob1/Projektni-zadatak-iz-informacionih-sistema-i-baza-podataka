@@ -53,7 +53,7 @@ class ReservationController extends Controller
         $formFields['offer_id'] = $id;
         //Srediti da izbaci neku poruku
         Reservation::create($formFields);
-        return back();
+        return back()->with('message', 'Reservation sent successfully!');
     }
 
     /**
@@ -91,7 +91,7 @@ class ReservationController extends Controller
             'is_approved' => '1'
         ]);
 
-        return back();
+        return back()->with('message', 'Reservation accepted!');
     }
 
     /**

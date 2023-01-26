@@ -4,8 +4,9 @@
     <h1 class="text-center">Admin</h1>
 
     <hr>
+    <h3 class="text-center mt-5">Reservations on pending:</h3>
     @unless($reservations->isEmpty())
-    <h3 class="text-center mt-5">Reservations:</h3>
+    
         @foreach ($reservations as $reservation)
         <form action="/admin/reserve/{{$reservation->id}}" method="post">
             @csrf

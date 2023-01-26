@@ -86,4 +86,4 @@ Route::get('/single_accommodation/{id}', [AccommodationController::class, 'show'
 Route::post('/add_img_accommodation', [AccommodationPictureController::class, 'store']);
 
 
-Route::post('/search', [OfferController::class, 'search']);
+Route::get('/search', [OfferController::class, 'search']);

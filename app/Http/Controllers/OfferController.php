@@ -16,19 +16,23 @@ class OfferController extends Controller
      */
     public function index()
     {
-        // $offers = Offer::latest()->get();
-        
-        // return view('package', ['offers' => $offers]);
-
-
+ 
+        if(session('search')!=[]){
+            $offers = $this->search_new(session('search'));
+        }else{
+            $offers = Offer::latest();
+        }
+       
         if(request('perPage')){
-            return view('package', ['offers' => Offer::latest()->paginate(request('perPage'))]);
+           
+            return view('package', ['offers' => $offers->paginate(request('perPage'))->appends(request()->query())]);
         }
         else{
-            return view('package', ['offers' => Offer::latest()->paginate(25)]);
+            
+            return view('package', ['offers' => $offers->paginate(1)->appends(request()->query())]);
         }
 
-    }
+    }//->appends(request()->query())
 
     /**
      * Show the form for creating a new resource.
@@ -120,7 +124,7 @@ class OfferController extends Controller
 
         $offer = Offer::whereId($id)->get();
         $offer[0]->update($data);
-        return redirect('/admin/offers');
+        return redirect('/admin/offers')->with('message', 'Offer updated successfully!');
         //return back();
     }
 
@@ -137,26 +141,25 @@ class OfferController extends Controller
             Reservation::where('offer_id', $request->delete)->delete();//get();
         }
         
-        return back();
+        return back()->with('message', 'Offer deleted successfully!');
     }
 
     public function admin_offers(Offer $offers) {
-        // $offers = Offer::latest()->get();
-        
-        // return view('admin_offers', compact('offers'));
 
-        if(request('perPage')){
-            return view('admin_offers', ['offers' => Offer::latest()->paginate(request('perPage'))]);
+        if(session('search') != []){
+            $offers = $this->search_new(session('search'));
         }
+       
+        if(request('perPage')){
+            return view('admin_offers', ['offers' => $offers->paginate(request('perPage'))->appends(request()->query())]);
+        }  
         else{
-            //dd( Offer::latest()->paginate(25));
-            return view('admin_offers', ['offers' => Offer::latest()->paginate(1)]);
+            
+            return view('admin_offers', ['offers' => $offers->paginate(1)->appends(request()->query())]);
         }
     }
 
     public function offer_and_accommodation(Request $request, Offer $offer) {
-         //dd($request);
-        //dd(Offer::findOrFail($request['id']));
         $offer = Offer::whereId($request['id'])->get();
         $offer = $offer[0];
 
@@ -168,24 +171,17 @@ class OfferController extends Controller
             $offer->accommodations()->attach($input);
         }
 
-        return redirect('/admin/index');
+        return redirect('/admin/index')->with('message', 'Offer created successfully!');
     }
 
-    public function proba(){
-        dd(Offer::find('27')->accommodations()->get());
-    }
 
     
     public function search(Request $request){
-        //dd($request);
+        session()->put('search',$request->all());
+
             $offers = Offer::where(function ($query) use ($request) {
                 if($request->name){
                     $query->where('name', 'like', '%' . $request->name . '%');
-                }
-                
-            })->where(function ($query) use ($request) {
-                if($request->name_city){
-                    $query->where('location_city', 'like', '%' . $request->name_city . '%');
                 }
                 
             })->where(function ($query) use ($request) {
@@ -209,10 +205,93 @@ class OfferController extends Controller
                     $query->where('start_date', '>=', $request->start_date)->where('end_date', '<=', $request->end_date);
                 }
                 
-            })->paginate(10); //treba da radi sa onim izborom po strani 
+            })->paginate(1); //50 je default 
+
+
+            if(auth()->user()){
+                return view('admin_offers', ['offers'=> $offers]);
+            }else{
+                return view('package', ['offers'=> $offers]);
+            }
             
-            return view('package', ['offers'=> $offers]);
         }
+
+        public function search_new($request){
+        
+            if(sizeof($request) <= 5){
+                return Offer::latest();
+            }
+            $offers = Offer::where(function ($query) use ($request) {
+                if ($request['name']) {
+                    $query->where('name', 'like', '%' . $request['name'] . '%');
+                }
+            })->where(function ($query) use ($request) {
+                if ($request['location_state']) {
+                    $query->where('location_state', 'like', '%' . $request['location_state'] . '%');
+                }
+            })->where(function ($query) use ($request) {
+                if ($request['location_continent']) {
+                    $query->where('location_continent', 'like', '%' . $request['location_continent'] . '%');
+                }
+            })->where(function ($query) use ($request) {
+                if ($request['transport_type']) {
+                    $query->where('transport_type', 'like', '%' . $request['transport_type'] . '%');
+                }
+            })->where(function ($query) use ($request) {
+                if ($request['start_date'] != null && $request['end_date'] == null) {
+                    $query->where('start_date', '>=', $request['start_date']);
+                } elseif ($request['start_date'] == null && $request['end_date'] != null) {
+                    $query->where('end_date', '<=', $request['end_date']);
+                } elseif ($request['start_date'] != null && $request['end_date'] != null) {
+                    $query->where('start_date', '>=', $request['start_date'])->where('end_date', '<=', $request['end_date']);
+                }
+            });
+                  return $offers;
+            }
     
+
+//     {
+//         $searchParams = $request->only(['name', 'name_city', 'location_state', 'location_continent', 'transport_type', 'start_date', 'end_date']);
+//         session(['searchParams' => $searchParams]);
+        
+//         $offers = Offer::where(function ($query) use ($request) {
+//                 if($request->name){
+//                     $query->where('name', 'like', '%' . $request->name . '%');
+//                 }
+                
+//             })->where(function ($query) use ($request) {
+//                 if($request->name_city){
+//                     $query->where('location_city', 'like', '%' . $request->name_city . '%');
+//                 }
+                
+//             })->where(function ($query) use ($request) {
+//                 if($request->location_state){
+//                     $query->where('location_state', 'like', '%' . $request->location_state . '%');
+//                 }
+//             })->where(function ($query) use ($request) {
+//                 if($request->location_continent){
+//                     $query->where('location_continent', 'like', '%' . $request->location_continent . '%');
+//                 }
+//             })->where(function ($query) use ($request) {
+//                 if($request->transport_type){
+//                     $query->where('transport_type', 'like', '%' . $request->transport_type . '%');
+//                 }
+//             })->where(function ($query) use ($request) {
+//                 if($request->start_date != null && $request->end_date == null){
+//                     $query->where('start_date', '>=', $request->start_date);
+//                 }elseif($request->start_date == null && $request->end_date != null){
+//                     $query->where('end_date', '<=', $request->end_date);
+//                 }elseif($request->start_date != null && $request->end_date != null){
+//                     $query->where('start_date', '>=', $request->start_date)->where('end_date', '<=', $request->end_date);
+//                 }
+//             })->paginate(1)->appends(session('searchParams', []));
+//             // $searchParams = session('searchParams');
+
+// // this is how you can pass it to pagination links
+//             // $offers->appends($searchParams);
+//          return view('package', ['offers'=> $offers, 'searchParams' => $searchParams]);
+//     }
+
+
 
 }

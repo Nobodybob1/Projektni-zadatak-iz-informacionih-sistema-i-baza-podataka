@@ -1,4 +1,4 @@
-<form action="/search" method="post">
+<form action="/search" >
     @csrf
     <div class="container-fluid booking mt-5 pb-5">
         <div class="container pb-5">

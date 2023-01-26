@@ -141,23 +141,23 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="text" name="first_name" class="form-control p-3"  placeholder="First Name">
+                                        <input type="text" name="first_name" class="form-control p-3" value="{{old('first_name')}}"  placeholder="First Name">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="text" name="last_name" class="form-control p-3" placeholder="Last name">
+                                        <input type="text" name="last_name" class="form-control p-3" value="{{old('last_name')}}" placeholder="Last name">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
                                         <!-- Popraviti: postoji input za broj telefona izgleda da hvata sam po imenu  -->
-                                        <input type="text" name="phone_no" class="form-control p-3" placeholder="Phone Number">
+                                        <input type="text" name="phone_no" class="form-control p-3" value="{{old('phone_no')}}" placeholder="Phone Number">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="email" name="email" class="form-control p-3" placeholder="email">
+                                        <input type="email" name="email" class="form-control p-3" value="{{old('email')}}" placeholder="email">
                                     </div>
                                 </div>
                             </div>
@@ -166,22 +166,22 @@
                             <div class="row mt-2">
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="text" name="payment_type" class="form-control p-3" placeholder="Payment Type">
+                                        <input type="text" name="payment_type" class="form-control p-3" value="{{old('payment_type')}}" placeholder="Payment Type">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="number" name="num_adults" class="form-control p-3" placeholder="Number of Adults">
+                                        <input type="number" name="num_adults" class="form-control p-3" value="{{old('num_adults')}}" placeholder="Number of Adults">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <input type="number" name="num_child" class="form-control p-3" placeholder="Number of Kids">
+                                        <input type="number" name="num_child" class="form-control p-3" value="{{old('num_child')}}" placeholder="Number of Kids">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0" >
-                                        <textarea name="note" id="note" placeholder="Notes..." class="form-control p-3" style="height: 150px" ></textarea>{{--style="width:203px;height:150px;"--}}
+                                        <textarea name="note" id="note" placeholder="Notes..."  class="form-control p-3" style="height: 150px" >{{old('note')}}</textarea>{{--style="width:203px;height:150px;"--}}
                                     </div>
                                 </div>
                             </div>

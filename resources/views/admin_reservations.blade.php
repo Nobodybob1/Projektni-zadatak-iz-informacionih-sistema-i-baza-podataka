@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1 class="text-center">All reservations</h1>
+<h1 class="text-center mt-4">All reservations</h1>
 
-<hr>
+<hr class="mt-5">
 @unless ($reservations->isEmpty())
     @foreach ($reservations as $reservation)
         <div class="container-fluid mt-5 pb-5">

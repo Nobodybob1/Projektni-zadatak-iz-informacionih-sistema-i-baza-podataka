@@ -48,9 +48,7 @@ class UserController extends Controller
 
         $user = User::create($formFields);
 
-        auth()->login($user);
-
-        return redirect('/admin/index');
+        return redirect('/admin/index')->with('message', 'User created successfully!');
 
     }
 
@@ -109,18 +107,12 @@ class UserController extends Controller
         ]);
         
         if (auth()->attempt($formFields)) {
-            // dd('uso');
             $request->session()->regenerate();
 
-            return redirect('/admin/index');
-            // if (auth()->user()->is_admin) {
-            //     return redirect("/admin/index");
-            // } else {
-            //     return redirect("/uspesno");
-            // }
+            return redirect('/admin/index')->with('message', 'You are now logged in!');
         }
         
-        return back();
+        return back()->with('message', 'Username or password not correct!');
 
     }
 
@@ -132,7 +124,7 @@ class UserController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('message', 'Logged out successfully!');
     }
 
 }

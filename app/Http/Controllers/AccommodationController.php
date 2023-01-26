@@ -48,7 +48,7 @@ class AccommodationController extends Controller
 
         Accommodation::create($data);
 
-        return redirect('/admin/index');
+        return redirect('/admin/index')->with('message', 'Accommodation created successfully!');
     }
 
     /**

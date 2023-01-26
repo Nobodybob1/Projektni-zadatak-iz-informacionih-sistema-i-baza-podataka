@@ -60,4 +60,6 @@ class Offer extends Model
     public function reservations() {
         return $this->hasMany('App\Models\Reservation', 'offer_id');
     }
+
+
 }

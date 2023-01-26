@@ -165,6 +165,7 @@
             </div>
         </div>
     </div>
+    <x-flash-message/>
     <!-- Footer End -->
 
 
