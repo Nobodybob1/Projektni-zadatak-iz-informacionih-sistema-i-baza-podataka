@@ -30,7 +30,6 @@ Route::get('/packages', [OfferController::class, 'index']);
 
 Route::get('single/{id}', function ($id) {
 
-    // Uraditi bolje?
     $offer = Offer::find($id);
     $accommodations = $offer->accommodations;
     $latest_offers = Offer::latest()->paginate(3);
@@ -66,22 +65,22 @@ Route::get('single/{id}', function ($id) {
 
  Route::get('/register', function(){
     return view('register');
- });
+ })->middleware('auth');
 
  Route::post('/register_user', [UserController::class, 'store']);
 
  Route::get('/logout', [UserController::class, 'logout']);
 
- Route::get('/admin/accommodation', [AccommodationController::class, 'admin_accommodations']);
+ Route::get('/admin/accommodation', [AccommodationController::class, 'admin_accommodations'])->middleware('auth');
 
- Route::get('/create/accommodation', [AccommodationController::class, 'create']);
+ Route::get('/create/accommodation', [AccommodationController::class, 'create'])->middleware('auth');
  Route::post('/creating/accommodation', [AccommodationController::class, 'store']);
 
  Route::post('/offerAndAccommodation', [OfferController::class, 'offer_and_accommodation']);
 
 Route::post('/accommodation/delete', [AccommodationController::class, 'destroy']);
 
-Route::get('/single_accommodation/{id}', [AccommodationController::class, 'show']);
+Route::get('/single_accommodation/{id}', [AccommodationController::class, 'show'])->middleware('auth');
 
 Route::post('/add_img_accommodation', [AccommodationPictureController::class, 'store']);
 
