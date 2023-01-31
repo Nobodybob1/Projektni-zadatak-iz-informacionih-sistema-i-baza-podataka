@@ -43,25 +43,66 @@
                             @unless ($accommodation->isEmpty())
                             <h4>Description of accommodations:</h4>
                                 @foreach ($accommodation as $item)
-                                    <h5>{{$item->name}}</h5>
-                                    {{-- <p>{{'Accommodation name: '. $item->name}}</p> --}}
-                                    <p>{{'Number of beds in room: '. $item->room_bed}}</p>
-                                    @php
-                                        $i = 0
-                                    @endphp
-                                    <p>
-                                        {{'Rating: '}}
-                                        @while ($i < $item->rating)
-                                            <i class="fa fa-star text-primary mr-2"></i>
-                                            @php
-                                                $i = $i + 1
-                                            @endphp
-                                        @endwhile
-                                    </p>
+                                    <div class="col-md-6">
+                                        <h5>{{$item->name}}</h5>
+                                        {{-- <p>{{'Accommodation name: '. $item->name}}</p> --}}
+                                        <p>{{'Number of beds in room: '. $item->room_bed}}</p>
+                                        @php
+                                            $i = 0
+                                        @endphp
+                                        <p>
+                                            {{'Rating: '}}
+                                            @while ($i < $item->rating)
+                                                <i class="fa fa-star text-primary mr-2"></i>
+                                                @php
+                                                    $i = $i + 1
+                                                @endphp
+                                            @endwhile
+                                        </p>
+                                        <p>Additional details:</p>  
+                                        <p><i class="fa fa-wifi text-primary mr-2 "></i>{{$item->internet == '1' ? 'Yes' : 'No'}}<i class="fa fa-tv text-primary mr-2 ml-2"></i>{{$item->tv == 1 ? 'Yes' : 'No'}}<i class="fa fa-snowflake text-primary mr-2 ml-2"></i>{{$item->ac == 1 ? 'Yes' : 'No'}}<i class="fa fa-ice-cream text-primary mr-2 ml-2"></i>{{$item->fridge == 1 ? 'Yes' : 'No'}}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        @php
+                                             $pictures = $item->accommodationpictures()->get();
+                                        @endphp
+                                        @unless ($pictures->isEmpty())
+                                            <div class="container-fluid p-0">
+                                                <div id="header-carousel-{{$item->id}}" class="carousel slide" data-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        <div class="carousel-item active text-center">
+                                                            <img class="img-thumbnail mx-auto" src="{{asset('images/'.$pictures[0]->img_path)}}" alt="Image" >
+                                                        </div>
+                                                        
+                                            
+                                        
+                                                        @foreach ($pictures as $picture)
+                                                            @if ($loop->first) @continue @endif
+                                                            <div class="carousel-item text-center">
+                                                            <img class="img-thumbnail mx-auto" src="{{asset('images/'.$picture->img_path)}}" alt="Image">
+                                                            
+                                                            </div>
+                                                        @endforeach
+                                                     {{-- <div class="carousel-item">
+                                                         <img class="img-thumbnail" src="{{ asset('img/carousel-2.jpg') }}" alt="Image">
+                                                         
+                                                     </div> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#header-carousel-{{$item->id}}" data-slide="prev">
+                                                <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                                                    <span class="carousel-control-prev-icon mb-n2"></span>
+                                                </div>
+                                            </a>
+                                            <a class="carousel-control-next" href="#header-carousel-{{$item->id}}" data-slide="next">
+                                                <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                                                    <span class="carousel-control-next-icon mb-n2"></span>
+                                                </div>
+                                            </a>
+                                        @endunless
+                                    </div>
                                     
-                                    
-                                    <p>Additional details:</p>  
-                                    <p><i class="fa fa-wifi text-primary mr-2 "></i>{{$item->internet == '1' ? 'Yes' : 'No'}}<i class="fa fa-tv text-primary mr-2 ml-2"></i>{{$item->tv == 1 ? 'Yes' : 'No'}}<i class="fa fa-snowflake text-primary mr-2 ml-2"></i>{{$item->ac == 1 ? 'Yes' : 'No'}}<i class="fa fa-ice-cream text-primary mr-2 ml-2"></i>{{$item->fridge == 1 ? 'Yes' : 'No'}}</p>
                                     <hr>
                                 @endforeach
                                 

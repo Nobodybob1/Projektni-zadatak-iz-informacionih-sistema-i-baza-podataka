@@ -61,6 +61,7 @@ class AccommodationController extends Controller
     {   
         $accommodation = Accommodation::findOrFail($id);
         $pictures = $accommodation->accommodationpictures()->get();
+        // dd($pictures);
         return view('single_accommodation', ['item' => $accommodation, 'pictures' => $pictures]);
     }
 
