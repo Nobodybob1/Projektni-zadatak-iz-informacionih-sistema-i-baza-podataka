@@ -68,9 +68,9 @@
                                     
                             @endunless
                             <h4 class="mb-3">Detailed program of travel:</h4>
-                            <p>{{$offer->program}}</p>
-                                    <h4 class="mb-3">Note about this offer:</h4>
-                                    <p>{{$offer->note}}</p>
+                            <p style="white-space: pre-line;">{{$offer->program}}</p>
+                            <h4 class="mb-3">Note about this offer:</h4>
+                            <p>{{$offer->note}}</p>
                         </div>
                     </div>
                     <!-- Blog Detail End -->

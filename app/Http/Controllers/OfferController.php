@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Reservation;
 use App\Models\Accommodation;
 
+use League\Csv\Reader;
+
 class OfferController extends Controller
 {
     /**
@@ -291,7 +293,26 @@ class OfferController extends Controller
 //             // $offers->appends($searchParams);
 //          return view('package', ['offers'=> $offers, 'searchParams' => $searchParams]);
 //     }
+function csvToArray($filename = '', $delimiter = ',')
+{
+    if (!file_exists($filename) || !is_readable($filename))
+        return false;
 
+    $header = null;
+    $data = array();
+    if (($handle = fopen($filename, 'r')) !== false)
+    {
+        while (($row = fgetcsv($handle, 1000, $delimiter)) !== false)
+        {
+            if (!$header)
+                $header = $row;
+            else
+                $data[] = array_combine($header, $row);
+        }
+        fclose($handle);
+    }
 
+    return $data;
+}
 
 }

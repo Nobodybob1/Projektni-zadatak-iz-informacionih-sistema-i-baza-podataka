@@ -1,6 +1,10 @@
 @extends('layouts.admin')
 
+
+
 @section('content')
+
+    
     <div class="row text-center ms-5">
         <h1 class="text-center col-md-6">All offers</h1>
         <a href="/create/offer" class="btn btn-primary col-md-3 text-white pt-3"> Add Offer</a>
@@ -14,23 +18,22 @@
             </div>
         </div>
     </div>
-        <div class="container-fluid ">
-            <div class="container pt-5 ">
+        <div class="container-fluid py-5">
+            <div class="container pt-5 pb-3">
                 <div class="row">
                     @unless ($offers->isEmpty())
                         @foreach ($offers as $offer)
                         <div class="col-lg-4 col-md-6 mb-4">
-                            
+                            <form action="/admin/delete/offer" method="POST" id="myform">
+                                @csrf
+                                
+                                <button name="delete" value="{{$offer->id}}" type="submit" class="btn btn-danger">X</button>
+                            </form>
                             <div class="package-item bg-white mb-2">
                                 <div class="position-relative d-inline">
-                                    <div style="position: relative">    
-                                        <img class="img-fluid" src="{{ asset('img/package-1.jpg') }}" alt="">
-                                        <form action="/admin/delete/offer" method="POST" id="myform">
-                                            @csrf
-                                            
-                                            <button name="delete" value="{{$offer->id}}" type="submit" class="btn btn-danger" style="position: absolute; top: 10px; right: 10px;">X</button>
-                                        </form>
-                                    </div>
+                                    <img class="img-fluid" src="{{ asset('img/package-1.jpg') }}" alt="">
+                                    
+                                    
                                 </div>
                                 <form action="/admin/update/{{$offer->id}}" method="post">
                                     @csrf
@@ -60,7 +63,8 @@
                     <form id="paginForm" action="/admin/offers" method="GET">
 
                             <select id="perPage" name="perPage" class="custom-select" onchange="document.getElementById('paginForm').submit()">
-                                <option value="1" default>1</option>
+                                <option value={{Null}}>Per Page</option>
+                                <option value="1">1</option>
                                 <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
@@ -69,7 +73,8 @@
                     </form>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    {{$offers->links()}}
+                    {{-- {{$offers->links()}} --}}
+                    {{$offers->appends(['search' => session('search')])->links()}}
                 </div>
                 
             </div>
