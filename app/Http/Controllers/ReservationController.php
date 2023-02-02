@@ -46,7 +46,7 @@ class ReservationController extends Controller
             'last_name' => 'required',
             'first_name' => 'required',
             'phone_no' => 'required',
-            'email' => ['required', 'email', Rule::unique('reservations', 'email')],
+            'email' => ['required', 'email'], //ovde da se skloni ovaj uunique , Rule::unique('reservations', 'email')
             'payment_type' => 'required',
             'num_adults' => 'required',
             'num_child' => 'required',
