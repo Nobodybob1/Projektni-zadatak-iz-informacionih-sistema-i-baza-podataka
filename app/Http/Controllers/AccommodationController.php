@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Accommodation;
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use App\Models\AccommodationPicture;
 
 class AccommodationController extends Controller
 {
@@ -97,6 +98,10 @@ class AccommodationController extends Controller
     public function destroy(Request $request)
     {   
         $accommodation = Accommodation::find($request->id);
+
+        $accommodation->offers()->detach();
+
+        AccommodationPicture::where('accommodation_id', $request->id)->delete();
         
         $accommodation->delete();
         return back()->with('message', 'Accommodation deleted successfully!');
