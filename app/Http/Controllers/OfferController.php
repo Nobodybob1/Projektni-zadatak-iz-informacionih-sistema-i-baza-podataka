@@ -125,7 +125,7 @@ class OfferController extends Controller
         $offer = Offer::whereId($id)->get();
         $offer[0]->update($data);
         return redirect('/admin/offers')->with('message', 'Offer updated successfully!');
-        //return back();
+    
     }
 
     /**
@@ -174,8 +174,6 @@ class OfferController extends Controller
         return redirect('/admin/index')->with('message', 'Offer created successfully!');
     }
 
-
-    
     public function search(Request $request){
         session()->put('search',$request->all());
 
@@ -183,7 +181,6 @@ class OfferController extends Controller
                 if($request->name){
                     $query->where('name', 'like', '%' . $request->name . '%');
                 }
-                
             })->where(function ($query) use ($request) {
                 if($request->location_state){
                     $query->where('location_state', 'like', '%' . $request->location_state . '%');
@@ -204,9 +201,7 @@ class OfferController extends Controller
                 }elseif($request->start_date != null && $request->end_date != null){
                     $query->where('start_date', '>=', $request->start_date)->where('end_date', '<=', $request->end_date);
                 }
-                
             })->paginate(1); //50 je default 
-
 
             if(auth()->user()){
                 return view('admin_offers', ['offers'=> $offers]);
@@ -221,6 +216,7 @@ class OfferController extends Controller
             if(sizeof($request) <= 5){
                 return Offer::latest();
             }
+
             $offers = Offer::where(function ($query) use ($request) {
                 if ($request['name']) {
                     $query->where('name', 'like', '%' . $request['name'] . '%');
@@ -249,49 +245,6 @@ class OfferController extends Controller
                   return $offers;
             }
     
-
-//     {
-//         $searchParams = $request->only(['name', 'name_city', 'location_state', 'location_continent', 'transport_type', 'start_date', 'end_date']);
-//         session(['searchParams' => $searchParams]);
-        
-//         $offers = Offer::where(function ($query) use ($request) {
-//                 if($request->name){
-//                     $query->where('name', 'like', '%' . $request->name . '%');
-//                 }
-                
-//             })->where(function ($query) use ($request) {
-//                 if($request->name_city){
-//                     $query->where('location_city', 'like', '%' . $request->name_city . '%');
-//                 }
-                
-//             })->where(function ($query) use ($request) {
-//                 if($request->location_state){
-//                     $query->where('location_state', 'like', '%' . $request->location_state . '%');
-//                 }
-//             })->where(function ($query) use ($request) {
-//                 if($request->location_continent){
-//                     $query->where('location_continent', 'like', '%' . $request->location_continent . '%');
-//                 }
-//             })->where(function ($query) use ($request) {
-//                 if($request->transport_type){
-//                     $query->where('transport_type', 'like', '%' . $request->transport_type . '%');
-//                 }
-//             })->where(function ($query) use ($request) {
-//                 if($request->start_date != null && $request->end_date == null){
-//                     $query->where('start_date', '>=', $request->start_date);
-//                 }elseif($request->start_date == null && $request->end_date != null){
-//                     $query->where('end_date', '<=', $request->end_date);
-//                 }elseif($request->start_date != null && $request->end_date != null){
-//                     $query->where('start_date', '>=', $request->start_date)->where('end_date', '<=', $request->end_date);
-//                 }
-//             })->paginate(1)->appends(session('searchParams', []));
-//             // $searchParams = session('searchParams');
-
-// // this is how you can pass it to pagination links
-//             // $offers->appends($searchParams);
-//          return view('package', ['offers'=> $offers, 'searchParams' => $searchParams]);
-//     }
-
 
 
 }
