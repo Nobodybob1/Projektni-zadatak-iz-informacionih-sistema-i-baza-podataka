@@ -136,7 +136,9 @@ class OfferController extends Controller
      */
     public function destroy(Request $request)
     {
-        Offer::find($request->delete)->delete();
+        $offer = Offer::find($request->delete);
+        $offer->accommodations()->detach();
+        $offer->delete();
         if(Reservation::where('offer_id', $request->delete)->take(1)->first()){
             Reservation::where('offer_id', $request->delete)->delete();//get();
         }
