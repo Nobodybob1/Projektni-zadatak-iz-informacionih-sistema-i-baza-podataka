@@ -23,17 +23,18 @@
                 <div class="row">
                     @unless ($offers->isEmpty())
                         @foreach ($offers as $offer)
+
                         <div class="col-lg-4 col-md-6 mb-4">
-                            <form action="/admin/delete/offer" method="POST" id="myform">
-                                @csrf
-                                
-                                <button name="delete" value="{{$offer->id}}" type="submit" class="btn btn-danger">X</button>
-                            </form>
                             <div class="package-item bg-white mb-2">
                                 <div class="position-relative d-inline">
-                                    <img class="img-fluid" src="{{ asset('img/package-1.jpg') }}" alt="">
-                                    
-                                    
+                                    <div style="position: relative">
+                                        <img class="img-fluid" src="{{ asset('img/package-1.jpg') }}" alt="">
+                                        <form action="/admin/delete/offer" method="POST" id="myform">
+                                            @csrf
+                                            
+                                            <button name="delete" value="{{$offer->id}}" type="submit" class="btn btn-danger" style="position: absolute; top:10px;right:10px">X</button>
+                                        </form>
+                                    </div>
                                 </div>
                                 <form action="/admin/update/{{$offer->id}}" method="post">
                                     @csrf
@@ -53,6 +54,7 @@
                                     <button class="btn btn-primary">Update Offer</button>
                                 </form>
                             </div>
+                            
                         </div>
                     @endforeach
                     
@@ -74,7 +76,8 @@
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     {{-- {{$offers->links()}} --}}
-                    {{$offers->appends(['search' => session('search')])->links()}}
+                    {{$offers->appends(['search' => session('search'), 'perPage' => session('perPage')])->links()}}
+                    
                 </div>
                 
             </div>

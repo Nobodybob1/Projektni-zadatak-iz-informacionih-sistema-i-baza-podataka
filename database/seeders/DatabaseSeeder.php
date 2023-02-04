@@ -19,14 +19,14 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         // $files = glob(public_path('accommodation_pics/*'));
         // dd($files[array_rand($files)]);
-        \App\Models\Accommodation::factory(5)->afterCreating(function($accommodation){
+        \App\Models\Accommodation::factory(1)->afterCreating(function($accommodation){
             for($i=0;$i<6;$i++){
                 $files = glob(public_path('accommodation_pics/*'));
                 AccommodationPicture::create(['accommodation_id'=>$accommodation->id, 'img_path' => basename($files[array_rand($files)])]);
             }
         })->create();
 
-        \App\Models\Offer::factory(5)->afterCreating(function ($offer) {
+        \App\Models\Offer::factory(10)->afterCreating(function ($offer) {
             // dd($offer);
             $offer->accommodations()->attach(\App\Models\Accommodation::inRandomOrder()->first()->id);
         })->create();

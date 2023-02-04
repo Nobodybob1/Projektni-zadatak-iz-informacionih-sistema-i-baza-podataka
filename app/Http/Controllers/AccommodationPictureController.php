@@ -6,6 +6,7 @@ use App\Models\AccommodationPicture;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 
 class AccommodationPictureController extends Controller
@@ -92,5 +93,18 @@ class AccommodationPictureController extends Controller
     public function destroy(AccommodationPicture $accommodationPicture)
     {
         //
+    }
+
+    public function resize()
+    {   
+        $files = glob(public_path('accommodation_pics/*'));
+        //$files = Storage::allFiles(public_path('accommodation_pics'));
+        //dd($files);
+        foreach($files as $image){
+            $path = public_path('accommodation_pics/' . basename($image));
+            
+            $image = Image::make($image)->resize(300, 200)->save($path);
+        }
+        
     }
 }

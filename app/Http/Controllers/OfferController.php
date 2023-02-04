@@ -18,7 +18,7 @@ class OfferController extends Controller
      */
     public function index()
     {
- 
+        
         if(session('search')!=[]){
             $offers = $this->search_new(session('search'));
         }else{
@@ -148,10 +148,16 @@ class OfferController extends Controller
         return back()->with('message', 'Offer deleted successfully!');
     }
 
-    public function admin_offers(Offer $offers) {
+    public function admin_offers(Offer $offers, Request $request) {
 
+        
+        
         if(session('search') != []){
+            
             $offers = $this->search_new(session('search'));
+        }else{
+            
+            $offers = Offer::latest();
         }
        
         if(request('perPage')){
@@ -161,6 +167,8 @@ class OfferController extends Controller
             
             return view('admin_offers', ['offers' => $offers->paginate(1)->appends(request()->query())]);
         }
+
+        
     }
 
     public function offer_and_accommodation(Request $request, Offer $offer) {
@@ -181,36 +189,13 @@ class OfferController extends Controller
     public function search(Request $request){
         session()->put('search',$request->all());
 
-            $offers = Offer::where(function ($query) use ($request) {
-                if($request->name){
-                    $query->where('name', 'like', '%' . $request->name . '%');
-                }
-            })->where(function ($query) use ($request) {
-                if($request->location_state){
-                    $query->where('location_state', 'like', '%' . $request->location_state . '%');
-                }
-            })->where(function ($query) use ($request) {
-                if($request->location_continent){
-                    $query->where('location_continent', 'like', '%' . $request->location_continent . '%');
-                }
-            })->where(function ($query) use ($request) {
-                if($request->transport_type){
-                    $query->where('transport_type', 'like', '%' . $request->transport_type . '%');
-                }
-            })->where(function ($query) use ($request) {
-                if($request->start_date != null && $request->end_date == null){
-                    $query->where('start_date', '>=', $request->start_date);
-                }elseif($request->start_date == null && $request->end_date != null){
-                    $query->where('end_date', '<=', $request->end_date);
-                }elseif($request->start_date != null && $request->end_date != null){
-                    $query->where('start_date', '>=', $request->start_date)->where('end_date', '<=', $request->end_date);
-                }
-            })->paginate(1); //50 je default 
-
             if(auth()->user()){
-                return view('admin_offers', ['offers'=> $offers]);
+                
+                return redirect('/admin/offers');
             }else{
-                return view('package', ['offers'=> $offers]);
+                
+                return redirect('/packages');
+
             }
             
         }

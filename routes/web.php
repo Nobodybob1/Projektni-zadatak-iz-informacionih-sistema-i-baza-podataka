@@ -46,7 +46,7 @@ Route::get('single/{id}', function ($id) {
 
  Route::get('/admin/reservations', [ReservationController::class, 'all_reservations'])->middleware('auth');
 
- Route::get('/admin/offers', [OfferController::class, 'admin_offers'])->middleware('auth');
+ Route::get('/admin/offers', [OfferController::class, 'admin_offers'])->middleware('auth')->name('admin.offers');
 
  Route::get('/create/offer', [OfferController::class, 'create'])->middleware('auth');
  Route::post('/creating/offer', [OfferController::class, 'store'])->middleware('auth');
@@ -139,3 +139,5 @@ dd($offer_cntrl->csvToArray(public_path('locations_list.txt'))[5]);
 Route::get('/program_gen/{num_days}', [OfferFactory::class, 'program_gen']);
 
 Route::get('/mailtest/{id}', [ReservationController::class, 'mail_test']);
+
+Route::get('/resize', [AccommodationPictureController::class, 'resize']);

@@ -3,12 +3,11 @@
 @section('content')
 
     <h1 class="text-center mb-5">{{$item->name}}</h1>
-<div class="row">
+<div class="col"> 
+    {{-- bilo class= row nesto bagovao --}}
     <div class="col-md-3 mx-auto">
                 
-                {{-- @foreach ($pictures as $picture)
-                    <img src="{{asset('images/'.$picture->img_path)}}" alt="No picture added!" class="img-thumbnail">
-                @endforeach --}}
+                
                 <!-- Carousel Start -->
                 @unless ($pictures->isEmpty())
                     <div class="container-fluid p-0">
@@ -17,14 +16,20 @@
                                 <div class="carousel-item active text-center">
                                     <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$pictures[0]->img_path)}}" alt="Image" >
                                 </div>
+                            
                                 
                     
                 
-                @foreach ($pictures as $picture)
-                    @if ($loop->first) @continue @endif
-                    <div class="carousel-item text-center">
-                    <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$picture->img_path)}}" alt="Image">
-                    
+                            @foreach ($pictures as $picture)
+                                @if ($loop->first)
+                                    @continue 
+                                @endif
+                                <div class="carousel-item text-center">
+                                    <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$picture->img_path)}}" alt="Image">
+                                    
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 @endunless
             <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
@@ -37,18 +42,18 @@
                     <span class="carousel-control-next-icon mb-n2"></span>
                 </div>
             </a>
-        </div>
+        
     </div>
     <!-- Carousel End -->
                   
 
           
-    </div>
+    
 </div>
 <div class="row">
     <div class="col-md-3 mx-auto">
     {{-- Janko: Kod mene je izgledalo ruzno pa sam promenio  --}}
-    {{-- <div class="col-md-2 mx-auto"> --}}
+    
         <div class="card">
             <div class="card-body">
                 
@@ -73,8 +78,8 @@
 </div>
 <div class="row">
     <div class="col-md-3 mx-auto">
-    {{-- Janko: Kod mene je izgledalo ruzno pa sam promenio  --}}
-    {{-- <div class="col-md-2 mx-auto"> --}}
+        {{-- Janko: Kod mene je izgledalo ruzno pa sam promenio  --}}
+    
         <div class="card">
             <div class="card-body">
                 <form  id="pic_form"action='/add_img_accommodation' enctype="multipart/form-data" method="post" class="">

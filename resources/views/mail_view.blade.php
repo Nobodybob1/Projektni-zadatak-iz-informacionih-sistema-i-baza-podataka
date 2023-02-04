@@ -38,7 +38,7 @@
                   <p>Dear {{$data[0]->first_name}} {{$data[0]->last_name}}, 
                   <br> we are glad to tell you that your reservation for {{$data[1]->name}} is approved!
                   <br>
-                    Your reservation number is: {{rand(100000,999999);}}
+                    Your reservation number is: {{rand(100000,999999)}}
                   </p>
                   <hr>
                   <p>Have a nice trip!</p>
