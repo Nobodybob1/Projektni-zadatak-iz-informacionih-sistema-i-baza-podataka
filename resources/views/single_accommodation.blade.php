@@ -15,24 +15,16 @@
                         <div id="header-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active text-center">
-                                    <img class="img-thumbnail mx-auto" src="{{asset('images/'.$pictures[0]->img_path)}}" alt="Image" >
+                                    <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$pictures[0]->img_path)}}" alt="Image" >
                                 </div>
                                 
                     
                 
-                                @foreach ($pictures as $picture)
-                                    @if ($loop->first) @continue @endif
-                                    <div class="carousel-item text-center">
-                                    <img class="img-thumbnail mx-auto" src="{{asset('images/'.$picture->img_path)}}" alt="Image">
-                                    
-                                    </div>
-                                @endforeach
-                                {{-- <div class="carousel-item">
-                                    <img class="img-thumbnail" src="{{ asset('img/carousel-2.jpg') }}" alt="Image">
-                                    
-                                </div> --}}
-                            </div>
-                        </div>
+                @foreach ($pictures as $picture)
+                    @if ($loop->first) @continue @endif
+                    <div class="carousel-item text-center">
+                    <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$picture->img_path)}}" alt="Image">
+                    
                     </div>
                 @endunless
             <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
