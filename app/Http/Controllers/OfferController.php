@@ -27,11 +27,11 @@ class OfferController extends Controller
        
         if(request('perPage')){
            
-            return view('package', ['offers' => $offers->paginate(request('perPage'))->appends(request()->query())]);
+            return view('package', ['offers' => $offers->latest()->paginate(request('perPage'))->appends(request()->query())]);
         }
         else{
             
-            return view('package', ['offers' => $offers->paginate(1)->appends(request()->query())]);
+            return view('package', ['offers' => $offers->latest()->paginate(50)->appends(request()->query())]);
         }
 
     }//->appends(request()->query())
@@ -67,9 +67,17 @@ class OfferController extends Controller
             'location_continent' => 'required',
             'program' => 'required',
             'note' => 'required',
+            'days' => 'required'
         ]);
 
+
         $offer = Offer::create($formFields);
+        $this->add_picture($offer);
+        if($offer->start_date > date('Y-m-d')){
+            $offer->update(['is_active', "1"]);
+        }else{
+            $offer->update(['is_active', "0"]);
+        }
         $accommodations = Accommodation::all();
 
         return view('add_accommodation_to_offer', compact('offer', 'accommodations')); // bilo admin/index ali rekoh logicnije da te vrati na offere
@@ -81,9 +89,10 @@ class OfferController extends Controller
      * @param  \App\Models\Offer  $Offer
      * @return \Illuminate\Http\Response
      */
-    public function show(Offer $offer)
-    {
-        //
+    public function show(String $param)
+    {   
+        
+        return view('package', ['offers' => Offer::where('location_continent', $param)->paginate()]);
     }
 
     /**
@@ -161,11 +170,11 @@ class OfferController extends Controller
         }
        
         if(request('perPage')){
-            return view('admin_offers', ['offers' => $offers->paginate(request('perPage'))->appends(request()->query())]);
+            return view('admin_offers', ['offers' => $offers->latest()->paginate(request('perPage'))->appends(request()->query())]);
         }  
         else{
             
-            return view('admin_offers', ['offers' => $offers->paginate(1)->appends(request()->query())]);
+            return view('admin_offers', ['offers' => $offers->latest()->paginate(50)->appends(request()->query())]);
         }
 
         
@@ -277,6 +286,40 @@ class OfferController extends Controller
 //          return view('package', ['offers'=> $offers, 'searchParams' => $searchParams]);
 //     }
 
+    public function add_picture(Offer $offer){
 
+        $days_array = explode(",", $offer->days);
+        $cities_array = explode(",", $offer->location_city);
+        $maxVal = max($days_array);
+        $maxKey = array_search($maxVal, $days_array);
+        $city_for_pic = $cities_array[$maxKey];
 
+        $files = glob(public_path('cities_pics/*'));
+        $city_for_pic = preg_replace("/[^a-zA-Z]/", "", $city_for_pic);
+        $city_for_pic = strtolower($city_for_pic);
+        foreach($files as $file){
+            $file_check = basename($file);
+            $file_check = preg_replace('*_*', '', $file_check);
+            $file_check = strtolower($file_check);
+            $file_check = pathinfo($file_check, PATHINFO_FILENAME);
+            if($city_for_pic == $file_check){
+                $offer->update(['img' => basename($file)]);
+            }
+            else{
+                continue;
+            }
+        
+    }
+
+}
+    public function check_active_date(){
+        $offers = Offer::all()->latest()->get();
+        foreach($offers as $offer){
+            if($offer->start_date > date('Y-m-d')){
+                $offer->update(['is_active', "1"]);
+            }else{
+                $offer->update(['is_active', "0"]);
+            }
+        }
+    }
 }

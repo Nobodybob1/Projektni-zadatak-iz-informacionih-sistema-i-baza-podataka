@@ -24,13 +24,13 @@
                                     <div class="col-md-3">
                                         <div class="mb-3 mb-md-0">
                                             <label for="start_date" class="d-block"><b>Start Date</b></label>
-                                            <input type="date" name="start_date" min="{{date('Y-m-d')}}" value="{{old('start_date')}}" class="form-control p-3" placeholder="Start date">
+                                            <input type="date"  name="start_date" min="{{date('Y-m-d')}}" value="{{old('start_date')}}" class="start_date form-control p-3" placeholder="Start date">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mb-3 mb-md-0">
                                             <label for="end_date" class="d-block"><b>End Date</b></label>
-                                            <input type="date" name="end_date" min="{{date('Y-m-d')}}" value="{{old('end_date')}}" class="form-control p-3" placeholder="End date">
+                                            <input type="date"  name="end_date" min="{{date('Y-m-d')}}" value="{{old('end_date')}}" class="end_date form-control p-3" placeholder="End date">
                                         </div>
                                     </div>
                                 </div>
@@ -53,6 +53,12 @@
                                         <div class="mb-3 mb-md-0">
                                             <label for="location_continent" class="d-block"><b>Continent</b></label>
                                             <input type="text" name="location_continent" value="{{old('location_continent')}}" class="form-control p-3" placeholder="Continent">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0">
+                                            <label for="days" class="d-block"><b>Days per Location</b></label>
+                                            <input type="text" name="days" value="{{old('days')}}" class="form-control p-3" placeholder="Days per Location">
                                         </div>
                                     </div>
                             

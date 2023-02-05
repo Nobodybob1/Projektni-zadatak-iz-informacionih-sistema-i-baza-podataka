@@ -16,9 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        // $files = glob(public_path('accommodation_pics/*'));
-        // dd($files[array_rand($files)]);
         \App\Models\Accommodation::factory(1)->afterCreating(function($accommodation){
             for($i=0;$i<6;$i++){
                 $files = glob(public_path('accommodation_pics/*'));
@@ -26,13 +23,14 @@ class DatabaseSeeder extends Seeder
             }
         })->create();
 
-        \App\Models\Offer::factory(10)->afterCreating(function ($offer) {
-            // dd($offer);
+        \App\Models\Offer::factory(100)->afterCreating(function ($offer) {
             $offer->accommodations()->attach(\App\Models\Accommodation::inRandomOrder()->first()->id);
+            $offer->update(['is_active'=>"1"]);  //aktivni
         })->create();
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
+        \App\Models\Offer::factory(10)->afterCreating(function ($offer) {
+            $offer->accommodations()->attach(\App\Models\Accommodation::inRandomOrder()->first()->id);
+            $offer->update(['is_active'=>"0"]);  //neaktivni
+        })->create();
     }
 }

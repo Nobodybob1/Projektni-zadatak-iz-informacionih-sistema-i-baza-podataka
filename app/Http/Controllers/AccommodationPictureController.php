@@ -41,7 +41,7 @@ class AccommodationPictureController extends Controller
     {   
         $image = $request->file('image');
         $fileName = time() . '.' . $image->getClientOriginalExtension();
-        $path = public_path('images/' . $fileName);
+        $path = public_path('accommodation_pics/' . $fileName);
 
         $image = Image::make($image->getRealPath())->resize(300, 200)->save($path);
       
@@ -97,13 +97,13 @@ class AccommodationPictureController extends Controller
 
     public function resize()
     {   
-        $files = glob(public_path('accommodation_pics/*'));
+        $files = glob(public_path('cities_pics/*'));
         //$files = Storage::allFiles(public_path('accommodation_pics'));
         //dd($files);
         foreach($files as $image){
-            $path = public_path('accommodation_pics/' . basename($image));
+            $path = public_path('cities_pics/' . basename($image));
             
-            $image = Image::make($image)->resize(300, 200)->save($path);
+            $image = Image::make($image)->resize(600, 400)->save($path);
         }
         
     }

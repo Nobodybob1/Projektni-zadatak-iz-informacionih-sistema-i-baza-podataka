@@ -95,7 +95,7 @@
                     </div>
                 
                     <div class="mt-1">
-                        <button class="btn btn-success">Submit!</button>
+                        <button id="pic_submit" class="btn btn-success" disabled>Submit!</button>
                     </div>
                 </form>
             </div>

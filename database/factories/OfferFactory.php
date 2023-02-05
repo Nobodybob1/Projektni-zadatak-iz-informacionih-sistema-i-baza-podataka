@@ -19,7 +19,7 @@ class OfferFactory extends Factory
      */
     public function definition()
     {   
-        
+        $all_locations = $this->csvToArray(public_path('locations_list.txt'));
         $faker = faker::create();
         $start_date_raw = $faker->dateTimeBetween('now', '+2 years');
         $start_date_m_Y = $start_date_raw->format('F Y');
@@ -27,25 +27,53 @@ class OfferFactory extends Factory
         $end_date_bound = date('Y-m-d', strtotime($start_date. ' + 3 weeks'));
         $end_date = $faker->dateTimeBetween($start_date, $end_date_bound)->format('Y-m-d');
         $diff_days = $this->diff_dates($end_date,$start_date);
-        $location_index = $faker->numberBetween(0,89);
-        $location = $this->csvToArray(public_path('locations_list.txt'))[$location_index];
-        $city = $location['city'];
+        if($diff_days == 0){
+            $diff_days = 1;
+        }
+        $cnt = $diff_days;
+        $location_indexes = [];
+        $days = "";
+        $locations = [];
+        
+        while($cnt>0){
+            $days_tmp = $faker->numberBetween(1,$cnt);
+            $days .= strval($days_tmp) . ",";
+            $cnt -= $days_tmp;
+        }
+        $all_cities = "";
+        $all_states = "";
+        $all_continents = "";
+        $days_array=explode(',',$days);
+        for($i=0;$i<count($days_array)-1;$i++){
+            array_push($location_indexes, $faker->numberBetween(0,89));
+            array_push($locations, $all_locations[$location_indexes[$i]]);
+            $all_cities .= $all_locations[$location_indexes[$i]]['city'] . ",";
+            $all_states .= $all_locations[$location_indexes[$i]]['state'] . ",";
+            $all_continents .= $all_locations[$location_indexes[$i]]['continent'] . ",";
+            
+        }
+        
+        $location_dominant = $this->find_dominant($days_array, $locations );
         $transport_type = $faker->randomElement(['Bus', 'Airplane', 'Ship','Train', 'Individual']);
+        $is_active = 1;
         return [
            
             
-                'name' => "$city $start_date_m_Y ." . $faker->name,
+                'name' => $location_dominant['city'] . " $start_date_m_Y ." . $faker->name,
                 'transport_price' => $faker->numberBetween(100, 3000),
                 'transport_type' => $transport_type,
                 'price_adult' => $faker->numberBetween(10, 1000),
                 'price_child' => $faker->numberBetween(10, 500),
                 'start_date' => $start_date,
                 'end_date' => $end_date,
-                'location_city' => $location['city'],
-                'location_state' => $location['state'],
-                'location_continent' =>  $location['continent'],
+                'location_city' => $all_cities,
+                'location_state' => $all_states,
+                'location_continent' =>  $all_continents,
                 'program' => $this->program_gen($diff_days,$faker,$transport_type), //ovde treba da se doda logika za svaki dan da pise program
                 'note' => $faker->sentence(5),
+                'img' => $this->select_picture($location_dominant['city']),
+                'days' => $days
+                // 'is_active' => $is_active
                 // 'accommodation_id' => function () {
                 //     return Accommodation::inRandomOrder()->first()->id;
                 // }
@@ -102,4 +130,38 @@ class OfferFactory extends Factory
         return (int)abs(round($diff / 86400));
 
     }
+
+    public function select_picture($location){
+        $files = glob(public_path('cities_pics/*'));
+        $location = preg_replace("/[^a-zA-Z]/", "", $location);
+        $location = strtolower($location);
+        foreach($files as $file){
+            $file_check = basename($file);
+            $file_check = preg_replace('*_*', '', $file_check);
+            $file_check = strtolower($file_check);
+            $file_check = pathinfo($file_check, PATHINFO_FILENAME);
+            if($location == $file_check){
+                return basename($file);
+            }
+            else{
+                continue;
+            }
+
+
+
+        }
+    }
+
+    public function find_dominant($days_array, $cities_array){
+
+        $maxVal = max($days_array);
+        $maxKey = array_search($maxVal, $days_array);
+        
+        $city_for_pic = $cities_array[$maxKey];
+        
+        
+        return $city_for_pic;
+        
+
+}
 }
