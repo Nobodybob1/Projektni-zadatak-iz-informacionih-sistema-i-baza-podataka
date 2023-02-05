@@ -25,7 +25,9 @@ class Offer extends Model
         'location_continent',
         'program',
         'note',
-        'img'
+        'img',
+        'is_active',
+        'days'
 
     ];
 

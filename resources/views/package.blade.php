@@ -30,16 +30,22 @@
             <div class="row">
                 @unless ($offers->isEmpty())
                     @foreach ($offers as $offer)
+                    @if ($offer->is_active)
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="package-item bg-white mb-2">
-                            <img class="img-fluid" src="img/package-1.jpg" alt="">
+                            <img class="img-fluid" src="{{asset('cities_pics/'.$offer->img)}}" alt="No picture for this offer yet!">
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
                                     <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.', '.$offer->location_state}}</small>
                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $offer->diff_dates($offer->start_date, $offer->end_date). ' days' }}</small>
                                     <small class="m-0"><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type}}</small>
                                 </div>
-                                <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->name}}</a>
+                                @if ($offer->is_active)
+                                    <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->name}}</a>
+                                @else
+                                    <h5>{{$offer->name}}</h5>
+                                @endif
+                                
                                 <div class="border-top mt-4 pt-4">
                                     <div class="d-flex justify-content-between">
                                         <i class="fas fa-euro-sign text-primary mr-2"></i><h5 class="m-0">{{$offer->price_adult. 'e adults '. $offer->price_child. 'e children'}}</h5>
@@ -48,6 +54,35 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="package-overlay ">
+                        <div class="package-item bg-white mb-2">
+                            <img class="img-fluid" src="{{asset('cities_pics/'.$offer->img)}}" alt="No picture for this offer yet!">
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.', '.$offer->location_state}}</small>
+                                    <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $offer->diff_dates($offer->start_date, $offer->end_date). ' days' }}</small>
+                                    <small class="m-0"><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type}}</small>
+                                </div>
+                                @if ($offer->is_active)
+                                    <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->name}}</a>
+                                @else
+                                    <h5>{{$offer->name}}</h5>
+                                @endif
+                                
+                                <div class="border-top mt-4 pt-4">
+                                    <div class="d-flex justify-content-between">
+                                        <i class="fas fa-euro-sign text-primary mr-2"></i><h5 class="m-0">{{$offer->price_adult. 'e adults '. $offer->price_child. 'e children'}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    @endif
+                    
+                    
                 @endforeach
                 @endunless
             </div>
@@ -57,10 +92,10 @@
     
                                 <select id="perPage" name="perPage" class="custom-select" onchange="document.getElementById('paginForm').submit()">
                                     <option value={{Null}}>Per Page</option>
-                                    <option value="1" >1</option>
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
+                                    <option value="25" >25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                    <option value="200">200</option>
                                 </select>
                                 
                         </form>

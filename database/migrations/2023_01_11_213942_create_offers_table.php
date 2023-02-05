@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('location_continent');
             $table->longText('program');
             $table->longText('note');
-            $table->enum('is_active', ['0', '1'])->default('0');
+            $table->enum('is_active', ['0', '1'])->default('1');
             $table->string('img')->nullable();
             $table->timestamps();
         });

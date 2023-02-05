@@ -24,10 +24,24 @@
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Blog Detail Start -->
+                    @php
+                                
+                                $days_array = explode(",", $offer->days);
+                                $cities_array = explode(",", $offer->location_city);
+                                $result = "";
+                                for($i=0;$i<count($days_array)-1;$i++){
+                                    
+                                    $result .= "Number of days in ". $cities_array[$i] . " - " . $days_array[$i]. "\n";
+                                    
+                                }
+                                
+                                
+                                $result = nl2br($result);
+                    @endphp
                     <div class="pb-3">
                         <div class="blog-item">
                             <div class="position-relative">
-                                <img class="img-fluid w-100" src="{{asset('img/blog-1.jpg')}}" alt="">
+                                <img class="img-fluid w-100" src="{{asset('cities_pics/'.$offer->img)}}" alt="">
                                 <div class="blog-date">
                                     <h6 class="font-weight-bold mb-n1">{{$offer->format_date($offer->start_date)[0]}}</h6>
                                     <h6 class="font-weight-bold mb-n1">{{$offer->format_date($offer->start_date)[1]}}</h6>
@@ -36,9 +50,14 @@
                         </div>
                         <div class="bg-white mb-3" style="padding: 30px;">
                             <h2 class="mb-3">{{$offer->name}}</h2>
-                            <h4><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.', '.$offer->location_state.', '.$offer->location_continent}}</h4>
+                            <h4><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.$offer->location_state.$offer->location_continent}}</h4>
                             <h4><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type.', '.$offer->transport_price.' e '}}</h4>
                             <h3 class="mb-3 text-center">Details</h3>
+
+                            
+                            
+                            <p>{!! $result !!}</p>
+                            
                             
                             @unless ($accommodation->isEmpty())
                             <h4>Description of accommodations:</h4>
@@ -71,7 +90,7 @@
                                                 <div id="header-carousel-{{$item->id}}" class="carousel slide" data-ride="carousel">
                                                     <div class="carousel-inner">
                                                         <div class="carousel-item active text-center">
-                                                            <img class="img-thumbnail mx-auto" src="{{asset('images/'.$pictures[0]->img_path)}}" alt="Image" >
+                                                            <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$pictures[0]->img_path)}}" alt="Image" >
                                                         </div>
                                                         
                                             
@@ -79,7 +98,7 @@
                                                         @foreach ($pictures as $picture)
                                                             @if ($loop->first) @continue @endif
                                                             <div class="carousel-item text-center">
-                                                            <img class="img-thumbnail mx-auto" src="{{asset('images/'.$picture->img_path)}}" alt="Image">
+                                                            <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$picture->img_path)}}" alt="Image">
                                                             
                                                             </div>
                                                         @endforeach
@@ -109,9 +128,9 @@
                                     
                             @endunless
                             <h4 class="mb-3">Detailed program of travel:</h4>
-                            <p>{{$offer->program}}</p>
-                                    <h4 class="mb-3">Note about this offer:</h4>
-                                    <p>{{$offer->note}}</p>
+                            <p style="white-space: pre-line;">{{$offer->program}}</p>
+                            <h4 class="mb-3">Note about this offer:</h4>
+                            <p>{{$offer->note}}</p>
                         </div>
                     </div>
                     <!-- Blog Detail End -->

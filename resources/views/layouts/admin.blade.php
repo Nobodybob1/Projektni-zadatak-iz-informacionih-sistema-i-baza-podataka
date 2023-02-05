@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Test projekat Agencija turisticka</title>
+    <title>Travel agency</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- Bootstrap -->
@@ -34,9 +34,9 @@
             <div class="row">
                 <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                        <p><i class="fa fa-envelope mr-2"></i>travelpisibsnoreply@gmail.com</p>
                         <p class="text-body px-3">|</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+381 60 1234567</p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
@@ -69,7 +69,7 @@
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="" class="navbar-brand">
-                    <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>ER</h1>
+                    <h1 class="m-0 text-primary"><span class="text-dark">OSVAJA</span>ČI</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -105,9 +105,9 @@
     <div class="mt-5">
         <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
             <div class="row pt-5">
-                <div class="col-lg-3 col-md-6 mb-5">
+                <div class="col-lg-4 col-md-6 mb-5">
                     <a href="" class="navbar-brand">
-                        <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
+                        <h1 class="text-primary"><span class="text-white">OSVAJA</span>ČI</h1>
                     </a>
                     <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
                     <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
@@ -118,57 +118,40 @@
                         <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-5">
+                <div class="col-lg-4 col-md-6 mb-5 text-center">
                     <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                        <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                        <a class="text-white-50 mb-2" href="/packages"><i class="fa fa-angle-right mr-2"></i>Packages</a>
+                        <a class="text-white-50" href="https://www.disneytouristblog.com/"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                        <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
+                <div class="col-lg-4 col-md-6 mb-5 text-right">
                     <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>+381 60 1234567</p>
+                    <p><i class="fa fa-envelope mr-2"></i>travelpisibsnoreply@gmail.com</p>
                     <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
                     <div class="w-100">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary px-3">Sign Up</button>
+                        <form action="/newsletter" method="post">
+                            @csrf
+                            <div class="input-group">
+                                <input type="email" name="email" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary px-3">Sign Up</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
             <div class="row">
-                <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                    <p class="m-0 text-white-50">Copyright &copy; <a href="#">Domain</a>. All Rights Reserved.</a>
+                <div class="col-lg-12 text-center text-md-center mb-3 mb-md-0">
+                    <p class="m-0 text-white-50">Copyright &copy; <a href="#">OSVAJAČI</a>. All Rights Reserved.</a>
                     </p>
                 </div>
-                <div class="col-lg-6 text-center text-md-right">
-                    <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a>
-                    </p>
-                </div>
+                
             </div>
         </div>
     </div>

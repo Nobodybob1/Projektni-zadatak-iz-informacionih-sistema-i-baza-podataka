@@ -8,20 +8,20 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-4 mb-md-0">
-                                    <input type="text" name="name" value="{{old('name')}}" class="form-control p-4" placeholder="Name">
+                                    <input type="text" name="name" value="{{session('search')['name']}}" class="form-control p-4" placeholder="Name">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-4 mb-md-0">
                                     <div  data-target-input="nearest">
-                                        <input type="date" name="start_date" class="form-control p-4" min="{{date('Y-m-d')}}" placeholder="Depart Date"/>
+                                        <input type="date" name="start_date" value="{{session('search')['start_date']}}" class="start_date form-control p-4" min="{{date('Y-m-d')}}" placeholder="Depart Date"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-4 mb-md-0">
                                     <div data-target-input="nearest">
-                                        <input type="date" name="end_date" class="form-control p-4" min="{{date('Y-m-d')}}" placeholder="Return Date"/>
+                                        <input type="date" name="end_date" value="{{session('search')['end_date']}}" class="end_date form-control p-4" min="{{date('Y-m-d')}}" placeholder="Return Date"/>
                                     </div>
                                 </div>
                             </div>
@@ -29,23 +29,23 @@
                         <div class="row mt-4">
                             <div class="col-md-4">
                                 <div class="mb-4 mb-md-0">
-                                    <input type="text" name="location_state" value="{{old('location_state')}}" class="form-control p-4" placeholder="Location/State">
+                                    <input type="text" name="location_state" value="{{session('search')['location_state']}}" class="form-control p-4" placeholder="Location/State">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-4 mb-md-0">
-                                    <input type="text" name="location_continent" value="{{old('location_continent')}}" class="form-control p-4" placeholder="Location/Continent">
+                                    <input type="text" name="location_continent" value="{{session('search')['location_continent']}}" class="form-control p-4" placeholder="Location/Continent">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-4 mb-md-0">
                                     <select class="custom-select px-4" name="transport_type" style="height: 47px;">
-                                        <option value="{{null}}" selected>Type of transportation</option>
-                                        <option value="bus">Bus</option>
-                                        <option value="plane">Airplane</option>
-                                        <option value="ship">Ship</option>
-                                        <option value="train">Train</option>
-                                        <option value="individual">Individual</option>
+                                        <option value="{{null}}"  {{ session('search')['transport_type'] == null ? 'selected' : '' }}>Type of transportation</option>
+                                        <option value="bus" {{ session('search')['transport_type'] == 'bus' ? 'selected' : '' }}>Bus</option>
+                                        <option value="plane" {{ session('search')['transport_type'] == 'plane' ? 'selected' : '' }} >Airplane</option>
+                                        <option value="ship" {{ session('search')['transport_type'] == 'ship' ? 'selected' : '' }}>Ship</option>
+                                        <option value="train" {{ session('search')['transport_type'] == 'train' ? 'selected' : '' }}>Train</option>
+                                        <option value="individual" {{ session('search')['transport_type'] == 'individual' ? 'selected' : '' }}>Individual</option>
                                     </select>
                                     
                                 </div>
@@ -55,6 +55,7 @@
                     </div>
                     <div class="col-md-2">
                         <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Search</button>
+                        <button class="btn btn-danger btn-block" type="submit" formaction="/clear_search" style="height: 47px; margin-top: 10px;">Clear search</button>
                     </div>
                 </div>
             </div>

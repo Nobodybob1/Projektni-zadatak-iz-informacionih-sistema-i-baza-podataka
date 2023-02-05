@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\email_class;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+
+use Illuminate\Support\Facades\Mail;
+use App\Models\Offer;
 
 class ReservationController extends Controller
 {
@@ -42,7 +46,7 @@ class ReservationController extends Controller
             'last_name' => 'required',
             'first_name' => 'required',
             'phone_no' => 'required',
-            'email' => ['required', 'email', Rule::unique('reservations', 'email')],
+            'email' => ['required', 'email'], //ovde da se skloni ovaj uunique , Rule::unique('reservations', 'email')
             'payment_type' => 'required',
             'num_adults' => 'required',
             'num_child' => 'required',
@@ -51,7 +55,6 @@ class ReservationController extends Controller
         ]);
 
         $formFields['offer_id'] = $id;
-        //Srediti da izbaci neku poruku
         Reservation::create($formFields);
         return back()->with('message', 'Reservation sent successfully!');
     }
@@ -86,10 +89,17 @@ class ReservationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Reservation $reservation)
-    {
-        Reservation::whereId($request['id'])->update([
+    {   
+        $reser = Reservation::find($request['id']);
+        $offer = Offer::find($reser->offer_id);
+        $reser->update([
             'is_approved' => '1'
         ]);
+
+        $data = [$reser,$offer];
+
+        
+        Mail::to($reser->email)->send(new email_class($data));
 
         return back()->with('message', 'Reservation accepted!');
     }
@@ -108,5 +118,9 @@ class ReservationController extends Controller
     public function all_reservations(Reservation $reservations) {
         $reservations = Reservation::all();
         return view('admin_reservations', compact('reservations'));
+    }
+
+    public function mail_test($data){
+        Mail::to("desimirdimovic@gmail.com")->send(new email_class($data));
     }
 }
