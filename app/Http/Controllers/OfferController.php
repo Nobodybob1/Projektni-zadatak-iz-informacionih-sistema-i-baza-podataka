@@ -22,6 +22,15 @@ class OfferController extends Controller
         if(session('search')!=[]){
             $offers = $this->search_new(session('search'));
         }else{
+            $search = [
+                'name' => null,
+                'start_date' => null,
+                'end_date' => null,
+                'location_state' => null,
+                'location_continent' => null,
+                'transport_type' => null,
+            ];
+            session()->put('search', $search);
             $offers = Offer::latest();
         }
        
@@ -74,9 +83,9 @@ class OfferController extends Controller
         $offer = Offer::create($formFields);
         $this->add_picture($offer);
         if($offer->start_date > date('Y-m-d')){
-            $offer->update(['is_active', "1"]);
+            $offer->update(['is_active' => "1"]);
         }else{
-            $offer->update(['is_active', "0"]);
+            $offer->update(['is_active' => "0"]);
         }
         $accommodations = Accommodation::all();
 
@@ -158,14 +167,20 @@ class OfferController extends Controller
     }
 
     public function admin_offers(Offer $offers, Request $request) {
-
-        
         
         if(session('search') != []){
             
             $offers = $this->search_new(session('search'));
         }else{
-            
+            $search = [
+                'name' => null,
+                'start_date' => null,
+                'end_date' => null,
+                'location_state' => null,
+                'location_continent' => null,
+                'transport_type' => null,
+            ];
+            session()->put('search', $search);
             $offers = Offer::latest();
         }
        
