@@ -57,8 +57,11 @@ Route::get('single/{id}', function ($id) {
 
  Route::post('/admin/update/{id}', [OfferController::class, 'edit'])->middleware('auth');
  Route::post('/admin/updating/{id}', [OfferController::class, 'update'])->middleware('auth');
+ Route::post('/admin/users/update/{id}', [UserController::class, 'edit'])->middleware('auth');
+ Route::post('/admin/users/updating/{id}', [UserController::class, 'update'])->middleware('auth');
  
  Route::post('/admin/delete/offer', [OfferController::class, 'destroy'])->middleware('auth');
+ Route::post('/admin/delete/user', [UserController::class, 'destroy'])->middleware('auth');
 
 
 
@@ -69,8 +72,10 @@ Route::get('single/{id}', function ($id) {
 
  Route::post('/login_user', [UserController::class, 'login']);
 
+Route::get('/staff', [UserController::class, 'index']);
+
  Route::get('/register', function(){
-    return view('register');
+     return view('register');
  })->middleware('auth');
 
  Route::post('/register_user', [UserController::class, 'store']);

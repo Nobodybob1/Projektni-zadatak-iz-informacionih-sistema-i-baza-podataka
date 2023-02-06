@@ -3,3 +3,6 @@ slike da da
 
 
 soni frizider ikonica
+
+row klasa u admin offers treba da obuhvata jedan red a ne sve offere
+proveriti middleware('auth') tj pristup stranicama obicnog staffa i admina

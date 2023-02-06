@@ -80,7 +80,7 @@
                         <a href="/admin/reservations" class="nav-item nav-link">Reservations</a>
                         <a href="/admin/offers" class="nav-item nav-link">Offers</a>
                         @if (auth()->user()->is_admin)
-                            <a href="/register" class="nav-item nav-link">Add Staff</a>
+                            <a href="/staff" class="nav-item nav-link">Staff</a>
                             <a href="/admin/accommodation" class="nav-item nav-link">Accommodations</a>
                         @endif
                         @if (auth()->user())

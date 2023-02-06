@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('admin_users', compact('users'));
     }
 
     /**
@@ -71,7 +72,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::whereId($id)->get();
+        $user = $user[0];
+        return view('admin_update_user', compact('user'));
     }
 
     /**
@@ -83,7 +86,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'is_admin' => 'required',
+        ]);
+
+        User::whereId($id)->get()->first()->update($data);
+        return redirect('staff')->with('message', 'User updated successfully!');
     }
 
     /**
@@ -92,9 +103,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        User::whereId($request->delete)->delete();
+
+        return back()->with('message', 'User deleted successfully!');
     }
 
     public function login(Request $request, User $user)

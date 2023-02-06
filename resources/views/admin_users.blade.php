@@ -6,25 +6,50 @@
 
     
     <div class="row text-center ms-5">
-        <h1 class="text-center col-md-6">All offers</h1>
-        <a href="/create/offer" class="btn btn-primary col-md-3 text-white pt-3"> Add Offer</a>
+        <h1 class="text-center col-md-6">All staffs</h1>
+        <a href="/register" class="btn btn-primary col-md-3 text-white pt-3"> Add Staff</a>
     </div>
     <hr>
-    <div class="container-fluid pt-5">
+    {{-- <div class="container-fluid pt-5">
         <div class="container pt-5 pb-3">
             <div class="row text-center mx-auto">
         
                 @include('partials._search')
             </div>
         </div>
-    </div>
+    </div> --}}
         <div class="container-fluid py-5">
             <div class="container pt-5 pb-3">
-                {{-- ovaj row treba da obuhvata samo jedan red a ne sve offere --}}
                 <div class="row">
-                    @unless ($offers->isEmpty())
-                        @foreach ($offers as $offer)
-                        @if ($offer->is_active)
+                    @unless ($users->isEmpty())
+                        @foreach ($users as $user)
+                            <div class="col-md-4 mb-4">
+                                <div class="package-item bg-white mb-2">
+                                    <div class="position-relative d-inline">
+                                        <div style="position: relative">
+                                            <form action="/admin/delete/user" method="POST" id="myform">
+                                                @csrf
+                                                
+                                                <button name="delete" value="{{$user->id}}" type="submit" class="btn btn-danger" style="position: absolute; top:0px;right:0px">X</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <form action="/admin/users/update/{{$user->id}}" method="post">
+                                        @csrf
+                                            <div class="pl-3">
+                                               Name: {{ $user->name }}
+                                            </div>
+                                            <div class="pl-3">
+                                                Username: {{ $user->username }}
+                                            </div>
+                                            <hr>
+                                            <div class="text-center mt-3">
+                                                <button type="submit" class="btn btn-primary">Update Staff</button>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        {{-- @if ($offer->is_active)
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="package-item bg-white mb-2">
                                     <div class="position-relative d-inline">
@@ -101,13 +126,13 @@
                                 
                             </div>
                             </div>
-                        @endif
+                        @endif --}}
                         
                     @endforeach
                     
                     @endunless
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <form id="paginForm" action="/admin/offers" method="GET">
 
@@ -121,13 +146,13 @@
                             
                     </form>
                 </div>
-                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10"> --}}
                     {{-- {{$offers->links()}} --}}
-                    {{$offers->appends(['search' => session('search'), 'perPage' => session('perPage')])->links()}}
+                    {{-- {{$offers->appends(['search' => session('search'), 'perPage' => session('perPage')])->links()}}
                     
                 </div>
                 
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
