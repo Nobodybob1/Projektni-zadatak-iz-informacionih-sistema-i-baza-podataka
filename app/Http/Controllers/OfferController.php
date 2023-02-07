@@ -31,7 +31,7 @@ class OfferController extends Controller
                 'transport_type' => null,
             ];
             session()->put('search', $search);
-            $offers = Offer::latest();
+            $offers = $this->search_new(session('search'));
         }
        
         if(request('perPage')){
