@@ -77,7 +77,7 @@
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         <a href="/" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a id="aboutic"  class="nav-item nav-link" >About</a>
                         <a href="/packages" class="nav-item nav-link">Tour Packages</a>
                         @if (auth()->user())
                             <a href="/admin/index" class="nav-item nav-link">Welcome, {{auth()->user()->name}} </a>
@@ -116,8 +116,8 @@
                 <div class="col-lg-4 col-md-6 mb-5 text-center">
                     <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                        <a class="text-white-50 mb-2" href="/packages"><i class="fa fa-angle-right mr-2"></i>Packages</a>
+                        <a class="text-white-50 mb-2" href="#about_us"><i class="fa fa-angle-right mr-2"></i>About</a>
+                        <a class="text-white-50 mb-2" href="/packages"><i class="fa fa-angle-right mr-2" onclick="{{session()->forget('perPage')}}"></i>Packages</a>
                         <a class="text-white-50" href="https://www.disneytouristblog.com/"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                     </div>
                 </div>

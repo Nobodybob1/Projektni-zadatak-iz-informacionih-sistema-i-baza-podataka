@@ -78,7 +78,7 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="/admin/index" class="nav-item nav-link active">Home</a>
                         <a href="/admin/reservations" class="nav-item nav-link">Reservations</a>
-                        <a href="/admin/offers" class="nav-item nav-link">Offers</a>
+                        <a href="/admin/offers" class="nav-item nav-link" onclick="{{session()->forget('perPage')}}">Offers</a>
                         @if (auth()->user()->is_admin)
                             <a href="/staff" class="nav-item nav-link">Staff</a>
                             <a href="/admin/accommodation" class="nav-item nav-link">Accommodations</a>

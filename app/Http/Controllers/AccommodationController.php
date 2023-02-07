@@ -108,7 +108,7 @@ class AccommodationController extends Controller
     }
 
     public function admin_accommodations() {
-        $accommodations = Accommodation::all();
+        $accommodations = Accommodation::latest()->get();
         
         return view('admin_accommodation', compact('accommodations'));
     }

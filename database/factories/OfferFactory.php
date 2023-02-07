@@ -111,17 +111,18 @@ class OfferFactory extends Factory
     public function program_gen($num_days, $faker, $transport_type){
         //$faker = faker::create();
         if($transport_type == "Airplane"){
-            $result = "Leaving from airport at " .$faker->dateTimeThisCentury()->format('H:i'). "\n";
+            $result = "Departure from airport: " .$faker->dateTimeThisCentury()->format('H:i'). "\n\n";
         }else{
-            $result = "Leaving from station at ". $faker->dateTimeThisCentury()->format('H:i'). "\n";
+            $result = "Departure from station: ". $faker->dateTimeThisCentury()->format('H:i'). "\n\n";
         }
         
         for($i=1;$i<$num_days+1;$i++){
             $text = $faker->paragraph(2);
-            $result .= "Program for day $i: $text \n";
+            $result .= "Day $i \n Program: $text \n\n";
         }
+        $result .= "\n";
 
-        $result .= "Arriving back at " . $faker->randomElement(['morning', 'afternoon', 'evening','night']). " hours \n";
+        $result .= "Return: " . $faker->randomElement(['morning', 'afternoon', 'evening','night']). " hours \n";
         return $result;
     }
 

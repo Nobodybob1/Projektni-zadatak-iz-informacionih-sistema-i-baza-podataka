@@ -112,11 +112,11 @@
                     <form id="paginForm" action="/admin/offers" method="GET">
 
                             <select id="perPage" name="perPage" class="custom-select" onchange="document.getElementById('paginForm').submit()">
-                                <option value={{Null}}>Per Page</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                                <option value="200">200</option>
+                                <option value={{Null}} {{session('perPage')==Null ? 'selected' : '' }}>Per Page</option>
+                                <option value="25" {{session('perPage')=='25' ? 'selected' : '' }}>25</option>
+                                <option value="50" {{session('perPage')=='50' ? 'selected' : '' }}>50</option>
+                                <option value="100" {{session('perPage')=='100' ? 'selected' : '' }}>100</option>
+                                <option value="200" {{session('perPage')=='200' ? 'selected' : '' }}>200</option>
                             </select>
                             
                     </form>
