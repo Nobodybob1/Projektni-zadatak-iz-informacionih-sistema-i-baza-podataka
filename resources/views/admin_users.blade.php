@@ -18,33 +18,35 @@
             </div>
         </div>
     </div> --}}
-        <div class="container-fluid py-5">
+        <div class="container-fluid py-5 ">
             <div class="container pt-5 pb-3">
                 <div class="row">
                     @unless ($users->isEmpty())
                         @foreach ($users as $user)
-                            <div class="col-md-4 mb-4">
+                            <div class="col-md-4 mb-4 bg-light shadow">
                                 <div class="package-item bg-white mb-2">
                                     <div class="position-relative d-inline">
                                         <div style="position: relative">
                                             <form action="/admin/delete/user" method="POST" id="myform">
                                                 @csrf
                                                 
-                                                <button name="delete" value="{{$user->id}}" type="submit" class="btn btn-danger" style="position: absolute; top:0px;right:0px">X</button>
+                                                <button name="delete" value="{{$user->id}}" type="submit" class="btn btn-danger mt-3 mr-2" style="position: absolute; top:0px;right:0px">X</button>
                                             </form>
                                         </div>
                                     </div>
                                     <form action="/admin/users/update/{{$user->id}}" method="post">
                                         @csrf
-                                            <div class="pl-3">
-                                               Name: {{ $user->name }}
-                                            </div>
-                                            <div class="pl-3">
-                                                Username: {{ $user->username }}
+                                            <div class="p-3">
+                                                <div class="">
+                                                Name: {{ $user->name }}
+                                                </div>
+                                                <div class="">
+                                                    Username: {{ $user->username }}
+                                                </div>
                                             </div>
                                             <hr>
-                                            <div class="text-center mt-3">
-                                                <button type="submit" class="btn btn-primary">Update Staff</button>
+                                            <div class="text-center mt-3 ">
+                                                <button type="submit" class="btn btn-primary mb-3">Update Staff</button>
                                             </div>
                                     </form>
                                 </div>

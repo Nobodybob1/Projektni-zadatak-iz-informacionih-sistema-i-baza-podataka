@@ -31,16 +31,18 @@ class OfferController extends Controller
                 'transport_type' => null,
             ];
             session()->put('search', $search);
-            $offers = Offer::latest();
+            $offers = $this->search_new(session('search'));
         }
        
         if(request('perPage')){
-           
-            return view('package', ['offers' => $offers->latest()->paginate(request('perPage'))->appends(request()->query())]);
-        }
-        else{
+            session()->put('perPage', request('perPage') );
+            return view('package', ['offers' => $offers->orderByRaw('is_active DESC')->latest()->paginate(request('perPage'))->appends(request()->query())]);
+        }  
+        elseif(session('perPage')){
             
-            return view('package', ['offers' => $offers->latest()->paginate(50)->appends(request()->query())]);
+            return view('package', ['offers' => $offers->orderByRaw('is_active DESC')->latest()->paginate(session('perPage'))->appends(request()->query())]);
+        }else{
+            return view('package', ['offers' => $offers->orderByRaw('is_active DESC')->latest()->paginate(50)->appends(request()->query())]);
         }
 
     }//->appends(request()->query())
@@ -99,9 +101,16 @@ class OfferController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(String $param)
-    {   
-        
-        return view('package', ['offers' => Offer::where('location_continent', $param)->paginate()]);
+    {       
+        session()->put('search',[
+            'name' => null,
+            'start_date' => null,
+            'end_date' => null,
+            'location_state' => null,
+            'location_continent' => $param,
+            'transport_type' => null,
+         ]);
+        return redirect('/packages');
     }
 
     /**
@@ -185,13 +194,16 @@ class OfferController extends Controller
         }
        
         if(request('perPage')){
-            return view('admin_offers', ['offers' => $offers->latest()->paginate(request('perPage'))->appends(request()->query())]);
+            session()->put('perPage', request('perPage') );
+            return view('admin_offers', ['offers' => $offers->orderByRaw('is_active DESC')->latest()->paginate(request('perPage'))->appends(request()->query())]);
         }  
-        else{
+        elseif(session('perPage')){
             
-            return view('admin_offers', ['offers' => $offers->latest()->paginate(50)->appends(request()->query())]);
+            return view('admin_offers', ['offers' => $offers->orderByRaw('is_active DESC')->latest()->paginate(session('perPage'))->appends(request()->query())]);
+        }else{
+            return view('admin_offers', ['offers' => $offers->orderByRaw('is_active DESC')->latest()->paginate(50)->appends(request()->query())]);
         }
-
+        
         
     }
 

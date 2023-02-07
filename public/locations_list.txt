@@ -77,7 +77,7 @@ Brno,Czech Republic,Europe
 Budapest,Hungary,Europe
 Zagreb,Croatia,Europe
 Efes,Turkey,Europe and Asia
-Oymp,Greece,Europe
+Olymp,Greece,Europe
 Brussels,Belgium,Europe
 Lisbon,Portugal,Europe
 Oslo,Norway,Europe

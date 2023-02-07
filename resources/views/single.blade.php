@@ -50,7 +50,7 @@
                         </div>
                         <div class="bg-white mb-3" style="padding: 30px;">
                             <h2 class="mb-3">{{$offer->name}}</h2>
-                            <h4><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.$offer->location_state.$offer->location_continent}}</h4>
+                            <h4 style="overflow-wrap: break-word; max-width: 100%;"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.$offer->location_state.$offer->location_continent}}</h4>
                             <h4><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type.', '.$offer->transport_price.' e '}}</h4>
                             <h3 class="mb-3 text-center">Details</h3>
 
@@ -59,12 +59,12 @@
                             <p>{!! $result !!}</p>
                             
                             
-                            @unless ($accommodation->isEmpty())
+                            {{-- @unless ($accommodation->isEmpty())
+                            
                             <h4>Description of accommodations:</h4>
                                 @foreach ($accommodation as $item)
                                     <div class="col-md-6">
                                         <h5>{{$item->name}}</h5>
-                                        {{-- <p>{{'Accommodation name: '. $item->name}}</p> --}}
                                         <p>{{'Number of beds in room: '. $item->room_bed}}</p>
                                         @php
                                             $i = 0
@@ -102,10 +102,7 @@
                                                             
                                                             </div>
                                                         @endforeach
-                                                     {{-- <div class="carousel-item">
-                                                         <img class="img-thumbnail" src="{{ asset('img/carousel-2.jpg') }}" alt="Image">
-                                                         
-                                                     </div> --}}
+                                                     
                                                     </div>
                                                 </div>
                                             </div>
@@ -126,10 +123,86 @@
                                 @endforeach
                                 
                                     
-                            @endunless
-                            <h4 class="mb-3">Detailed program of travel:</h4>
-                            <p style="white-space: pre-line;">{{$offer->program}}</p>
-                            <h4 class="mb-3">Note about this offer:</h4>
+                            @endunless --}}
+                            <hr>
+                            <div class="mt-3 mb-3 mr-5">
+                                <select id="accommodation-selector" class="custom-select px-4">
+                                    @foreach ($accommodation as $item)
+                                        <option value="{{$item->id}}" {{ $loop->first ? 'selected' : '' }}>{{$item->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                            <div id="accommodation-details">
+                                @foreach ($accommodation as $item)
+                                    <div class="accommodation-item text-center" id="accommodation-{{$item->id}}" style="display:none;">
+                                        <h5>{{$item->name}}</h5>
+                                        <p>{{'Number of beds in room: '. $item->room_bed}}</p>
+                                        @php
+                                            $i = 0
+                                        @endphp
+                                        <p>
+                                            {{'Rating: '}}
+                                            @while ($i < $item->rating)
+                                                <i class="fa fa-star text-primary mr-2"></i>
+                                                @php
+                                                    $i = $i + 1
+                                                @endphp
+                                            @endwhile
+                                        </p>
+                                        <p>Additional details:</p>  
+                                        <p><i class="fa fa-wifi text-primary mr-2 "></i>{{$item->internet == '1' ? 'Yes' : 'No'}}<i class="fa fa-tv text-primary mr-2 ml-2"></i>{{$item->tv == 1 ? 'Yes' : 'No'}}<i class="fa fa-snowflake text-primary mr-2 ml-2"></i>{{$item->ac == 1 ? 'Yes' : 'No'}}<i class="fa fa-ice-cream text-primary mr-2 ml-2"></i>{{$item->fridge == 1 ? 'Yes' : 'No'}}</p>
+                                        <div class="container-fluid p-0">
+                                            <div class="col-md-6 mx-auto">
+                                                @php
+                                                     $pictures = $item->accommodationpictures()->get();
+                                                @endphp
+                                                @unless ($pictures->isEmpty())
+                                                    <div class="container-fluid p-0">
+                                                        <div id="header-carousel-{{$item->id}}" class="carousel slide" data-ride="carousel">
+                                                            <div class="carousel-inner">
+                                                                <div class="carousel-item active text-center">
+                                                                    <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$pictures[0]->img_path)}}" alt="Image" >
+                                                                </div>
+                                                                
+                                                    
+                                                
+                                                                @foreach ($pictures as $picture)
+                                                                    @if ($loop->first) @continue @endif
+                                                                    <div class="carousel-item text-center">
+                                                                    <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$picture->img_path)}}" alt="Image">
+                                                                    
+                                                                    </div>
+                                                                @endforeach
+                                                             
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a class="carousel-control-prev" href="#header-carousel-{{$item->id}}" data-slide="prev">
+                                                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                                                            <span class="carousel-control-prev-icon mb-n2"></span>
+                                                        </div>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#header-carousel-{{$item->id}}" data-slide="next">
+                                                        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                                                            <span class="carousel-control-next-icon mb-n2"></span>
+                                                        </div>
+                                                    </a>
+                                                @endunless
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                            
+                            
+                            <hr>
+                            <h4 class="mb-3 text-center">Itinerary:</h4>
+                            <p id="text" style="white-space: pre-line; display: block;">{{$offer->program}}</p>
+                            <button id="toggleButton" class="btn btn-primary" style="border-radius: 10px">Expand</button>
+                            <hr>
+                            <h4 class="mb-3 text-center">Note about this offer:</h4>
                             <p>{{$offer->note}}</p>
                         </div>
                     </div>
@@ -162,12 +235,12 @@
                     </div> --}}
 
                     <!-- Recent Post -->
-                    <div class="mb-5">
+                    <div class="col-md-4 mb-5">
                         <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Recent Post</h4>
                         @unless ($latest->isEmpty())
                             @foreach ($latest as $last)
                             <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="/single/{{$last->id}}">
-                                <img class="img-fluid" src="{{asset('img/blog-100x100.jpg')}}" alt="">
+                                <img class="img-fluid p-1" src="{{asset('cities_pics/'.$last->img)}}" alt="Latest post" style="width: 40%">
                                 <div class="pl-3">
                                     <h6 class="m-1">{{$last->name}}</h6>
                                     <small>{{$offer->date_str_to_nice($last->start_date)}}</small>

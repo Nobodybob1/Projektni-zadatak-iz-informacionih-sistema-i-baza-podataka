@@ -68,6 +68,13 @@
     
 })(jQuery);
 
+document.querySelector('#aboutic').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.querySelector('#about_us').scrollIntoView({
+        behavior: 'smooth'
+    });
+    });
+
 document.addEventListener('DOMContentLoaded', function() {
     
     const startDate = document.querySelector('.start_date');
@@ -80,6 +87,40 @@ document.addEventListener('DOMContentLoaded', function() {
         endDate.min = startDate.value;
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    var select = document.getElementById("accommodation-selector");
+    var firstAccommodation = select.options[select.selectedIndex].value;
+    document.getElementById("accommodation-" + firstAccommodation).style.display = "block";
+    document.getElementById("accommodation-selector").addEventListener("change", function() {
+        var selectedId = this.value;
+        var detailsContainer = document.getElementById("accommodation-details");
+        var allItems = detailsContainer.getElementsByClassName("accommodation-item");
+        for (var i = 0; i < allItems.length; i++) {
+            allItems[i].style.display = "none";
+        }
+        document.getElementById("accommodation-" + selectedId).style.display = "block";
+    });
+ });
+
+ const text = document.getElementById("text");
+ const toggleButton = document.getElementById("toggleButton");
+ var full_text = text.innerHTML;
+ var sliced_text = text.innerHTML.slice(0,420);
+ text.innerHTML = sliced_text;
+ toggleButton.addEventListener("click", function() {
+   if (toggleButton.innerHTML == "Expand") {
+     text.innerHTML = full_text;
+     toggleButton.innerHTML = "Collapse";
+   } else {
+     text.innerHTML = sliced_text;
+     toggleButton.innerHTML = "Expand";
+   }
+ });
+
+  
+
+                        
 
 
   // Get the input element
@@ -112,5 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Read the file as a data URL
     reader.readAsDataURL(file);
   });
+
+  
 
 

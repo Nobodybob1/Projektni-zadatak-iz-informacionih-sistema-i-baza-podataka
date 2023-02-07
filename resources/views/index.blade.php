@@ -127,7 +127,7 @@
                     @foreach ($offers as $offer)
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="package-item bg-white mb-2">
-                                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                                <img class="img-fluid" src="{{asset('cities_pics/'.$offer->img)}}" alt="">
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
                                     <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.', '.$offer->location_state}}</small>
