@@ -125,4 +125,6 @@
     
     
     </form>
+
+<script src="{{ asset('js/dates.js') }}"></script>
 @endsection

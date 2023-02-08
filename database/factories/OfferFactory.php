@@ -59,7 +59,7 @@ class OfferFactory extends Factory
         return [
            
             
-                'name' => $location_dominant['city'] . " $start_date_m_Y ." . $faker->name,
+                'name' => $location_dominant['city'] . " $start_date_m_Y ." . $faker->words(1, true),
                 'transport_price' => $faker->numberBetween(100, 3000),
                 'transport_type' => $transport_type,
                 'price_adult' => $faker->numberBetween(10, 1000),

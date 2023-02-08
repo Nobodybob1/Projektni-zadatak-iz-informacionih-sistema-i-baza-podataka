@@ -59,7 +59,6 @@
                         <img class="img-fluid" src="{{ asset('img/destination-1.jpg') }}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="/continent/Europe">
                             <h5 class="text-white">Europe</h5>
-                            <span>100 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -68,7 +67,6 @@
                         <img class="img-fluid" src="{{ asset('img/destination-2.jpg') }}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="/continent/Asia">
                             <h5 class="text-white">Asia</h5>
-                            <span>100 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -77,7 +75,6 @@
                         <img class="img-fluid" src="{{('img/destination-3.jpg')}}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="/continent/Africa">
                             <h5 class="text-white">Arfica</h5>
-                            <span>100 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -86,7 +83,6 @@
                         <img class="img-fluid" src="{{ asset('img/destination-4.jpg') }}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="/continent/North America">
                             <h5 class="text-white">North America</h5>
-                            <span>100 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -95,7 +91,6 @@
                         <img class="img-fluid" src="{{ asset('img/destination-5.jpg') }}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="/continent/South America">
                             <h5 class="text-white">South America</h5>
-                            <span>100 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -104,7 +99,6 @@
                         <img class="img-fluid" src="{{ asset('img/destination-6.jpg') }}" alt="">
                         <a class="destination-overlay text-white text-decoration-none" href="/continent/Australia">
                             <h5 class="text-white">Australia</h5>
-                            <span>100 Cities</span>
                         </a>
                     </div>
                 </div>
@@ -130,12 +124,12 @@
                                 <img class="img-fluid" src="{{asset('cities_pics/'.$offer->img)}}" alt="">
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.', '.$offer->location_state}}</small>
+                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->find_dominant(explode(',', $offer->days), explode(',', $offer->location_city))}}</small>
                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $offer->diff_dates($offer->start_date, $offer->end_date). ' days' }}</small>
                                     <small class="m-0"><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type}}</small>
                                 </div>
                                 
-                                    <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->name}}</a>
+                                    <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->transform_name($offer->name)}}</a>
                     
                                 <div class="border-top mt-4 pt-4">
                                     <div class="d-flex justify-content-between">
@@ -172,10 +166,10 @@
                     <h5>Marko Živanović /2019</h5>
                 </div>
                 <div class="row text-center" style="display:flex; justify-content: center;">
-                    <h5>Marko Đokić /2019</h5>
+                    <h5>Marko Đokić 640/2019</h5>
                 </div>
             </div>
         </div>
     </div>
-    
+
 @endsection
