@@ -163,7 +163,7 @@
                     <h5>Janko Štrkalj 618/2019</h5>
                 </div>
                 <div class="row text-center" style="display:flex; justify-content: center;">
-                    <h5>Marko Živanović /2019</h5>
+                    <h5>Marko Živanović 656/2019</h5>
                 </div>
                 <div class="row text-center" style="display:flex; justify-content: center;">
                     <h5>Marko Đokić 640/2019</h5>

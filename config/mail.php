@@ -33,23 +33,6 @@ return [
     |
     */
 
-    'gmail' => [
-        'transport' => 'smtp',
-        'host' => 'smtp.gmail.com',
-        'port' => 465,
-        'encryption' => 'ssl',
-        'username' => 'travelpisibsnoreply@gmail.com',
-        'password' => 'wzuqdjaxkpvsspnd',
-        'stream' => [
-            'ssl' => [
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-                'allow_self_signed' => true
-            ]
-        ]
-    ],
-    
-
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
@@ -60,13 +43,6 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
-            'stream' => [
-                'ssl' => [
-                    'allow_self_signed' => true,
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                ],
-            ],
         ],
         
 

@@ -100,6 +100,7 @@ Route::get('/search', [OfferController::class, 'search']);
 
 Route::post('/newsletter', function(Request $request){
    //dd($request->email);
+   //dd(Mail::to($request->email)->send(new newsletter_mail()));
    Mail::to($request->email)->send(new newsletter_mail());
    return back()->with('message', 'You are succesffuly subscribed to our newsletter!');
 });
