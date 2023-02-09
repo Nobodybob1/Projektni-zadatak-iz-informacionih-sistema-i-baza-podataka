@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('offer_id')->unsigned()->nullable()->index();
             $table->integer('accommodation_id')->unsigned()->nullable()->index();
-            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
-            $table->foreign('accommodation_id')->references('id')->on('accommodations')->onDelete('cascade');
+            // $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
+            // $table->foreign('accommodation_id')->references('id')->on('accommodations')->onDelete('cascade');
             $table->timestamps();
         });
     }
