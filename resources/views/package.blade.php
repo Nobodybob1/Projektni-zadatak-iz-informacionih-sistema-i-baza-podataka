@@ -86,27 +86,36 @@
                     
                     
                 @endforeach
+
+                @else
+                <div class=" col-md-12 text-center">
+                    <b>No offers found</b>
+                </div>
+                
                 @endunless
             </div>
-                <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                        <form id="paginForm" action="/packages" method="GET">
-    
-                                <select id="perPage" name="perPage" class="custom-select" onchange="document.getElementById('paginForm').submit()">
-                                    <option value={{Null}} {{session('perPage')==Null ? 'selected' : '' }}>Per Page</option>
-                                    <option value="25" {{session('perPage')=='25' ? 'selected' : '' }}>25</option>
-                                    <option value="50" {{session('perPage')=='50' ? 'selected' : '' }}>50</option>
-                                    <option value="100" {{session('perPage')=='100' ? 'selected' : '' }}>100</option>
-                                    <option value="200" {{session('perPage')=='200' ? 'selected' : '' }}>200</option>
-                                </select>
-                                
-                        </form>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                        {{$offers->appends(['search' => session('search')])->links()}}
-                        
-                    </div>
+            @unless ($offers->isEmpty())
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <form id="paginForm" action="/packages" method="GET">
+
+                            <select id="perPage" name="perPage" class="custom-select" onchange="document.getElementById('paginForm').submit()">
+                                <option value={{Null}} {{session('perPage')==Null ? 'selected' : '' }}>Per Page</option>
+                                <option value="25" {{session('perPage')=='25' ? 'selected' : '' }}>25</option>
+                                <option value="50" {{session('perPage')=='50' ? 'selected' : '' }}>50</option>
+                                <option value="100" {{session('perPage')=='100' ? 'selected' : '' }}>100</option>
+                                <option value="200" {{session('perPage')=='200' ? 'selected' : '' }}>200</option>
+                            </select>
+                            
+                    </form>
                 </div>
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                    {{$offers->appends(['search' => session('search')])->links()}}
+                    
+                </div>
+            </div>
+            @endunless
+                
                 
                 
                 

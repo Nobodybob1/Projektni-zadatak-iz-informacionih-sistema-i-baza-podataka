@@ -108,9 +108,10 @@
                     
                     @endunless
             </div>
+            @unless ($offers->isEmpty())
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <form id="paginForm" action="/admin/offers" method="GET">
+                    <form id="paginForm" action="/packages" method="GET">
 
                             <select id="perPage" name="perPage" class="custom-select" onchange="document.getElementById('paginForm').submit()">
                                 <option value={{Null}} {{session('perPage')==Null ? 'selected' : '' }}>Per Page</option>
@@ -123,12 +124,11 @@
                     </form>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    {{-- {{$offers->links()}} --}}
-                    {{$offers->appends(['search' => session('search'), 'perPage' => session('perPage')])->links()}}
+                    {{$offers->appends(['search' => session('search')])->links()}}
                     
                 </div>
-                
             </div>
+            @endunless
         </div>
     </div>
 

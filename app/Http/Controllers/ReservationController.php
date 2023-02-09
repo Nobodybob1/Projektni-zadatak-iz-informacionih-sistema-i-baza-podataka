@@ -97,7 +97,6 @@ class ReservationController extends Controller
         ]);
 
         $data = [$reser,$offer];
-
         
         Mail::to($reser->email)->send(new email_class($data));
 
@@ -121,6 +120,6 @@ class ReservationController extends Controller
     }
 
     public function mail_test($data){
-        Mail::to("desimirdimovic@gmail.com")->send(new email_class($data));
+        Mail::to("jankokg26@gmail.com")->send(new email_class($data));
     }
 }
