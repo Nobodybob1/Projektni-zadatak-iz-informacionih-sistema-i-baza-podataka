@@ -29,4 +29,5 @@ class Accommodation extends Model
     public function accommodationpictures(){
         return $this->hasMany('App\Models\AccommodationPicture');
     }
+
 }

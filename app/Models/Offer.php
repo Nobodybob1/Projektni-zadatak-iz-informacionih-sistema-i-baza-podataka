@@ -63,5 +63,30 @@ class Offer extends Model
         return $this->hasMany('App\Models\Reservation', 'offer_id');
     }
 
+    public function find_dominant($days_array, $cities_array){
+
+        $maxVal = max($days_array);
+        $maxKey = array_search($maxVal, $days_array);
+        
+        return $cities_array[$maxKey];
+    }
+
+    public function transform_array($array) {
+        $array = explode(',', $array);
+        array_pop($array);
+        $array = array_unique($array);
+        $array = join(', ', $array);
+        
+
+        return $array;
+    }
+
+    public function transform_name($array) {
+        $array = explode('.', $array);
+        array_pop($array);
+        $array = join('', $array);
+        
+        return $array;
+    }
 
 }

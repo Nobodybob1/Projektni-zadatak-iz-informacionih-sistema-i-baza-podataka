@@ -36,14 +36,15 @@
                             <img class="img-fluid" src="{{asset('cities_pics/'.$offer->img)}}" alt="No picture for this offer yet!">
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.', '.$offer->location_state}}</small>
+                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{ $offer->find_dominant(explode(',', $offer->days), explode(',', $offer->location_city)) }}</small>
                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $offer->diff_dates($offer->start_date, $offer->end_date). ' days' }}</small>
                                     <small class="m-0"><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type}}</small>
                                 </div>
+                                {{-- ovo je provereno vec --}}
                                 @if ($offer->is_active)
-                                    <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->name}}</a>
+                                    <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->transform_name($offer->name)}}</a>
                                 @else
-                                    <h5>{{$offer->name}}</h5>
+                                    <h5>{{$offer->transform_name($offer->name)}}</h5>
                                 @endif
                                 
                                 <div class="border-top mt-4 pt-4">
@@ -56,19 +57,20 @@
                     </div>
                     @else
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="package-overlay ">
+                        <div class="package-overlay">
                         <div class="package-item bg-white mb-2">
                             <img class="img-fluid" src="{{asset('cities_pics/'.$offer->img)}}" alt="No picture for this offer yet!">
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.', '.$offer->location_state}}</small>
+                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->find_dominant(explode(',', $offer->days), explode(',', $offer->location_city))}}</small>
                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $offer->diff_dates($offer->start_date, $offer->end_date). ' days' }}</small>
                                     <small class="m-0"><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type}}</small>
                                 </div>
+                                {{-- ovo je u else, nema potrebe da postoji--}}
                                 @if ($offer->is_active)
-                                    <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->name}}</a>
+                                    <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->transform_name($offer->name)}}</a>
                                 @else
-                                    <h5>{{$offer->name}}</h5>
+                                    <h5>{{$offer->transform_name($offer->name)}}</h5>
                                 @endif
                                 
                                 <div class="border-top mt-4 pt-4">
@@ -179,8 +181,7 @@
             </div>
         </div>
     </div>
-    <!-- Destination Start -->
 
-    
-    
+<script src="{{ asset('js/dates.js') }}"></script>
+
 @endsection

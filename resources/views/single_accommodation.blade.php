@@ -103,4 +103,5 @@
     </div>
 </div>
 
+<script src="{{ asset('js/preview.js') }}"></script>
 @endsection

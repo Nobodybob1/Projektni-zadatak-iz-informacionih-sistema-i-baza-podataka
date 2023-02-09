@@ -6,11 +6,11 @@
     <div class="container-fluid page-header">
         <div class="container">
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
-                <h3 class="display-4 text-white text-uppercase">{{$offer->name}}</h3>
+                <h3 class="display-4 text-white text-uppercase">{{$offer->transform_name($offer->name)}}</h3>
                 <div class="d-inline-flex text-white">
                     <p class="m-0 text-uppercase"><a class="text-white" href="/">Home</a></p>
                     <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                    <p class="m-0 text-uppercase">{{$offer->name}}</p>
+                    <p class="m-0 text-uppercase">{{$offer->transform_name($offer->name)}}</p>
                 </div>
             </div>
         </div>
@@ -48,9 +48,26 @@
                                 </div>
                             </div>
                         </div>
+
+                        {{-- @php
+                            $name = explode('.', $offer->name);
+                            array_pop($name);
+                            $name = join('', $name);
+                        @endphp --}}
                         <div class="bg-white mb-3" style="padding: 30px;">
-                            <h2 class="mb-3">{{$offer->name}}</h2>
-                            <h4 style="overflow-wrap: break-word; max-width: 100%;"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$offer->location_city.$offer->location_state.$offer->location_continent}}</h4>
+                            <h2 class="mb-3">{{$offer->transform_name($offer->name)}}</h2>
+                        
+                            {{-- @php
+                                $cities = explode(',', $offer->location_city);
+                                array_pop($cities);
+                                $cities = join(', ', $cities);
+
+                                $continents = explode(',' , $offer->location_continent);  
+                                array_pop($continents);  
+                                $continents = join(", ", $continents);
+                            @endphp --}}
+
+                            <h4 style="overflow-wrap: break-word; max-width: 100%;"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{!! $offer->transform_array($offer->location_city) ."<br>". $offer->transform_array($offer->location_state) ."<br>". $offer->transform_array($offer->location_continent) !!}</h4>
                             <h4><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type.', '.$offer->transport_price.' e '}}</h4>
                             <h3 class="mb-3 text-center">Details</h3>
 
@@ -242,7 +259,7 @@
                             <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="/single/{{$last->id}}">
                                 <img class="img-fluid p-1" src="{{asset('cities_pics/'.$last->img)}}" alt="Latest post" style="width: 40%">
                                 <div class="pl-3">
-                                    <h6 class="m-1">{{$last->name}}</h6>
+                                    <h6 class="m-1">{{$last->transform_name($last->name)}}</h6>
                                     <small>{{$offer->date_str_to_nice($last->start_date)}}</small>
                                 </div>
                             </a>
@@ -328,4 +345,6 @@
         </div>
     </form>
     <!-- Booking End -->
+
+<script src="{{ asset('js/toggle.js') }}"></script>
 @endsection

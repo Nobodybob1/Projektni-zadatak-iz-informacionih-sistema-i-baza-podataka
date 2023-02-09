@@ -121,7 +121,6 @@
                 <div class="col-lg-4 col-md-6 mb-5 text-center">
                     <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
                         <a class="text-white-50 mb-2" href="/packages"><i class="fa fa-angle-right mr-2"></i>Packages</a>
                         <a class="text-white-50" href="https://www.disneytouristblog.com/"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                     </div>
