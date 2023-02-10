@@ -37,7 +37,7 @@
                                                 <option value="4">4</option>
                                                 <option value="5">5</option>
                                             </select>
-                                            {{-- <input type="number" name="rating" value="{{old('rating')}}" class="form-control p-3" placeholder="Rating"> --}}
+                                            
                                         </div>
                                     </div>
                                 </div>

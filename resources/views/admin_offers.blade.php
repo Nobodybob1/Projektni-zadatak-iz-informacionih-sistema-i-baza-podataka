@@ -20,7 +20,6 @@
     </div>
         <div class="container-fluid py-5">
             <div class="container pt-5 pb-3">
-                {{-- ovaj row treba da obuhvata samo jedan red a ne sve offere --}}
                 <div class="row">
                     @unless ($offers->isEmpty())
                         @foreach ($offers as $offer)
@@ -45,7 +44,6 @@
                                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $offer->diff_dates($offer->start_date, $offer->end_date). ' days' }}</small>
                                                     <small class="m-0"><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type}}</small>
                                                 </div>
-                                                {{-- isto kao i za packages bespotrebno --}}
                                                 @if ($offer->is_active)
                                                     <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->transform_name($offer->name)}}</a>
                                                 @else

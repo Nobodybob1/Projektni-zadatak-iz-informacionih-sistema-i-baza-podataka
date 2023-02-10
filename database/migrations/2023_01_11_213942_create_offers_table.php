@@ -16,16 +16,13 @@ return new class extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            //$table->integer('accommodation_id')->unsigned()->nullable()->index();
             $table->integer('transport_price');
             $table->string('transport_type');
             $table->string('price_adult');
             $table->string('price_child');
             $table->date('start_date');
             $table->date('end_date');
-            //$table->string('transport_type');
-            //$table->integer('transport_price'); //in bewten [100,3000]
-            $table->string('location_city'); // Grad
+            $table->string('location_city');
             $table->string('location_state');
             $table->string('location_continent');
             $table->longText('program');

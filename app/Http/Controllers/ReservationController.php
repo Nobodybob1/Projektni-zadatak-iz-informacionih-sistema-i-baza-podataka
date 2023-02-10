@@ -46,7 +46,7 @@ class ReservationController extends Controller
             'last_name' => 'required',
             'first_name' => 'required',
             'phone_no' => 'required',
-            'email' => ['required', 'email'], //ovde da se skloni ovaj uunique , Rule::unique('reservations', 'email')
+            'email' => ['required', 'email'],
             'payment_type' => 'required',
             'num_adults' => 'required',
             'num_child' => 'required',
@@ -119,7 +119,5 @@ class ReservationController extends Controller
         return view('admin_reservations', compact('reservations'));
     }
 
-    public function mail_test($data){
-        Mail::to("jankokg26@gmail.com")->send(new email_class($data));
-    }
+    
 }

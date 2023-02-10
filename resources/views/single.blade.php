@@ -23,20 +23,17 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-8">
-                    <!-- Blog Detail Start -->
-                    @php
-                                
-                                $days_array = explode(",", $offer->days);
-                                $cities_array = explode(",", $offer->location_city);
-                                $result = "";
-                                for($i=0;$i<count($days_array)-1;$i++){
-                                    
-                                    $result .= "Number of days in ". $cities_array[$i] . " - " . $days_array[$i]. "\n";
-                                    
-                                }
-                                
-                                
-                                $result = nl2br($result);
+                    @php      
+                        $days_array = explode(",", $offer->days);
+                        $cities_array = explode(",", $offer->location_city);
+                        $result = "";
+                        for($i=0;$i<count($days_array)-1;$i++){
+                            
+                            $result .= "Number of days in ". $cities_array[$i] . " - " . $days_array[$i]. "\n";
+                            
+                        }
+                        
+                        $result = nl2br($result);
                     @endphp
                     <div class="pb-3">
                         <div class="blog-item">
@@ -49,98 +46,13 @@
                             </div>
                         </div>
 
-                        {{-- @php
-                            $name = explode('.', $offer->name);
-                            array_pop($name);
-                            $name = join('', $name);
-                        @endphp --}}
                         <div class="bg-white mb-3" style="padding: 30px;">
                             <h2 class="mb-3">{{$offer->transform_name($offer->name)}}</h2>
-                        
-                            {{-- @php
-                                $cities = explode(',', $offer->location_city);
-                                array_pop($cities);
-                                $cities = join(', ', $cities);
-
-                                $continents = explode(',' , $offer->location_continent);  
-                                array_pop($continents);  
-                                $continents = join(", ", $continents);
-                            @endphp --}}
-
                             <h4 style="overflow-wrap: break-word; max-width: 100%;"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{!! $offer->transform_array($offer->location_city) ."<br>". $offer->transform_array($offer->location_state) ."<br>". $offer->transform_array($offer->location_continent) !!}</h4>
                             <h4><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type.', '.$offer->transport_price.' e '}}</h4>
+                            <h5><i class="fa fa-calendar text-primary mr-2"></i>{{$offer->date_str_to_nice($offer->start_date). " - ". $offer->date_str_to_nice($offer->end_date) }}</h5>
                             <h3 class="mb-3 text-center">Details</h3>
-
-                            
-                            
                             <p>{!! $result !!}</p>
-                            
-                            
-                            {{-- @unless ($accommodation->isEmpty())
-                            
-                            <h4>Description of accommodations:</h4>
-                                @foreach ($accommodation as $item)
-                                    <div class="col-md-6">
-                                        <h5>{{$item->name}}</h5>
-                                        <p>{{'Number of beds in room: '. $item->room_bed}}</p>
-                                        @php
-                                            $i = 0
-                                        @endphp
-                                        <p>
-                                            {{'Rating: '}}
-                                            @while ($i < $item->rating)
-                                                <i class="fa fa-star text-primary mr-2"></i>
-                                                @php
-                                                    $i = $i + 1
-                                                @endphp
-                                            @endwhile
-                                        </p>
-                                        <p>Additional details:</p>  
-                                        <p><i class="fa fa-wifi text-primary mr-2 "></i>{{$item->internet == '1' ? 'Yes' : 'No'}}<i class="fa fa-tv text-primary mr-2 ml-2"></i>{{$item->tv == 1 ? 'Yes' : 'No'}}<i class="fa fa-snowflake text-primary mr-2 ml-2"></i>{{$item->ac == 1 ? 'Yes' : 'No'}}<i class="fa fa-ice-cream text-primary mr-2 ml-2"></i>{{$item->fridge == 1 ? 'Yes' : 'No'}}</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        @php
-                                             $pictures = $item->accommodationpictures()->get();
-                                        @endphp
-                                        @unless ($pictures->isEmpty())
-                                            <div class="container-fluid p-0">
-                                                <div id="header-carousel-{{$item->id}}" class="carousel slide" data-ride="carousel">
-                                                    <div class="carousel-inner">
-                                                        <div class="carousel-item active text-center">
-                                                            <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$pictures[0]->img_path)}}" alt="Image" >
-                                                        </div>
-                                                        
-                                            
-                                        
-                                                        @foreach ($pictures as $picture)
-                                                            @if ($loop->first) @continue @endif
-                                                            <div class="carousel-item text-center">
-                                                            <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$picture->img_path)}}" alt="Image">
-                                                            
-                                                            </div>
-                                                        @endforeach
-                                                     
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a class="carousel-control-prev" href="#header-carousel-{{$item->id}}" data-slide="prev">
-                                                <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                                                    <span class="carousel-control-prev-icon mb-n2"></span>
-                                                </div>
-                                            </a>
-                                            <a class="carousel-control-next" href="#header-carousel-{{$item->id}}" data-slide="next">
-                                                <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                                                    <span class="carousel-control-next-icon mb-n2"></span>
-                                                </div>
-                                            </a>
-                                        @endunless
-                                    </div>
-                                    
-                                    <hr>
-                                @endforeach
-                                
-                                    
-                            @endunless --}}
                             <hr>
                             <div class="mt-3 mb-3 mr-5">
                                 <select id="accommodation-selector" class="custom-select px-4">
@@ -181,9 +93,6 @@
                                                                 <div class="carousel-item active text-center">
                                                                     <img class="img-thumbnail mx-auto" src="{{asset('accommodation_pics/'.$pictures[0]->img_path)}}" alt="Image" >
                                                                 </div>
-                                                                
-                                                    
-                                                
                                                                 @foreach ($pictures as $picture)
                                                                     @if ($loop->first) @continue @endif
                                                                     <div class="carousel-item text-center">
@@ -226,31 +135,7 @@
                     <!-- Blog Detail End -->
                 </div>
     
-                {{-- <div class="col-lg-4 mt-5 mt-lg-0">
-                    <!-- Author Bio  da se doda kalendar koji pokazuje trajanje ponude -->
-                    <div class="d-flex flex-column text-center bg-white mb-5 py-5 px-4">
-                        <img src="{{ asset('img/user.jpg') }}" class="img-fluid mx-auto mb-3" style="width: 100px;">
-                        <h3 class="text-primary mb-3">John Doe</h3>
-                        <p>Conset elitr erat vero dolor ipsum et diam, eos dolor lorem, ipsum sit no ut est  ipsum erat kasd amet elitr</p>
-                        <div class="d-flex justify-content-center">
-                            <a class="text-primary px-2" href="">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="text-primary px-2" href="">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a class="text-primary px-2" href="">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a class="text-primary px-2" href="">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a class="text-primary px-2" href="">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div> --}}
-
+                
                     <!-- Recent Post -->
                     <div class="col-md-4 mb-5">
                         <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Recent Post</h4>
@@ -278,7 +163,6 @@
     <!-- Blog End -->
 
     <!-- Booking Start -->
-    <!-- Napraviti da bude responsive trebalo bi da sad jeste samo dugme malo nekad ludi -->
     <form action="/booking/{{ $offer->id }}">
         <div class="container-fluid booking mt-5 pb-5" style="width: 90%" >
             <div class="card-header bg-primary text-center mx-auto">
@@ -301,7 +185,6 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3 mb-md-0">
-                                        <!-- Popraviti: postoji input za broj telefona izgleda da hvata sam po imenu  -->
                                         <input type="text" name="phone_no" class="form-control p-3" value="{{old('phone_no')}}" placeholder="Phone Number">
                                     </div>
                                 </div>

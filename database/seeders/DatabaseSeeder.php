@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        \App\Models\Accommodation::factory(1)->afterCreating(function($accommodation){
+    {   
+        
+        \App\Models\Accommodation::factory(100)->afterCreating(function($accommodation){
             $count = rand(1,6);
             
             for($i=0;$i<$count;$i++){
@@ -25,18 +26,16 @@ class DatabaseSeeder extends Seeder
             }
         })->create();
 
-        \App\Models\Offer::factory(1)->afterCreating(function ($offer) {
+        \App\Models\Offer::factory(500)->afterCreating(function ($offer) {
             $num_cities = count(explode(',', $offer->days)) - 1;
-            // $num_days = $offer->diff_dates($offer->start_date,$offer->end_date);
             for($i=0;$i<$num_cities;$i++){
                 $offer->accommodations()->attach(\App\Models\Accommodation::inRandomOrder()->first()->id);
             }
             $offer->update(['is_active'=>"1"]);  //aktivni
         })->create();
 
-        \App\Models\Offer::factory(0)->afterCreating(function ($offer) {
+        \App\Models\Offer::factory(50)->afterCreating(function ($offer) {
             $num_cities = count(explode(',', $offer->days)) - 1;
-            // $num_days = $offer->diff_dates($offer->start_date,$offer->end_date);
             for($i=0;$i<$num_cities;$i++){
                 $offer->accommodations()->attach(\App\Models\Accommodation::inRandomOrder()->first()->id);
             }
@@ -44,5 +43,7 @@ class DatabaseSeeder extends Seeder
         })->create();
 
         \App\Models\User::create(["name"=> "admin","username"=>"admin","password"=>bcrypt("admin"),"is_admin"=>"1"]);
+
+        
     }
 }

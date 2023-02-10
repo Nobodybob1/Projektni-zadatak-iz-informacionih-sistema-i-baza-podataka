@@ -47,7 +47,7 @@ class email_class extends Mailable
     {
         return new Content(
             view: 'mail_view',
-            // data: ['data' => $this->data,],
+            
         );
     }
 

@@ -54,10 +54,6 @@
                                             <input type="text" name="location_continent" value="{{$offer->location_continent}}" class="form-control p-3" placeholder="Continent">
                                         </div>
                                     </div>
-                            
-                                    {{-- <div class="col-md-2">
-                                        <button class="btn btn-primary btn-block py-2" type="submit">Book this now!</button>
-                                    </div> --}}
                                 </div>
                             </div>
                             <div class="col-md-12">

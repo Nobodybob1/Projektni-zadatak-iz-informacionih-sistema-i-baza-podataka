@@ -40,7 +40,6 @@
                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $offer->diff_dates($offer->start_date, $offer->end_date). ' days' }}</small>
                                     <small class="m-0"><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type}}</small>
                                 </div>
-                                {{-- ovo je provereno vec --}}
                                 @if ($offer->is_active)
                                     <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->transform_name($offer->name)}}</a>
                                 @else
@@ -66,7 +65,6 @@
                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $offer->diff_dates($offer->start_date, $offer->end_date). ' days' }}</small>
                                     <small class="m-0"><i class="fa fa-bus text-primary mr-2"></i>{{$offer->transport_type}}</small>
                                 </div>
-                                {{-- ovo je u else, nema potrebe da postoji--}}
                                 @if ($offer->is_active)
                                     <a class="h5 text-decoration-none" href="/single/{{$offer->id}}">{{$offer->transform_name($offer->name)}}</a>
                                 @else
@@ -135,55 +133,49 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-1.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
+                        <img class="img-fluid" src="{{ asset('img/destination-1.jpg') }}" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="/continent/Europe">
                             <h5 class="text-white">Europe</h5>
-                            <span>15 Cities</span>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-2.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
+                        <img class="img-fluid" src="{{ asset('img/destination-2.jpg') }}" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="/continent/Asia">
                             <h5 class="text-white">Asia</h5>
-                            <span>15 Cities</span>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-3.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Africa</h5>
-                            <span>15 Cities</span>
+                        <img class="img-fluid" src="{{('img/destination-3.jpg')}}" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="/continent/Africa">
+                            <h5 class="text-white">Arfica</h5>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-4.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
+                        <img class="img-fluid" src="{{ asset('img/destination-4.jpg') }}" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="/continent/North America">
                             <h5 class="text-white">North America</h5>
-                            <span>15 Cities</span>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-5.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
+                        <img class="img-fluid" src="{{ asset('img/destination-5.jpg') }}" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="/continent/South America">
                             <h5 class="text-white">South America</h5>
-                            <span>15 Cities</span>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-6.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
+                        <img class="img-fluid" src="{{ asset('img/destination-6.jpg') }}" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="/continent/Australia">
                             <h5 class="text-white">Australia</h5>
-                            <span>15 Cities</span>
                         </a>
                     </div>
                 </div>

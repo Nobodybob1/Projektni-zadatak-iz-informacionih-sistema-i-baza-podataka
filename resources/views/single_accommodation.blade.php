@@ -4,12 +4,12 @@
 
     <h1 class="text-center mb-5">{{$item->name}}</h1>
 <div class="col"> 
-    {{-- bilo class= row nesto bagovao --}}
     <div class="col-md-3 mx-auto">
                 
                 
                 <!-- Carousel Start -->
                 @unless ($pictures->isEmpty())
+                    
                     <div class="container-fluid p-0">
                         <div id="header-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
@@ -52,7 +52,6 @@
 </div>
 <div class="row">
     <div class="col-md-3 mx-auto">
-    {{-- Janko: Kod mene je izgledalo ruzno pa sam promenio  --}}
     
         <div class="card">
             <div class="card-body">
@@ -78,7 +77,6 @@
 </div>
 <div class="row">
     <div class="col-md-3 mx-auto">
-        {{-- Janko: Kod mene je izgledalo ruzno pa sam promenio  --}}
     
         <div class="card">
             <div class="card-body">
@@ -95,7 +93,12 @@
                     </div>
                 
                     <div class="mt-1">
-                        <button id="pic_submit" class="btn btn-success" disabled>Submit!</button>
+                        @if (count($pictures)>=6)
+                            <button class="btn btn-success" disabled>Submit!</button>
+                            <p class="text-sm text-danger">Max number of images is 6!</p>
+                        @else
+                            <button id="pic_submit" class="btn btn-success" disabled>Submit!</button>
+                        @endif
                     </div>
                 </form>
             </div>

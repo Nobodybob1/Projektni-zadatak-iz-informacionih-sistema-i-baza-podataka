@@ -27,7 +27,6 @@ class AccommodationFactory extends Factory
             'tv' => $faker->randomElement(['1', '0']),
             'ac' => $faker->randomElement(['1', '0']),
             'fridge' => $faker->randomElement(['1', '0'])
-            //treba i slike da se dodaju znaci izabere 6 od 30 i spakuje tamo gde vec spakuje
         ];
     }
 }
