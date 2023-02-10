@@ -89,4 +89,5 @@ class Offer extends Model
         return $array;
     }
 
+    
 }

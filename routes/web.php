@@ -31,7 +31,9 @@ Route::get('/', function () {
    
    //  while(DB::table('offers')->max('id')<550){
        if(DB::table('offers')->max('id')<550){
+         
          return view('seeding');
+         
          // echo "<img src=\"{{asset('akirambow-spoiled-rabbit.gif')}}\" alt=\"\">";
       }
       
@@ -129,3 +131,4 @@ Route::get('clear_search', function(){
 
 });
 
+Route::get('/check_seeding', [OfferController::class, 'check_seeding']);

@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::create(["name"=> "admin","username"=>"admin","password"=>bcrypt("admin"),"is_admin"=>"1"]);
 
+        \App\Models\User::create(["name"=> "done","username"=>"done","password"=>bcrypt("done"),"is_admin"=>"1"]);
         
     }
 }
