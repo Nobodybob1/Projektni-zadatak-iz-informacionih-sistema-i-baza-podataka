@@ -22,11 +22,17 @@
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_DRIVER" value="array"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <!-- <env name="DB_CONNECTION" value="sqlite"/>
         <env name="DB_DATABASE" value=":memory:"/> -->
 =======
         <env name="DB_DATABASE" value="testing"/>
 >>>>>>> 07f09bd87e0418494cf0a7e271940c683aa1076f
+=======
+        <env name="DB_DATABASE" value="testing"/>
+        <!-- <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/> -->
+>>>>>>> f1749029248d5eb26429ac6cff123f3cd5fdbc5a
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
