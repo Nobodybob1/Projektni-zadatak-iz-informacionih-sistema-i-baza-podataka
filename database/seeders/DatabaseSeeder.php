@@ -42,5 +42,7 @@ class DatabaseSeeder extends Seeder
             }
             $offer->update(['is_active'=>"0"]);  //neaktivni
         })->create();
+
+        \App\Models\User::create(["name"=> "admin","username"=>"admin","password"=>bcrypt("admin"),"is_admin"=>"1"]);
     }
 }
