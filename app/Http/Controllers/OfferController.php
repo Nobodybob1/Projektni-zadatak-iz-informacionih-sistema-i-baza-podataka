@@ -6,6 +6,7 @@ use App\Models\Offer;
 use Illuminate\Http\Request;
 use App\Models\Reservation;
 use App\Models\Accommodation;
+use App\Models\User;
 
 use League\Csv\Reader;
 
@@ -307,5 +308,8 @@ class OfferController extends Controller
                 $offer->update(['is_active', "0"]);
             }
         }
+    }
+    public function check_seeding(){
+        return User::where('name', 'done')->get()->isEmpty();
     }
 }
