@@ -62,7 +62,6 @@ class AccommodationController extends Controller
     {   
         $accommodation = Accommodation::findOrFail($id);
         $pictures = $accommodation->accommodationpictures()->get();
-        // dd($pictures);
         return view('single_accommodation', ['item' => $accommodation, 'pictures' => $pictures]);
     }
 
@@ -108,7 +107,7 @@ class AccommodationController extends Controller
     }
 
     public function admin_accommodations() {
-        $accommodations = Accommodation::latest()->get();
+        $accommodations = Accommodation::latest()->paginate(20);
         
         return view('admin_accommodation', compact('accommodations'));
     }

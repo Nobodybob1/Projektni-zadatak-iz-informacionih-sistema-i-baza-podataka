@@ -28,7 +28,17 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('index', ['offers' => Offer::where('is_active', 1)->latest()->take(6)->get()]);
+   
+   //  while(DB::table('offers')->max('id')<550){
+       if(DB::table('offers')->max('id')<550){
+         return view('seeding');
+         // echo "<img src=\"{{asset('akirambow-spoiled-rabbit.gif')}}\" alt=\"\">";
+      }
+      
+      // return view('seeding');
+   
+   return view('index', ['offers' => Offer::where('is_active', 1)->latest()->take(6)->get()]);
+    
 });
 
 Route::get('/packages', [OfferController::class, 'index']);
@@ -64,7 +74,6 @@ Route::get('single/{id}', function ($id) {
  Route::post('/admin/delete/user', [UserController::class, 'destroy'])->middleware('auth');
 
 
-
  Route::get('/login', function(){
 
     return view('login_page');
@@ -72,7 +81,7 @@ Route::get('single/{id}', function ($id) {
 
  Route::post('/login_user', [UserController::class, 'login']);
 
-Route::get('/staff', [UserController::class, 'index']);
+ Route::get('/staff', [UserController::class, 'index']);
 
  Route::get('/register', function(){
      return view('register');
@@ -99,65 +108,12 @@ Route::post('/add_img_accommodation', [AccommodationPictureController::class, 's
 Route::get('/search', [OfferController::class, 'search']);
 
 Route::post('/newsletter', function(Request $request){
-   //dd($request->email);
-   //dd(Mail::to($request->email)->send(new newsletter_mail()));
    Mail::to($request->email)->send(new newsletter_mail());
    return back()->with('message', 'You are succesffuly subscribed to our newsletter!');
 });
 
 Route::get('/continent/{param}', [OfferController::class, 'show' ]);
 
-Route::get('/factory', function() {
-  
-   //$faker = Faker\Factory::create('de_DE');
-   //  dd($faker->name);
-   // // $start = new DateTime();
-   // // $end = new DateTime('+1 year');
-
-   // // dd($faker->dateTime($max = 'now', $timezone = null)->format('Y-m-d'));
-   // $startDate = Carbon::now();
-   // dd($startDate);
-   // $endDate = Carbon::now()->addYear();
-   // //$faker->dateBetween($startDate, $endDate);
-
-   //  dd($faker->address());
-   
-   // $city = $faker->city;
-   // $state = $faker->state;
-   
-   // dd($city,$state);
-   
-   //OfferFactory::times(10)->create();
-   OfferFactory::times(10)->create();
-});
-
-Route::get('/factory1', function(){
-//    $faker = Faker\Factory::create();
-// $cities = [];
-// $i = 0;
-// while($i < 90){
-//     $city = $faker->city;
-//     $state = $faker->state;
-//     $country = $faker->country;
-//     $cities[] = [
-//         'city' => $city,
-//         'state' => $state,
-//         'country' => $country
-//     ];
-//     $i++;
-// }
-//    dd($cities);
-
-$offer_cntrl = new OfferController;
-dd($offer_cntrl->csvToArray(public_path('locations_list.txt'))[5]);
-
-});
-
-Route::get('/program_gen/{num_days}', [OfferFactory::class, 'program_gen']);
-
-Route::get('/mailtest/{id}', [ReservationController::class, 'mail_test']);
-
-Route::get('/resize', [AccommodationPictureController::class, 'resize']);
 
 Route::get('clear_search', function(){
    session()->forget('search');
@@ -173,29 +129,3 @@ Route::get('clear_search', function(){
 
 });
 
-Route::get('/activate', function(){
-   dd(DB::table('offers')->where('is_active', 0)->get());
-   DB::table('offers')->where('is_active', '0')->update(['is_active' => '1']);
-   // $offers = Offer::all()->update(['is_active' => 1]);
-   // dd($offers);
-   // foreach($offers as $offer){
-   //    //dd($offer);
-   //    $offer->update(['is_active' => 1]);
-   // }
-});
-
-Route::get('/showcities', function(){
-
-   $files = glob(public_path('cities_pics/*'));
-   $cnt = 0;
-   $file = "nesto_nesto";
-   $file = preg_replace('*_*', '', $file);
-   dd($file);
-   foreach($files as $file){
-      $file = basename($file);
-            $file = preg_replace('/\s*/', '', $file);
-            $file = strtolower($file);
-      dd($file);
-   }
-
-});

@@ -76,7 +76,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/" class="nav-item nav-link">Home</a>
                         <a href="/packages" class="nav-item nav-link">Tour Packages</a>
                         @if (auth()->user())
                             <a href="/admin/index" class="nav-item nav-link">Welcome, {{auth()->user()->name}} </a>
@@ -173,8 +173,7 @@
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
 
-    <!-- Linkedin badge --> 
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+    
 </body>
 
 </html>

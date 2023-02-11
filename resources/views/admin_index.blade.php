@@ -31,7 +31,6 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="mb-3 mb-md-0">
-                                            <!-- Popraviti: postoji input za broj telefona -->
                                             <label for="phone_no"><b>Phone number</b></label>
                                             <input type="text" name="phone_no" value="{{ $reservation->phone_no }}" class="form-control p-3" readonly>
                                         </div>

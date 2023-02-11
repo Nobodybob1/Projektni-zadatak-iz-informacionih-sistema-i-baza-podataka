@@ -95,16 +95,5 @@ class AccommodationPictureController extends Controller
         //
     }
 
-    public function resize()
-    {   
-        $files = glob(public_path('cities_pics/*'));
-        //$files = Storage::allFiles(public_path('accommodation_pics'));
-        //dd($files);
-        foreach($files as $image){
-            $path = public_path('cities_pics/' . basename($image));
-            
-            $image = Image::make($image)->resize(600, 400)->save($path);
-        }
-        
-    }
+
 }

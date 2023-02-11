@@ -76,14 +76,15 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="/admin/index" class="nav-item nav-link active">Home</a>
+                        <a href="/admin/index" class="nav-item nav-link">Home</a>
                         <a href="/admin/reservations" class="nav-item nav-link">Reservations</a>
                         <a href="/admin/offers" class="nav-item nav-link" onclick="{{session()->forget('perPage')}}">Offers</a>
                         @if (auth()->user()->is_admin)
                             <a href="/staff" class="nav-item nav-link">Staff</a>
-                            <a href="/admin/accommodation" class="nav-item nav-link">Accommodations</a>
+                            
                         @endif
                         @if (auth()->user())
+                        <a href="/admin/accommodation" class="nav-item nav-link">Accommodations</a>
                             <a href="/admin/index" class="nav-item nav-link">Welcome, {{auth()->user()->name}} </a>
                             <a href="/logout" class="nav-item nav-link"><i class="fa fa-door-closed"></i></a>
                             

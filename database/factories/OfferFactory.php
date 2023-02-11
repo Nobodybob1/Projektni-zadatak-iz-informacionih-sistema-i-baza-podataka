@@ -55,11 +55,10 @@ class OfferFactory extends Factory
         
         $location_dominant = $this->find_dominant($days_array, $locations );
         $transport_type = $faker->randomElement(['Bus', 'Airplane', 'Ship','Train', 'Individual']);
-        $is_active = 1;
         return [
            
             
-                'name' => $location_dominant['city'] . " $start_date_m_Y ." . $faker->words(1, true),
+                'name' => $location_dominant['city'] . " $start_date_m_Y ." . $faker->words(10, true),
                 'transport_price' => $faker->numberBetween(100, 3000),
                 'transport_type' => $transport_type,
                 'price_adult' => $faker->numberBetween(10, 1000),
@@ -69,22 +68,13 @@ class OfferFactory extends Factory
                 'location_city' => $all_cities,
                 'location_state' => $all_states,
                 'location_continent' =>  $all_continents,
-                'program' => $this->program_gen($diff_days,$faker,$transport_type), //ovde treba da se doda logika za svaki dan da pise program
+                'program' => $this->program_gen($diff_days,$faker,$transport_type),
                 'note' => $faker->sentence(5),
                 'img' => $this->select_picture($location_dominant['city']),
                 'days' => $days
-                // 'is_active' => $is_active
-                // 'accommodation_id' => function () {
-                //     return Accommodation::inRandomOrder()->first()->id;
-                // }
             ];
         
     }
-
-//     public function afterCreating($offer)
-// {   
-//     $offer->accommodations()->attach(Accommodation::inRandomOrder()->first()->id);
-// }
 
     function csvToArray($filename = '', $delimiter = ',')
 {
@@ -109,7 +99,6 @@ class OfferFactory extends Factory
 }
 
     public function program_gen($num_days, $faker, $transport_type){
-        //$faker = faker::create();
         if($transport_type == "Airplane"){
             $result = "Departure from airport: " .$faker->dateTimeThisCentury()->format('H:i'). "\n\n";
         }else{
