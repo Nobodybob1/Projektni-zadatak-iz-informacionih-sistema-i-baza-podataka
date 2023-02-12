@@ -66,6 +66,6 @@ RUN chmod +x /usr/local/bin/start-container
 
 EXPOSE 8000
 
-# ENTRYPOINT ["start-container"]
-CMD sh -c " /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"
+ENTRYPOINT ["start-container"]
+# CMD sh -c " /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"
 # php artisan migrate:fresh  && php artisan db:seed &&

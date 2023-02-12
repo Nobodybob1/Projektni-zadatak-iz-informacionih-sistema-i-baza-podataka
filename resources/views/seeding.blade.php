@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h3 class = "text-center">Preparing data please wait :)</h3>
+    <h3 class = "text-center">Preparing data, please wait :)</h3>
     <img class="col-md-6 text-center mx-auto d-flex justify-content-center" src="{{asset('akirambow-spoiled-rabbit.gif')}}" alt="">
    
 

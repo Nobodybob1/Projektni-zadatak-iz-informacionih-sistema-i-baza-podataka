@@ -26,9 +26,7 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-   
    //  while(DB::table('offers')->max('id')<550){
        if(DB::table('offers')->max('id')<550){
          
@@ -38,7 +36,6 @@ Route::get('/', function () {
       }
       
       // return view('seeding');
-   
    return view('index', ['offers' => Offer::where('is_active', 1)->latest()->take(6)->get()]);
     
 });

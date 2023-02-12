@@ -99,10 +99,10 @@ class AccommodationController extends Controller
         $accommodation = Accommodation::find($request->id);
 
         $accommodation->offers()->detach();
-
+        $accommodation->delete();
+        
         AccommodationPicture::where('accommodation_id', $request->id)->delete();
         
-        $accommodation->delete();
         return back()->with('message', 'Accommodation deleted successfully!');
     }
 
