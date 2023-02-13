@@ -15,9 +15,11 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   
+    {      
+        $batch_size = 1000;
+        $total_offers = 60000;
         
-        \App\Models\Accommodation::factory(100)->afterCreating(function($accommodation){
+        \App\Models\Accommodation::factory(90)->afterCreating(function($accommodation){
             $count = rand(1,6);
             
             for($i=0;$i<$count;$i++){
@@ -25,26 +27,36 @@ class DatabaseSeeder extends Seeder
                 AccommodationPicture::create(['accommodation_id'=>$accommodation->id, 'img_path' => basename($files[array_rand($files)])]);
             }
         })->create();
-
-        \App\Models\Offer::factory(500)->afterCreating(function ($offer) {
-            $num_cities = count(explode(',', $offer->days)) - 1;
-            for($i=0;$i<$num_cities;$i++){
-                $offer->accommodations()->attach(\App\Models\Accommodation::inRandomOrder()->first()->id);
+        for($i=0; $i<$total_offers; $i+=$batch_size){
+            $offers = \App\Models\Offer::factory($batch_size)->make()->toArray();
+            for($j=0; $j<$batch_size; $j++){
+                if($i+$j < 50000){ 
+                    $offers[$j]['is_active'] = "1";  //aktivni
+                }else{
+                    $offers[$j]['is_active'] = "0";  //neaktivni
+                }
+                $offers[$j]['created_at'] = now();
+                $offers[$j]['updated_at'] = now();
             }
-            $offer->update(['is_active'=>"1"]);  //aktivni
-        })->create();
+            \App\Models\Offer::insert($offers);
+        }
 
-        \App\Models\Offer::factory(50)->afterCreating(function ($offer) {
+        $offers = \App\Models\Offer::all();
+        foreach($offers as $offer){
             $num_cities = count(explode(',', $offer->days)) - 1;
-            for($i=0;$i<$num_cities;$i++){
-                $offer->accommodations()->attach(\App\Models\Accommodation::inRandomOrder()->first()->id);
-            }
-            $offer->update(['is_active'=>"0"]);  //neaktivni
-        })->create();
+            $accommodation_ids = \App\Models\Accommodation::inRandomOrder()
+            ->limit($num_cities)
+            ->pluck('id')
+            ->toArray();
+            $offer->accommodations()->attach($accommodation_ids);
+        }
+
+        
 
         \App\Models\User::create(["name"=> "admin","username"=>"admin","password"=>bcrypt("admin"),"is_admin"=>"1"]);
-
         \App\Models\User::create(["name"=> "done","username"=>"done","password"=>bcrypt("done"),"is_admin"=>"1"]);
         
     }
+
+
 }

@@ -71,7 +71,10 @@ class OfferFactory extends Factory
                 'program' => $this->program_gen($diff_days,$faker,$transport_type),
                 'note' => $faker->sentence(5),
                 'img' => $this->select_picture($location_dominant['city']),
-                'days' => $days
+                'days' => $days,
+                'is_active' => "1",
+                'created_at' => now(),
+                'updated_at' => now()
             ];
         
     }
