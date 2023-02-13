@@ -20,29 +20,29 @@ Projekat iz predmeta PISIBS na temu Turistička agencija, odlučili smo se za iz
 - Posle preuzimanja promeniti ime .env.example fajla u .env
 - U komandnoj liniji uneti "composer install" 
 
-Sada postoje dva načina za pokretanje aplikacije
+Sada postoje dva načina za pokretanje aplikacije:
 <table border="0">
  <tr>
     <td><b style="font-size:30px">Pokretanje pomoću Xampp-a</b></td>
     <td><b style="font-size:30px">Pokretanje pomoću Docker-a</b></td>
  </tr>
  <tr>
-    <td>-Pretpostavka je da već imate instaliran i funkcionalan XAMPP</td>
+    <td>Pretpostavka je da već imate instaliran i funkcionalan XAMPP</td>
     <td>Lorem ipsum ...</td>
  </tr>
  <tr>
-    <td>    -Pokrenuti Apache i MySQL u XAMPP kontrolnom panelu</td>
+    <td>Pokrenuti Apache i MySQL u XAMPP kontrolnom panelu</td>
     <td>Lorem ipsum ...</td>
  </tr>
   <tr>
-    <td>    Pokrenuti sledecu sekvencu komandi:</td>
+    <td>Pokrenuti sledecu sekvencu komandi:</td>
     <td>Lorem ipsum ...</td>
  </tr>
  <tr>
-    <td>    php artisan serve
-            zatim u drugom terminalu:
-            php artisan key:generate
-            php artisan migrate:fresh
+    <td>    php artisan serve <br>
+            zatim u drugom terminalu: <br>
+            php artisan key:generate <br>
+            php artisan migrate:fresh <br>
             php artisan db:seed
             </td>
     <td>Lorem ipsum ...</td>
