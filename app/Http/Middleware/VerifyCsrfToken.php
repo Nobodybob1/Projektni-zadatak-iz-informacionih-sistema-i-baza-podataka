@@ -14,4 +14,17 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
     ];
+<<<<<<< HEAD
+=======
+
+    public function handle($request, \Closure $next)
+    {
+        if(env('APP_ENV') !== 'testing')
+        {
+            return parent::handle($request, $next);
+        }
+
+        return $next($request);
+    }
+>>>>>>> 4a1ed0f2e38ec36cb4ada39582ab2567f36f2ccb
 }

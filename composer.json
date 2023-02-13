@@ -7,14 +7,29 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
+<<<<<<< HEAD
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7"
+=======
+        "intervention/image": "^2.7",
+        "laravel/framework": "^9.19",
+        "laravel/sanctum": "^3.0",
+        "laravel/tinker": "^2.7",
+        "laravel/ui": "^4.2",
+        "symfony/http-client": "^6.2",
+        "symfony/mailgun-mailer": "^6.2",
+        "unsplash/unsplash": "^3.2"
+>>>>>>> 4a1ed0f2e38ec36cb4ada39582ab2567f36f2ccb
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
+<<<<<<< HEAD
         "laravel/sail": "^1.0.1",
+=======
+        "laravel/sail": "^1.20",
+>>>>>>> 4a1ed0f2e38ec36cb4ada39582ab2567f36f2ccb
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",

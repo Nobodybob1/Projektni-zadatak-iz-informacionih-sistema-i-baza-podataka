@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [ ! -z "33" ]; then
+    usermod -u 33 sail
+fi
+
+if [ ! -d /.composer ]; then
+    mkdir /.composer
+fi
+
+chmod -R ugo+rw /.composer
+
+if [ $# -gt 0 ]; then
+    exec gosu 33 "$@"
+else
+    
+    exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+fi

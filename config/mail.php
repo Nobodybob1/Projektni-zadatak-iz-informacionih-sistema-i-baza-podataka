@@ -36,14 +36,32 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
+<<<<<<< HEAD
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+=======
+            'host' => env('MAIL_HOST', 'smtp.gmail.org'),
+            'port' => env('MAIL_PORT', 465),
+            'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+>>>>>>> 4a1ed0f2e38ec36cb4ada39582ab2567f36f2ccb
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
+<<<<<<< HEAD
         ],
+=======
+            // 'stream' => [
+            //     'ssl' => [
+            //         'allow_self_signed' => true,
+            //         'verify_peer' => false,
+            //         'verify_peer_name' => false,
+            //     ],
+            // ],
+        ],
+        
+>>>>>>> 4a1ed0f2e38ec36cb4ada39582ab2567f36f2ccb
 
         'ses' => [
             'transport' => 'ses',
@@ -92,8 +110,13 @@ return [
     */
 
     'from' => [
+<<<<<<< HEAD
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
+=======
+        'address' => env('MAIL_FROM_ADDRESS', 'travelpisibsnoreply@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Laravel'),
+>>>>>>> 4a1ed0f2e38ec36cb4ada39582ab2567f36f2ccb
     ],
 
     /*

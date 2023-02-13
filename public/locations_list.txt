@@ -1,0 +1,91 @@
+city,state,continent
+Paris,France,Europe
+London,United Kingdom,Europe
+Rome,Italy,Europe
+New York City,United States,North America
+Barcelona,Spain,Europe
+Tokyo,Japan,Asia
+Bangkok,Thailand,Asia
+Istanbul,Turkey,Europe and Asia
+Sydney,Australia,Australia
+Athens,Greece,Europe
+Vienna,Austria,Europe
+Dubrovnik,Croatia,Europe
+Cusco,Peru,South America
+Marrakech,Morocco,Africa
+Amsterdam,Netherlands,Europe
+Moscow,Russia,Europe and Asia
+San Francisco,United States,North America
+Hong Kong,China,Asia
+Bali,Indonesia,Asia
+Cape Town,South Africa,Africa
+Rio de Janeiro,Brazil,South America
+Edinburgh,Scotland,Europe
+Venice,Italy,Europe
+Kragujevac,Serbia,Europe 
+Mexico City,Mexico,North America
+Seoul,South Korea,Asia
+Beijing,China,Asia
+Los Angeles,United States,North America
+Delhi,India,Asia
+Shanghai,China,Asia
+Singapore,Singapore,Asia
+St. Petersburg,Russia,Europe and Asia
+Hanoi,Vietnam,Asia
+Dublin,Ireland,Europe
+Berlin,Germany,Europe
+Jerusalem,Israel,Asia
+Cacak,Serbia,Europe
+Cairo,Egypt,Africa
+Toronto,Canada,North America
+Montreal,Canada,North America
+Quebec City,Canada,North America
+Santiago,Chile,South America
+Buenos Aires,Argentina,South America
+Lima,Peru,South America
+Bogota,Colombia,South America
+Valjevo,Serbia,Europe
+Chicago,United States,North America
+Kuala Lumpur,Malaysia,Asia
+Madrid,Spain,Europe
+Jagodina,Serbia,Europe
+Zurich,Switzerland,Europe
+Prague,Czech Republic,Europe
+Warsaw,Poland,Europe
+Helsinki,Finland,Europe
+Reykjavik,Iceland,Europe
+Osaka,Japan,Asia
+Wellington,New Zealand,Australia
+Kraljevo,Serbia,Europe
+Brisbane,Australia,Australia
+Perth,Australia,Australia
+Adelaide,Australia,Australia
+Manila,Philippines,Asia
+Jakarta,Indonesia,Asia
+Ho Chi Minh City,Vietnam,Asia
+Novi Pazar,Serbia,Europe
+Batocina,Serbia,Europe
+Vancouver,Canada,North America
+Stockholm,Sweden,Europe
+Copenhagen,Denmark,Europe
+Porvoo,Finland,Europe
+Siberia,Russia,Europe and Asia
+Kazan,Russia,Europe and Asia
+Salzburg,Austria,Europe
+Krakow,Poland,Europe
+Brno,Czech Republic,Europe
+Budapest,Hungary,Europe
+Zagreb,Croatia,Europe
+Efes,Turkey,Europe and Asia
+Olymp,Greece,Europe
+Brussels,Belgium,Europe
+Lisbon,Portugal,Europe
+Oslo,Norway,Europe
+Stockholm,Sweden,Europe
+Hamburg,Germany,Europe
+Munich,Germany,Europe
+Dresden,Germany,Europe
+Riga,Latvia,Europe
+Bruges,Belgium,Europe
+Santorini,Greece,Europe
+Amalfi, Italy, Europe
