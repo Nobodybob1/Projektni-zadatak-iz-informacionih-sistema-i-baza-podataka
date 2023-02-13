@@ -9,6 +9,9 @@
 
 ## Projektovanje informacionih sistema i baza podataka
 Projekat iz predmeta PISIBS na temu Turistička agencija, odlučili smo se za izradu web aplikacije pomoću Laravel <i>framework</i>-a.
+<h6>Opis aplikacije</h6>
+
+
 
 ## Instrukcije za pokretanje aplikacije
 
@@ -28,28 +31,36 @@ Sada postoje dva načina za pokretanje aplikacije:
  </tr>
  <tr>
     <td>Pretpostavka je da već imate instaliran i funkcionalan XAMPP</td>
-    <td>Lorem ipsum ...</td>
+    <td>Potrebno je imati preuzet i konfigurisan Docker(https://www.docker.com/products/docker-desktop/) <br>
+        za korisnike Windows OS potrebno je instalirati dodatno i WSL(https://learn.microsoft.com/en-us/windows/wsl/install)</td>
  </tr>
  <tr>
     <td>Pokrenuti Apache i MySQL u XAMPP kontrolnom panelu</td>
-    <td>Lorem ipsum ...</td>
+    <td>Pokrenuti Docker</td>
  </tr>
   <tr>
     <td>Pokrenuti sledecu sekvencu komandi:</td>
-    <td>Lorem ipsum ...</td>
+    <td>Pokrenuti sledecu sekvencu komandi:</td>
  </tr>
  <tr>
-    <td>    php artisan serve <br>
+    <td>    - php artisan serve <br>
             zatim u drugom terminalu: <br>
-            php artisan key:generate <br>
-            php artisan migrate:fresh <br>
-            php artisan db:seed
+            - php artisan key:generate <br>
+            - php artisan migrate:fresh <br>
+            - php artisan db:seed
             </td>
-    <td>Lorem ipsum ...</td>
+    <td>- docker-compose build <br>
+        - docker-compose up</td>
  </tr>
 </table>
 
+U slučaju javljanja greške pri pokretanju aplikacije preko Docker-a <br>
+"ERROR  Command "migrate:fresh " is not defined. Did you mean one of these?" <br>
+Potrebno je promeniti "End of line Sequence" na LF u nekom od editora za fajl u direktorijumu aplikacije unutar <i>'docker/8.2/script.sh'</i>
 
-
-
-warning: in the working copy of 'docker/8.2/script.sh', LF will be replaced by CRLF the next time Git touches it
+## Članovi tima
+- Janko Štrkalj 618-2019 jankokg26@gmail.com Linkedin - https://www.linkedin.com/in/janko-%C5%A1trkalj-62bb09253/
+- Desimir Dimović 627-2019 desimirdimovic@gmail.com Linkedin - www.linkedin.com/in/desimir-dimovic-334b4a25a
+- Marko Živanović 656-2019 marko.ziv@hotmail.com
+- Marko Đokić 640-2019 markojh13@gmail.com Linkedin - https://www.linkedin.com/in/marko-djokic-030951192/
+- ChatGPT by OpenAI 
