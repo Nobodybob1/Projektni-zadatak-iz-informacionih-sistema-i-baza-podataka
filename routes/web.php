@@ -28,8 +28,7 @@ use Illuminate\Http\Request;
 */
 Route::get('/', function () {
    //  while(DB::table('offers')->max('id')<550){
-       if(DB::table('offers')->max('id')<550){
-         
+       if(User::where('name', 'done')){
          return view('seeding');
          
          // echo "<img src=\"{{asset('akirambow-spoiled-rabbit.gif')}}\" alt=\"\">";

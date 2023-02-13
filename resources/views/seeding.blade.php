@@ -12,6 +12,7 @@
           $.ajax({
             url: '/check_seeding', // where is mapped function that returns data
             success: function(data) {
+              console.log(data);
               if (!data) {
                 // if seeding is complete, redirect to the home page
                 window.location.href = '/';
@@ -20,7 +21,7 @@
           });
         }
         // start checking the seeding status every 2 seconds
-        setInterval(checkSeedingStatus, 2000);
+        setInterval(checkSeedingStatus, 3000);
       </script>
 
 
