@@ -9,7 +9,7 @@
 
 ## Projektovanje informacionih sistema i baza podataka
 Projekat iz predmeta PISIBS na temu Turistička agencija, odlučili smo se za izradu web aplikacije pomoću Laravel <i>framework</i>-a.
-<h6>Opis aplikacije</h6>
+<h3>Opis aplikacije</h3>
 
 
 
