@@ -10,7 +10,8 @@
 ## Projektovanje informacionih sistema i baza podataka
 Projekat iz predmeta PISIBS na temu Turistička agencija, odlučili smo se za izradu web aplikacije pomoću Laravel <i>framework</i>-a.
 <h3>Opis aplikacije</h3>
-
+Aplikacija koja omugućuje brzu i laku pretragu destinacija za letovanje na svim kontinentima. <br>
+Detaljan opis lokacija, turističkih atrakcija, laka rezervacija, e-mail obaveštenja i newsletter o najatraktivnijim destinacijama.
 
 
 ## Instrukcije za pokretanje aplikacije
@@ -55,7 +56,7 @@ Sada postoje dva načina za pokretanje aplikacije:
 </table>
 
 U slučaju javljanja greške pri pokretanju aplikacije preko Docker-a <br>
-"ERROR  Command "migrate:fresh " is not defined. Did you mean one of these?" <br>
+"ERROR  Command "migrate:fresh " is not defined. Did you mean one of these? ..." <br>
 Potrebno je promeniti "End of line Sequence" na LF u nekom od editora za fajl u direktorijumu aplikacije unutar <i>'docker/8.2/script.sh'</i>
 
 ## Članovi tima
