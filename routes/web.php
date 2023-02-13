@@ -3,6 +3,7 @@
 use App\Http\Controllers\OfferController;
 use App\Models\Accommodation;
 use App\Models\Offer;
+use App\Models\User;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccommodationController;
@@ -28,7 +29,7 @@ use Illuminate\Http\Request;
 */
 Route::get('/', function () {
    //  while(DB::table('offers')->max('id')<550){
-       if(DB::table('offers')->max('id')<550){
+       if(User::where('name', 'done')->get()->isEmpty()){
          
          return view('seeding');
          
