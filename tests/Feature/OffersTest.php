@@ -54,6 +54,7 @@ class OffersTest extends TestCase
     }
 
     public function test_default_pagination_is_working() {
+        session()->forget('perPage');
         $offers = Offer::factory(51)->create();
         $lastOffer = $offers->last();
 
@@ -61,7 +62,7 @@ class OffersTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertViewHas('offers', function ($collection) use ($lastOffer) {
-            return !$collection->contains($lastOffer);
+            return (count($collection) == 50);
         });
     }
 

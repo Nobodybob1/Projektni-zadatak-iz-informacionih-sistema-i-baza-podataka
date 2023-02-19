@@ -6,4 +6,4 @@ sleep 5
 
 
 /usr/bin/php /var/www/html/artisan migrate:fresh
-/usr/bin/php -d variables_order=EGPCS /var/www/html/artisan db:seed
+/usr/bin/php -d variables_order=EGPCS /var/www/html/artisan db:seed --verbose > output.txt
