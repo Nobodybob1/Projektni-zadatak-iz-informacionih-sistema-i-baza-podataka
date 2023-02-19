@@ -36,7 +36,7 @@
       <div class="body">
               <div>
                   <p>Dear customer, 
-                  <br> we are glad that you subscribed! We will send you interesting news about travel.
+                  <br> we are glad that you subscribed! We will send you interesting news about travel. AAAAAAAAAAAAAAAAAAA
                   <br>
                   </p>
                   <hr>
