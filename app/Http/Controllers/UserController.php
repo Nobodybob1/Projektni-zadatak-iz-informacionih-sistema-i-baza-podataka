@@ -111,6 +111,7 @@ class UserController extends Controller
                 'is_admin' => 'required',
             ]);
     
+            $data['password'] = bcrypt($data['password']);
             User::whereId($id)->get()->first()->update($data);
             return redirect('staff')->with('message', 'User updated successfully!');
         }else{

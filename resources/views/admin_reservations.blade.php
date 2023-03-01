@@ -72,7 +72,7 @@
                     <h4 class="mt-3 mb-3 text-center">Informations about offer:</h4>
                     <div class="row">
                         <div class="col-md-6">
-                            <p>Accommodation name: {{ $reservation->offer->name }}</p>
+                            <p>Offer name: {{ $reservation->offer->transform_name($reservation->offer->name) }}</p>
                             <p>Transport price: {{ $reservation->offer->transport_price ." e" }}</p>
                             <p>Transport type: {{ $reservation->offer->transport_type }}</p>
                             <p>Price for adults: {{ $reservation->offer->price_adult ." e"}}</p>
@@ -81,9 +81,9 @@
                         <div class="col-md-6">
                             <p>Start Date: {{ $reservation->offer->date_str_to_nice($reservation->offer->start_date) }}</p>
                             <p>End Date: {{ $reservation->offer->date_str_to_nice($reservation->offer->end_date) }}</p>
-                            <p>City: {{ $reservation->offer->location_city }}</p>
-                            <p>State: {{ $reservation->offer->location_state }}</p>
-                            <p>Continent: {{ $reservation->offer->location_continent }}</p>
+                            <p>City: {{ $reservation->offer->transform_array($reservation->offer->location_city) }}</p>
+                            <p>State: {{ $reservation->offer->transform_array($reservation->offer->location_state) }}</p>
+                            <p>Continent: {{ $reservation->offer->transform_array($reservation->offer->location_continent) }}</p>
                         </div>
                     </div>
                 </div>

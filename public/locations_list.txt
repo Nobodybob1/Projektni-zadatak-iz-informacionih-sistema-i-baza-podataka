@@ -22,7 +22,7 @@ Cape Town,South Africa,Africa
 Rio de Janeiro,Brazil,South America
 Edinburgh,Scotland,Europe
 Venice,Italy,Europe
-Kragujevac,Serbia,Europe 
+Kragujevac,Serbia,Europe
 Mexico City,Mexico,North America
 Seoul,South Korea,Asia
 Beijing,China,Asia

@@ -79,7 +79,7 @@
                         <h4 class="mt-3 mb-3 text-center">Informations about offer:</h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <p>Accommodation name: {{ $reservation->offer->name }}</p>
+                                <p>Offer name: {{ $reservation->offer->name }}</p>
                                 <p>Transport price: {{ $reservation->offer->transport_price ." e" }}</p>
                                 <p>Transport type: {{ $reservation->offer->transport_type }}</p>
                                 <p>Price for adults: {{ $reservation->offer->price_adult ." e"}}</p>
